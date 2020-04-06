@@ -1,0 +1,63 @@
+--[[ Lua code. See documentation: http://berserk-games.com/knowledgebase/scripting/ --]]
+
+--[[ The OnLoad function. This is called after everything in the game save finishes loading.
+Most of your script code goes here. --]]
+function onload()
+    --[[ print('Onload!') --]]
+    -- createButton({
+    --     label="Count\nPoints in\rZone", click_function="countInZone",
+    --     function_owner=self, position={0.8,0.1,1.2},
+    --     height=300, width=450, font_size=70
+    -- })
+    zone = getObjectFromGUID("6ad43e")
+    contador = getObjectFromGUID('33e606')
+end
+
+--[[ The Update function. This is called once per frame. --]]
+function update ()
+    --[[ print('Update loop!') --]]
+    countInZone()
+end
+
+
+function countInZone()
+    --We print the first line that is going into chat
+    -- print("[b]---Items In Zone---[/b]")
+    --Locate the scripting zone by its GUID, since this will not change
+    --Get the GUID by using the scripting zone tool and right clicking a zone
+
+    --Get a list of any objects which are inside of the zone.
+    local objectsInZone = zone.getObjects()
+
+    --Check if the table we made is empty due to the zone being empty
+    if #objectsInZone == 0 then
+        --What prints if the scripting zone was empty
+        -- print("Scripting Zone Empty.")
+        contador.setValue(0)
+    else
+        --If it isn't empty, we use a for loop to look at each entry in the list
+        local totalPoints = 0
+        for _, object in ipairs(objectsInZone) do
+            --Find the name of the object
+            local name = object.getName()
+            local points = object.getDescription()
+            --Then check if it had a name or not
+            if name ~= "" then
+                if points ~= "" then
+                  -- print(name, "-> ",points, " puntos.")
+                  totalPoints = totalPoints + tonumber(points)
+                else
+                  -- print(name,"-> 0 puntos")
+                end
+            else
+                -- print("No name object found.")
+            end
+        end
+          -- print("[b]------[/b]")
+          -- print("[b]TOTAL: ",totalPoints, "PUNTOS[/b]")
+          contador.setValue(totalPoints)
+    end
+    --Finally, we print the "closing" line.
+    --The purpose of the first and last lines are decorative and for clarity
+    -- print("[b]---------------------[/b]")
+end
