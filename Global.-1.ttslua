@@ -1,62 +1,102 @@
---[[ Lua code. See documentation: http://berserk-games.com/knowledgebase/scripting/ --]]
+--[[ Lua code. See documentation: https://api.tabletopsimulator.com/ --]]
 
---[[ The OnLoad function. This is called after everything in the game save finishes loading.
-Most of your script code goes here. --]]
-function onload()
-    --[[ print('Onload!') --]]
-    -- createButton({
-    --     label="Count\nPoints in\rZone", click_function="countInZone",
-    --     function_owner=self, position={0.8,0.1,1.2},
-    --     height=300, width=450, font_size=70
-    -- })
-    zone = getObjectFromGUID("6ad43e")
-    contador = getObjectFromGUID('33e606')
+--[[ The onLoad event is called after the game save finishes loading. --]]
+function onLoad()
+    --[[ print('onLoad!') --]]
+    zonaCanastaE1_C01_GUID = 'db7d7a'
+    zonaCanastaE1_C02_GUID = '1e1fee'
+    zonaCanastaE1_C03_GUID = '1a0d9d'
+    zonaCanastaE1_C04_GUID = '45f2be'
+    zonaCanastaE1_C05_GUID = '65d35b'
+    zonaCanastaE1_C06_GUID = '29035b'
+    zonaCanastaE1_C07_GUID = '1ad7ac'
+    zonaCanastaE1_C08_GUID = '875f5e'
+    zonaCanastaE1_C09_GUID = 'bdafdd'
+    zonaCanastaE1_C10_GUID = '6f6ccf'
+    zonaCanastaE1_C01 =getObjectFromGUID(zonaCanastaE1_C01_GUID)
+    zonaCanastaE1_C02 =getObjectFromGUID(zonaCanastaE1_C02_GUID)
+    zonaCanastaE1_C03 =getObjectFromGUID(zonaCanastaE1_C03_GUID)
+    zonaCanastaE1_C04 =getObjectFromGUID(zonaCanastaE1_C04_GUID)
+    zonaCanastaE1_C05 =getObjectFromGUID(zonaCanastaE1_C05_GUID)
+    zonaCanastaE1_C06 =getObjectFromGUID(zonaCanastaE1_C06_GUID)
+    zonaCanastaE1_C07 =getObjectFromGUID(zonaCanastaE1_C07_GUID)
+    zonaCanastaE1_C08 =getObjectFromGUID(zonaCanastaE1_C08_GUID)
+    zonaCanastaE1_C09 =getObjectFromGUID(zonaCanastaE1_C09_GUID)
+    zonaCanastaE1_C10 =getObjectFromGUID(zonaCanastaE1_C10_GUID)
+
+    zonasCanastaE1 = {zonaCanastaE1_C01, zonaCanastaE1_C02,
+    zonaCanastaE1_C03, zonaCanastaE1_C04, zonaCanastaE1_C05,
+    zonaCanastaE1_C06, zonaCanastaE1_C07, zonaCanastaE1_C08,
+    zonaCanastaE1_C09, zonaCanastaE1_C10}
+    --
+    -- zonaCanastaE1_C01.setRotation({0,0,0})
+    -- zonaCanastaE1_C02.setRotation({0,0,0})
+    -- zonaCanastaE1_C03.setRotation({0,0,0})
+    -- zonaCanastaE1_C04.setRotation({0,0,0})
+    -- zonaCanastaE1_C05.setRotation({0,0,0})
+    -- zonaCanastaE1_C06.setRotation({0,0,0})
+    -- zonaCanastaE1_C07.setRotation({0,0,0})
+    -- zonaCanastaE1_C08.setRotation({0,0,0})
+    -- zonaCanastaE1_C09.setRotation({0,0,0})
+    -- zonaCanastaE1_C10.setRotation({0,0,0})
+    --
+    -- zonaCanastaE1_C01.setScale({2,1,7.75})
+    -- zonaCanastaE1_C02.setScale({2,1,7.75})
+    -- zonaCanastaE1_C03.setScale({2,1,7.75})
+    -- zonaCanastaE1_C04.setScale({2,1,7.75})
+    -- zonaCanastaE1_C05.setScale({2,1,7.75})
+    -- zonaCanastaE1_C06.setScale({2,1,7.75})
+    -- zonaCanastaE1_C07.setScale({2,1,7.75})
+    -- zonaCanastaE1_C08.setScale({2,1,7.75})
+    -- zonaCanastaE1_C09.setScale({2,1,7.75})
+    -- zonaCanastaE1_C10.setScale({2,1,7.75})
+    --
+    -- zonaCanastaE1_C01.setPosition({4,1,12.25})
+    -- zonaCanastaE1_C02.setPosition({1.5,1,12.25})
+    -- zonaCanastaE1_C03.setPosition({-1,1,12.25})
+    -- zonaCanastaE1_C04.setPosition({-3.5,1,12.25})
+    -- zonaCanastaE1_C05.setPosition({-6,1,12.25})
+    -- zonaCanastaE1_C06.setPosition({-8.5,1,12.25})
+    -- zonaCanastaE1_C07.setPosition({-11,1,12.25})
+    -- zonaCanastaE1_C08.setPosition({-13.5,1,12.25})
+    -- zonaCanastaE1_C09.setPosition({-16,1,12.25})
+    -- zonaCanastaE1_C10.setPosition({-18.5,1,12.25})
+
+    posicionZona = zonaCanastaE1_C01.getPosition()
 end
 
---[[ The Update function. This is called once per frame. --]]
-function update ()
-    --[[ print('Update loop!') --]]
-    countInZone()
+--[[ The onUpdate event is called once per frame. --]]
+function onUpdate()
+    --[[ print('onUpdate loop!') --]]
+    -- colocaCartasEnZonas()
 end
 
+function colocaCartasEnZonas()
 
-function countInZone()
-    --We print the first line that is going into chat
-    -- print("[b]---Items In Zone---[/b]")
-    --Locate the scripting zone by its GUID, since this will not change
-    --Get the GUID by using the scripting zone tool and right clicking a zone
-
-    --Get a list of any objects which are inside of the zone.
-    local objectsInZone = zone.getObjects()
-
-    --Check if the table we made is empty due to the zone being empty
-    if #objectsInZone == 0 then
-        --What prints if the scripting zone was empty
-        -- print("Scripting Zone Empty.")
-        contador.setValue(0)
-    else
-        --If it isn't empty, we use a for loop to look at each entry in the list
-        local totalPoints = 0
+    local objectsInZone = zonaCanasta.getObjects()
+    if #objectsInZone ~= 0 then
+        local posicion = {}
+        local rotation = {0,0,0}
+        posicion.x = posicionZona.x
+        posicion.y = posicionZona.y
+        posicion.z = posicionZona.z -2.25
         for _, object in ipairs(objectsInZone) do
-            --Find the name of the object
             local name = object.getName()
-            local points = object.getDescription()
-            --Then check if it had a name or not
             if name ~= "" then
-                if points ~= "" then
-                  -- print(name, "-> ",points, " puntos.")
-                  totalPoints = totalPoints + tonumber(points)
-                else
-                  -- print(name,"-> 0 puntos")
-                end
             else
                 -- print("No name object found.")
             end
+              object.setPosition(posicion)
+              object.setRotation(rotation)
+              -- object.setLock(true)
+              posicion.z = posicion.z+0.75
+              posicion.y = posicion.y+0.005
         end
-          -- print("[b]------[/b]")
-          -- print("[b]TOTAL: ",totalPoints, "PUNTOS[/b]")
-          contador.setValue(totalPoints)
+        posicion.x = posicionZona.x
+        posicion.y = posicionZona.y
+        posicion.z = posicionZona.z -2.25
     end
+
     --Finally, we print the "closing" line.
     --The purpose of the first and last lines are decorative and for clarity
     -- print("[b]---------------------[/b]")
