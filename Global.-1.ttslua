@@ -61,41 +61,58 @@ function onLoad()
     -- zonaCanastaE1_C08.setPosition({-13.5,1,12.25})
     -- zonaCanastaE1_C09.setPosition({-16,1,12.25})
     -- zonaCanastaE1_C10.setPosition({-18.5,1,12.25})
-
-    posicionZona = zonaCanastaE1_C01.getPosition()
+    posicionZona = {}
+    nObjetosActual = {}
+    for i, zona in pairs(zonasCanastaE1) do
+      posicionZona.i = zona.getPosition()
+      nObjetosActual[i] = #(zona.getObjects())
+      -- print('Zona ',i,':')
+      -- print('No objetos: ',nObjetosActual.i)
+      -- print(' Posciones: [',posicionZona.i.x,',',posicionZona.i.y,',',posicionZona.i.z,']')
+      -- print(' Real: ',posicionZona.i)
+    end
+    i = 1
 end
 
 --[[ The onUpdate event is called once per frame. --]]
 function onUpdate()
     --[[ print('onUpdate loop!') --]]
-    -- colocaCartasEnZonas()
+  for i,zona in ipairs(zonasCanastaE1) do
+    colocaCartasEnZona(i,zona)
+  end
 end
 
-function colocaCartasEnZonas()
-
-    local objectsInZone = zonaCanasta.getObjects()
-    if #objectsInZone ~= 0 then
-        local posicion = {}
-        local rotation = {0,0,0}
-        posicion.x = posicionZona.x
-        posicion.y = posicionZona.y
-        posicion.z = posicionZona.z -2.25
-        for _, object in ipairs(objectsInZone) do
-            local name = object.getName()
-            if name ~= "" then
-            else
-                -- print("No name object found.")
-            end
-              object.setPosition(posicion)
-              object.setRotation(rotation)
-              -- object.setLock(true)
-              posicion.z = posicion.z+0.75
-              posicion.y = posicion.y+0.005
-        end
-        posicion.x = posicionZona.x
-        posicion.y = posicionZona.y
-        posicion.z = posicionZona.z -2.25
-    end
+function colocaCartasEnZona(i,zona)
+  -- for i, zonaCanasta in pairs(zonasCanastaE1) do
+    local objectsInZone = zona.getObjects()
+    local nObjetos = #objectsInZone
+    local posicionCarta = {}
+    local rotation = {0,0,0}
+    local posicionZonai = zona.getPosition()
+    posicionCarta.x = posicionZonai.x
+    posicionCarta.y = posicionZonai.y
+    posicionCarta.z = posicionZonai.z -2.25
+    -- print(nObjetosActual[3])
+    if nObjetos ~= nObjetosActual[i] then
+      -- print('cambia zona ', i)
+      nObjetosActual.i = nObjetos
+      for _, object in ipairs(objectsInZone) do
+          local name = object.getName()
+          if name ~= "" then
+          else
+              -- print("No name object found.")
+          end
+            object.setPosition(posicionCarta)
+            object.setRotation(rotation)
+            posicionCarta.z = posicionCarta.z+0.75
+            posicionCarta.y = posicionCarta.y+0.005
+            -- object.setLock(true)
+      end
+      -- posicionCarta.x = posicionZona.i.x
+      -- posicionCarta.y = posicionZona.i.y
+      -- posicionCarta.z = posicionZona.i.z -2.25
+    -- end
+  end
 
     --Finally, we print the "closing" line.
     --The purpose of the first and last lines are decorative and for clarity
