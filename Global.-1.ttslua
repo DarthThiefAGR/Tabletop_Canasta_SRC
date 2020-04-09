@@ -89,32 +89,77 @@ function colocaCartasEnZona(i,zona)
     local posicionCarta = {}
     local rotation = {0,0,0}
     local posicionZonai = zona.getPosition()
+    local tipoCanasta = ''
+    local nDoes = 0
+    local nJokers = 0
+    local nNormales = 0
     posicionCarta.x = posicionZonai.x
     posicionCarta.y = posicionZonai.y
     posicionCarta.z = posicionZonai.z -2.25
     -- print(nObjetosActual[3])
-    if nObjetos ~= nObjetosActual[i] then
-      -- print('cambia zona ', i)
-      nObjetosActual.i = nObjetos
-      for _, object in ipairs(objectsInZone) do
-          local name = object.getName()
-          if name ~= "" then
-          else
-              -- print("No name object found.")
-          end
-            object.setPosition(posicionCarta)
-            object.setRotation(rotation)
-            posicionCarta.z = posicionCarta.z+0.75
-            posicionCarta.y = posicionCarta.y+0.005
-            -- object.setLock(true)
-      end
-      -- posicionCarta.x = posicionZona.i.x
-      -- posicionCarta.y = posicionZona.i.y
-      -- posicionCarta.z = posicionZona.i.z -2.25
-    -- end
-  end
 
-    --Finally, we print the "closing" line.
-    --The purpose of the first and last lines are decorative and for clarity
-    -- print("[b]---------------------[/b]")
+    if (nObjetos ~= nObjetosActual[i]) and (nObjetos < 8) then
+      local nombrePriCarta = ''
+      local tipoPriCarta = ''
+      nObjetosActual[i] = nObjetos
+      for j,carta in pairs(objectsInZone) do
+        local nombreCarta = carta.getName()
+        local tipoCarta = ''
+        if (nombreCarta == 'Joker') then
+          nJokers = nJokers + 1
+        elseif (nombreCarta == '2c') or
+           (nombreCarta == '2r') or
+           (nombreCarta == '2p') or
+           (nombreCarta == '2t') then
+          nDoes = nDoes + 1
+        end
+        if nombreCarta == 'Joker' then
+          tipoCarta = 'Joker'
+        else
+          tipoCarta = string.sub(nombreCarta,
+                      string.len(nombreCarta)-2,
+                      string.len(nombreCarta)-1)
+        end
+        if j == 1 then
+          nombrePriCarta = nombreCarta
+          tipoPriCarta = tipoCarta
+          print('Primera carta es de tipo: ', tipoCarta)
+        elseif j == 2 then
+          -- local nombreSegCarta = nombreCarta
+          if (nombrePriCarta == 'Joker') then
+            if (nombreCarta == 'Joker') then
+              print('Las dos primeras cartas no pueden ser Joker')
+              return 0
+            else
+              tipoCanasta = tipoCarta
+            end
+          elseif (tipoPriCarta == '2') and (tipoCarta ~='2') then
+            tipoCanasta = tipoCarta
+          elseif (tipoPriCarta == tipoCarta) then
+            tipoCanasta = tipoCarta
+          elseif (tipoCarta == 'Joker') then
+            tipoCanasta = tipoPriCarta
+          else
+            print('No es una canasta válida')
+            return 0
+          end
+          print ('La canasta será de tipo ', tipoCanasta)
+        elseif j >= 3 then
+          if ((tipoCanasta ~='2') and ((nJokers+nDoes) > (nObjetos/2)) or
+             ((tipoCanasta =='2') and (nJokers > nObjetos/2))) then
+              print('Canasta no válida: nº de monos mayor')
+              return 0
+          end
+        end
+      end
+      for _, object in ipairs(objectsInZone) do
+        object.setPosition(posicionCarta)
+        object.setRotation(rotation)
+        if nObjetos >=3 then
+          object.setLock(true)
+        end
+        posicionCarta.z = posicionCarta.z+0.75
+        posicionCarta.y = posicionCarta.y+0.00005
+      end
+  end
 end
