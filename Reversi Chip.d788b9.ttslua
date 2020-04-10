@@ -1,7 +1,9 @@
+----------------------------------------
+-- Botón Cerrar Canasta Equipo 1 - 01 --
+----------------------------------------
+
 function onLoad()
 
-
-  
   self.createButton({
 
     label="CERRAR",
@@ -61,8 +63,6 @@ function agrupar_canasta(font_size)
     end
 
   end
-
-
 
   --Si encontramos carta adecuada, colocamos en objetivo
   if carta_a_mover > 0 then
