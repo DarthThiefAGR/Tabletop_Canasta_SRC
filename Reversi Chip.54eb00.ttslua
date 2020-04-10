@@ -89,162 +89,12 @@ function contains(list, x)
 end
 
 
-function rutina_ordenar_v2(k,posM)
-
-  for j = k, N_cartas do
-
-    if pos_id_v[j] == k and j ~= k then
-
-      -- Posición de la carta a mover a la posición k
-      -- j
-      -- Posición de la carta que hay que sustituir
-      -- k
-
-      print('carta_obj = ',j)
-      print('carta_quit = ',k)
-
-      -- Hay que crear nuevo vector posición reordenando según lo encontrado
-      pos_id_v[j] = pos_id_v[k]
-      pos_id_v[k] = k
-      print('Nuevo vector ordenado')
-      print(table.concat(pos_id_v, " "))
-
-
-      -- Coordenadas de posición objetivo
-      --p0 = mano[j].getPosition()
-      p0 = posM[j]
-
-      -- Coordenadas de posición a quitar
-      --pf = mano[k].getPosition()
-      pf = posM[k]
-      -- Metemos offset necesario
-      off_X = off_X_mano
-      off_Z = off_Z_mano
-
-      pf = { pf[1]+off_X, pf[2], pf[3]+off_Z}
-      p0 = { p0[1]-off_X, p0[2], p0[3]-off_Z}
-
-
-      mano[j].setPosition(pf)
-      cond = mano[j].resting
-      while cond == false do
-        cond = mano[j].resting
-      end
-
-      mano[k].setPosition(p0)
-      cond = mano[k].resting
-      while cond == false do
-        cond = mano[j].resting
-      end
-
-    end
-
-  end
-
-end
-
-
-
-function rutina_ordenar_v3(k,posM)
-
-  for j = k, N_cartas do
-
-    if pos_id_v[j] == k and j ~= k then
-
-      -- Posición de la carta a mover a la posición k
-      -- j
-      -- Posición de la carta que hay que sustituir
-      -- k
-
-      print('carta_obj = ',j)
-      print('carta_quit = ',k)
-
-      -- Hay que crear nuevo vector posición reordenando según lo encontrado
-      pos_id_v[j] = pos_id_v[k]
-      pos_id_v[k] = k
-      print('Nuevo vector ordenado')
-      print(table.concat(pos_id_v, " "))
-
-
-      -- Coordenadas de posición objetivo
-      --p0 = mano[j].getPosition()
-      p0 = posM[j]
-
-      -- Coordenadas de posición a quitar
-      --pf = mano[k].getPosition()
-      pf = posM[k]
-      -- Metemos offset necesario
-      off_X = off_X_mano
-      off_Z = off_Z_mano
-
-      pf = { pf[1]+off_X, pf[2], pf[3]+off_Z}
-      p0 = { p0[1]-off_X, p0[2], p0[3]-off_Z}
-
-      numTimers = 0
-      mover_carta(mano[j],pf)
-      mover_carta(mano[k],p0)
-      --mano[j].setPosition(pf)
-      --mano[k].setPosition(p0)
-
-    end
-
-  end
-
-end
-
-
-
-function rutina_ordenar_v4(k,posM)
-
-  for j = k, N_cartas do
-
-    if pos_id_v[j] == k and j ~= k then
-
-      -- Posición de la carta a mover a la posición k
-      -- j
-      -- Posición de la carta que hay que sustituir
-      -- k
-
-      print('carta_obj = ',j)
-      print('carta_quit = ',k)
-
-      -- Hay que crear nuevo vector posición reordenando según lo encontrado
-      pos_id_v[j] = pos_id_v[k]
-      pos_id_v[k] = k
-      print('Nuevo vector ordenado')
-      print(table.concat(pos_id_v, " "))
-
-
-      -- Coordenadas de posición objetivo
-      --p0 = mano[j].getPosition()
-      p0 = posM[j]
-
-      -- Coordenadas de posición a quitar
-      --pf = mano[k].getPosition()
-      pf = posM[k]
-      -- Metemos offset necesario
-      off_X = off_X_mano
-      off_Z = off_Z_mano
-
-      pf = { pf[1]+off_X, pf[2], pf[3]+off_Z}
-      p0 = { p0[1]-off_X, p0[2], p0[3]-off_Z}
-
-      mano[j].setPosition(pf)
-      mano[k].setPosition(p0)
-
-    end
-
-  end
-
-
-end
-
 function rutina_ordenar_v6(k,posM)
 
   for j = k, N_cartas do
 
     if pos_id_v[j] == k and j ~= k then
-        print('j = ',j)
+        --print('j = ',j)
         cond = pos_id_v[k] == (k+1)
 
         -- Hay que crear nuevo vector posición reordenando según lo encontrado
@@ -269,8 +119,8 @@ function rutina_ordenar_v6(k,posM)
           pos_id_v = table.insert(pos_id_v_rem,k,k)
 
         end
-        print('Nuevo vector ordenado')
-        print(table.concat(pos_id_v, " "))
+        --print('Nuevo vector ordenado')
+        --print(table.concat(pos_id_v, " "))
 
 
         -- Coordenadas de posición objetivo
@@ -305,7 +155,7 @@ end
 
 function ordenar_mano_v4()
 
-  print('')
+  --print('')
   color_jugador = 'White'
 
   -- Obtenemos cartas de la mano
@@ -351,7 +201,7 @@ function ordenar_mano_v4()
     -- Identificamos posición de cada carta según orden obtenido
     pos_id_v = identificar_posicion_carta(N_cartas, pos_carta_k, mano_i_sorted)
 
-    print('')
+    --print('')
 
 
     -- Posiciones de cartas sin mover
@@ -365,8 +215,8 @@ function ordenar_mano_v4()
     -- y va detectando posición actual de las N_cartas
     for k = 1,(N_cartas-1) do
 
-      print('Posiciones de partida: k =',k)
-      print(table.concat(pos_id_v, " "))
+      --print('Posiciones de partida: k =',k)
+      --print(table.concat(pos_id_v, " "))
 
       -- Localizamos qué posición tiene que tener la carta
       rutina_ordenar_v6(k,posM)
