@@ -1,63 +1,172 @@
---[[ Lua code. See documentation: http://berserk-games.com/knowledgebase/scripting/ --]]
+--[[ Lua code. See documentation: https://api.tabletopsimulator.com/ --]]
 
---[[ The OnLoad function. This is called after everything in the game save finishes loading.
-Most of your script code goes here. --]]
-function onload()
-    --[[ print('Onload!') --]]
-    -- createButton({
-    --     label="Count\nPoints in\rZone", click_function="countInZone",
-    --     function_owner=self, position={0.8,0.1,1.2},
-    --     height=300, width=450, font_size=70
-    -- })
-    zone = getObjectFromGUID("6ad43e")
-    contador = getObjectFromGUID('33e606')
-end
+--[[ The onLoad event is called after the game save finishes loading. --]]
+function onLoad()
+    --[[ print('onLoad!') --]]
+    zonaCanastaE1_C01_GUID = 'db7d7a'
+    zonaCanastaE1_C02_GUID = '1e1fee'
+    zonaCanastaE1_C03_GUID = '1a0d9d'
+    zonaCanastaE1_C04_GUID = '45f2be'
+    zonaCanastaE1_C05_GUID = '65d35b'
+    zonaCanastaE1_C06_GUID = '29035b'
+    zonaCanastaE1_C07_GUID = '1ad7ac'
+    zonaCanastaE1_C08_GUID = '875f5e'
+    zonaCanastaE1_C09_GUID = 'bdafdd'
 
---[[ The Update function. This is called once per frame. --]]
-function update ()
-    --[[ print('Update loop!') --]]
-    countInZone()
-end
+    zonaCanastaE2_C01_GUID = '2e09c7'
+    zonaCanastaE2_C02_GUID = '970291'
+    zonaCanastaE2_C03_GUID = '649098'
+    zonaCanastaE2_C04_GUID = 'b8caf3'
+    zonaCanastaE2_C05_GUID = 'e26404'
+    zonaCanastaE2_C06_GUID = 'ed78e4'
+    zonaCanastaE2_C07_GUID = 'a6714b'
+    zonaCanastaE2_C08_GUID = 'df0ee8'
+    zonaCanastaE2_C09_GUID = 'ccf4ad'
 
+    zonaCanastaE1_C01 =getObjectFromGUID(zonaCanastaE1_C01_GUID)
+    zonaCanastaE1_C02 =getObjectFromGUID(zonaCanastaE1_C02_GUID)
+    zonaCanastaE1_C03 =getObjectFromGUID(zonaCanastaE1_C03_GUID)
+    zonaCanastaE1_C04 =getObjectFromGUID(zonaCanastaE1_C04_GUID)
+    zonaCanastaE1_C05 =getObjectFromGUID(zonaCanastaE1_C05_GUID)
+    zonaCanastaE1_C06 =getObjectFromGUID(zonaCanastaE1_C06_GUID)
+    zonaCanastaE1_C07 =getObjectFromGUID(zonaCanastaE1_C07_GUID)
+    zonaCanastaE1_C08 =getObjectFromGUID(zonaCanastaE1_C08_GUID)
+    zonaCanastaE1_C09 =getObjectFromGUID(zonaCanastaE1_C09_GUID)
 
-function countInZone()
-    --We print the first line that is going into chat
-    -- print("[b]---Items In Zone---[/b]")
-    --Locate the scripting zone by its GUID, since this will not change
-    --Get the GUID by using the scripting zone tool and right clicking a zone
+    zonaCanastaE2_C01 =getObjectFromGUID(zonaCanastaE2_C01_GUID)
+    zonaCanastaE2_C02 =getObjectFromGUID(zonaCanastaE2_C02_GUID)
+    zonaCanastaE2_C03 =getObjectFromGUID(zonaCanastaE2_C03_GUID)
+    zonaCanastaE2_C04 =getObjectFromGUID(zonaCanastaE2_C04_GUID)
+    zonaCanastaE2_C05 =getObjectFromGUID(zonaCanastaE2_C05_GUID)
+    zonaCanastaE2_C06 =getObjectFromGUID(zonaCanastaE2_C06_GUID)
+    zonaCanastaE2_C07 =getObjectFromGUID(zonaCanastaE2_C07_GUID)
+    zonaCanastaE2_C08 =getObjectFromGUID(zonaCanastaE2_C08_GUID)
+    zonaCanastaE2_C09 =getObjectFromGUID(zonaCanastaE2_C09_GUID)
 
-    --Get a list of any objects which are inside of the zone.
-    local objectsInZone = zone.getObjects()
+    zonasCanastaE1 = {zonaCanastaE1_C01, zonaCanastaE1_C02,
+    zonaCanastaE1_C03, zonaCanastaE1_C04, zonaCanastaE1_C05,
+    zonaCanastaE1_C06, zonaCanastaE1_C07, zonaCanastaE1_C08,
+    zonaCanastaE1_C09}
 
-    --Check if the table we made is empty due to the zone being empty
-    if #objectsInZone == 0 then
-        --What prints if the scripting zone was empty
-        -- print("Scripting Zone Empty.")
-        contador.setValue(0)
-    else
-        --If it isn't empty, we use a for loop to look at each entry in the list
-        local totalPoints = 0
-        for _, object in ipairs(objectsInZone) do
-            --Find the name of the object
-            local name = object.getName()
-            local points = object.getDescription()
-            --Then check if it had a name or not
-            if name ~= "" then
-                if points ~= "" then
-                  -- print(name, "-> ",points, " puntos.")
-                  totalPoints = totalPoints + tonumber(points)
-                else
-                  -- print(name,"-> 0 puntos")
-                end
-            else
-                -- print("No name object found.")
-            end
-        end
-          -- print("[b]------[/b]")
-          -- print("[b]TOTAL: ",totalPoints, "PUNTOS[/b]")
-          contador.setValue(totalPoints)
+    zonasCanastaE2 = {zonaCanastaE2_C01, zonaCanastaE2_C02,
+    zonaCanastaE2_C03, zonaCanastaE2_C04, zonaCanastaE2_C05,
+    zonaCanastaE2_C06, zonaCanastaE2_C07, zonaCanastaE2_C08,
+    zonaCanastaE2_C09}
+
+    -- zonaCanastaE2_C01.setRotation({0,270,0})
+    -- zonaCanastaE2_C02.setRotation({0,270,0})
+    -- zonaCanastaE2_C03.setRotation({0,270,0})
+    -- zonaCanastaE2_C04.setRotation({0,270,0})
+    -- zonaCanastaE2_C05.setRotation({0,270,0})
+    -- zonaCanastaE2_C06.setRotation({0,270,0})
+    -- zonaCanastaE2_C07.setRotation({0,270,0})
+    -- zonaCanastaE2_C08.setRotation({0,270,0})
+    -- zonaCanastaE2_C09.setRotation({0,270,0})
+    --
+    -- zonaCanastaE2_C01.setScale({2.36,1,10.25})
+    -- zonaCanastaE2_C02.setScale({2.36,1,10.25})
+    -- zonaCanastaE2_C03.setScale({2.36,1,10.25})
+    -- zonaCanastaE2_C04.setScale({2.36,1,10.25})
+    -- zonaCanastaE2_C05.setScale({2.36,1,10.25})
+    -- zonaCanastaE2_C06.setScale({2.36,1,10.25})
+    -- zonaCanastaE2_C07.setScale({2.36,1,10.25})
+    -- zonaCanastaE2_C08.setScale({2.36,1,10.25})
+    -- zonaCanastaE2_C09.setScale({2.36,1,10.25})
+    --
+    -- zonaCanastaE2_C01.setPosition({13,1,-7.7})
+    -- zonaCanastaE2_C02.setPosition({13,1,-3.97})
+    -- zonaCanastaE2_C03.setPosition({13,1,-0.24})
+    -- zonaCanastaE2_C04.setPosition({13,1,3.49})
+    -- zonaCanastaE2_C05.setPosition({13,1,7.22})
+    -- zonaCanastaE2_C06.setPosition({13.5,1,10.95})
+    -- zonaCanastaE2_C07.setPosition({13,1,14.68})
+    -- zonaCanastaE2_C08.setPosition({13.5,1,18.41})
+    -- zonaCanastaE2_C09.setPosition({13,1,22.14})
+
+    posicionZonaE1 = {}
+    nObjetosActualE1 = {}
+    posicionZonaE2 = {}
+    nObjetosActualE2 = {}
+    for i, zona in pairs(zonasCanastaE1) do
+      posicionZonaE1.i = zona.getPosition()
+      nObjetosActualE1[i] = #(zona.getObjects())
     end
-    --Finally, we print the "closing" line.
-    --The purpose of the first and last lines are decorative and for clarity
-    -- print("[b]---------------------[/b]")
+    for i, zona in pairs(zonasCanastaE2) do
+      posicionZonaE2.i = zona.getPosition()
+      nObjetosActualE2[i] = #(zona.getObjects())
+    end
+end
+
+--[[ The onUpdate event is called once per frame. --]]
+function onUpdate()
+    --[[ print('onUpdate loop!') --]]
+  for i,zona in ipairs(zonasCanastaE1) do
+    nObjetosActualE1[i] = colocaCartasEnZona(nObjetosActualE1[i],zona)
+  end
+  for i,zona in ipairs(zonasCanastaE2) do
+    nObjetosActualE2[i] = colocaCartasEnZona(nObjetosActualE2[i],zona)
+  end
+end
+
+function colocaCartasEnZona(nObjetosActual,zona)
+  -- for i, zonaCanasta in pairs(zonasCanastaE1) do
+    local objectsInZone = zona.getObjects()
+    local nObjetos = #objectsInZone
+    local posicionCarta = {}
+    local rotation = zona.getRotation()
+    local posicionZonai = zona.getPosition()
+    local tipoCanasta = ''
+    local nMonos = 0
+    local nNormales = 0
+    local signo = 1
+    if posicionZonai.x <0 then
+      signo = -1
+    end
+    posicionCarta.x = posicionZonai.x-(3.3*signo)
+    posicionCarta.y = posicionZonai.y
+    posicionCarta.z = posicionZonai.z
+    -- print(nObjetosActual[3])
+    if (nObjetos ~= nObjetosActual) and (nObjetos < 8) then
+      local nombrePriCarta = ''
+      local tipoPriCarta = ''
+      nObjetosActual = nObjetos
+      for j,carta in pairs(objectsInZone) do
+        local nombreCarta = carta.getName()
+        local tipoCarta = ''
+        if (nombreCarta == 'Joker') or
+           (nombreCarta == '2c') or
+           (nombreCarta == '2r') or
+           (nombreCarta == '2p') or
+           (nombreCarta == '2t') then
+          nMonos = nMonos + 1
+          tipoCarta = 'Mono'
+        else
+          tipoCarta = string.sub(nombreCarta,
+                      string.len(nombreCarta)-2,
+                      string.len(nombreCarta)-1)
+        end
+        if tipoCarta == '3' then
+          print('No se pueden hacer canastas de 3')
+          return nObjetosActual
+        end
+        if j == 1 then
+          tipoCanasta = tipoCarta
+          print('La canasta será del tipo: ', tipoCarta)
+        elseif ((tipoCanasta ~= tipoCarta) and (tipoCarta ~= 'Mono' )) or
+                ((tipoCanasta ~= 'Mono') and (nMonos > (nObjetos/2))) then
+          print('Esta carta no es válida para esta canasta')
+          return nObjetosActual
+        else
+          print('Esta carta es válida')
+        end
+      end
+      for _, object in ipairs(objectsInZone) do
+        object.setPosition(posicionCarta)
+        object.setRotation(rotation)
+        object.setLock(true)
+        posicionCarta.x = posicionCarta.x+(0.75*signo)
+        posicionCarta.y = posicionCarta.y+0.0001
+      end
+  end
+  return nObjetosActual
 end
