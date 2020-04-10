@@ -2,7 +2,9 @@
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
-    --[[ print('onLoad!') --]]
+    -------------------------------GUID_ZONAS----------------------------
+    ----------------------- Equipo 1----------------------
+    ----------------Canastas-------------------
     zonaCanastaE1_C01_GUID = 'db7d7a'
     zonaCanastaE1_C02_GUID = '1e1fee'
     zonaCanastaE1_C03_GUID = '1a0d9d'
@@ -12,7 +14,25 @@ function onLoad()
     zonaCanastaE1_C07_GUID = '1ad7ac'
     zonaCanastaE1_C08_GUID = '875f5e'
     zonaCanastaE1_C09_GUID = 'bdafdd'
-
+    -------------------------------------------
+    ----------------Cerradas/Flores------------
+    zonaCerradaE1_C01_GUID = '2ef863'
+    zonaCerradaE1_C02_GUID = '880f29'
+    zonaCerradaE1_C03_GUID = 'f2b64b'
+    zonaCerradaE1_C04_GUID = '1359fa'
+    zonaCerradaE1_C05_GUID = '8463b8'
+    zonaCerradaE1_C06_GUID = '04dcae'
+    zonaCerradaE1_C07_GUID = '1ef3ec'
+    zonaCerradaE1_C08_GUID = 'da892d'
+    -------------------------Flores------------
+    zonaCerradaE1_F01_GUID = 'ed889e'
+    zonaCerradaE1_F02_GUID = '9f2a5d'
+    zonaCerradaE1_F03_GUID = '0b88c3'
+    zonaCerradaE1_F04_GUID = '5883a5'
+    -------------------------------------------
+    ------------------------------------------------------
+    ----------------------- Equipo 2----------------------
+    ----------------Canastas-------------------
     zonaCanastaE2_C01_GUID = '2e09c7'
     zonaCanastaE2_C02_GUID = '970291'
     zonaCanastaE2_C03_GUID = '649098'
@@ -22,66 +42,108 @@ function onLoad()
     zonaCanastaE2_C07_GUID = 'a6714b'
     zonaCanastaE2_C08_GUID = 'df0ee8'
     zonaCanastaE2_C09_GUID = 'ccf4ad'
-
-    zonaCanastaE1_C01 =getObjectFromGUID(zonaCanastaE1_C01_GUID)
-    zonaCanastaE1_C02 =getObjectFromGUID(zonaCanastaE1_C02_GUID)
-    zonaCanastaE1_C03 =getObjectFromGUID(zonaCanastaE1_C03_GUID)
-    zonaCanastaE1_C04 =getObjectFromGUID(zonaCanastaE1_C04_GUID)
-    zonaCanastaE1_C05 =getObjectFromGUID(zonaCanastaE1_C05_GUID)
-    zonaCanastaE1_C06 =getObjectFromGUID(zonaCanastaE1_C06_GUID)
-    zonaCanastaE1_C07 =getObjectFromGUID(zonaCanastaE1_C07_GUID)
-    zonaCanastaE1_C08 =getObjectFromGUID(zonaCanastaE1_C08_GUID)
-    zonaCanastaE1_C09 =getObjectFromGUID(zonaCanastaE1_C09_GUID)
-
-    zonaCanastaE2_C01 =getObjectFromGUID(zonaCanastaE2_C01_GUID)
-    zonaCanastaE2_C02 =getObjectFromGUID(zonaCanastaE2_C02_GUID)
-    zonaCanastaE2_C03 =getObjectFromGUID(zonaCanastaE2_C03_GUID)
-    zonaCanastaE2_C04 =getObjectFromGUID(zonaCanastaE2_C04_GUID)
-    zonaCanastaE2_C05 =getObjectFromGUID(zonaCanastaE2_C05_GUID)
-    zonaCanastaE2_C06 =getObjectFromGUID(zonaCanastaE2_C06_GUID)
-    zonaCanastaE2_C07 =getObjectFromGUID(zonaCanastaE2_C07_GUID)
-    zonaCanastaE2_C08 =getObjectFromGUID(zonaCanastaE2_C08_GUID)
-    zonaCanastaE2_C09 =getObjectFromGUID(zonaCanastaE2_C09_GUID)
-
+    -------------------------------------------
+    ----------------Cerradas/Flores------------
+    zonaCerradaE2_C01_GUID = '8ebbc8'
+    zonaCerradaE2_C02_GUID = '7283e5'
+    zonaCerradaE2_C03_GUID = '8279ef'
+    zonaCerradaE2_C04_GUID = '3493a2'
+    zonaCerradaE2_C05_GUID = 'e67d0f'
+    zonaCerradaE2_C06_GUID = '07c6a3'
+    zonaCerradaE2_C07_GUID = 'd2e8d9'
+    zonaCerradaE2_C08_GUID = 'abfa5d'
+    -------------------------Flores------------
+    zonaCerradaE2_F01_GUID = '4e6a03'
+    zonaCerradaE2_F02_GUID = 'e54478'
+    zonaCerradaE2_F03_GUID = 'f2eba4'
+    zonaCerradaE2_F04_GUID = '4889e2'
+    -------------------------------------------
+    ------------------------------------------------------
+    ---------------------------------------------------------------------
+    --------------GENERANDO OBJETOS DESDE lAS GUIDS----------------------
+    ----------------------- Equipo 1----------------------
+    ----------------Canastas-------------------
+    zonaCanastaE1_C01 = getObjectFromGUID(zonaCanastaE1_C01_GUID)
+    zonaCanastaE1_C02 = getObjectFromGUID(zonaCanastaE1_C02_GUID)
+    zonaCanastaE1_C03 = getObjectFromGUID(zonaCanastaE1_C03_GUID)
+    zonaCanastaE1_C04 = getObjectFromGUID(zonaCanastaE1_C04_GUID)
+    zonaCanastaE1_C05 = getObjectFromGUID(zonaCanastaE1_C05_GUID)
+    zonaCanastaE1_C06 = getObjectFromGUID(zonaCanastaE1_C06_GUID)
+    zonaCanastaE1_C07 = getObjectFromGUID(zonaCanastaE1_C07_GUID)
+    zonaCanastaE1_C08 = getObjectFromGUID(zonaCanastaE1_C08_GUID)
+    zonaCanastaE1_C09 = getObjectFromGUID(zonaCanastaE1_C09_GUID)
+    -------------------------------------------
+    ----------------Cerradas/Flores------------
+    ZonaCerradaE1_C01 = getObjectFromGUID(zonaCerradaE1_C01_GUID)
+    ZonaCerradaE1_C02 = getObjectFromGUID(zonaCerradaE1_C02_GUID)
+    ZonaCerradaE1_C03 = getObjectFromGUID(zonaCerradaE1_C03_GUID)
+    ZonaCerradaE1_C04 = getObjectFromGUID(zonaCerradaE1_C04_GUID)
+    ZonaCerradaE1_C05 = getObjectFromGUID(zonaCerradaE1_C05_GUID)
+    ZonaCerradaE1_C06 = getObjectFromGUID(zonaCerradaE1_C06_GUID)
+    ZonaCerradaE1_C07 = getObjectFromGUID(zonaCerradaE1_C07_GUID)
+    ZonaCerradaE1_C08 = getObjectFromGUID(zonaCerradaE1_C08_GUID)
+    -------------------------Flores------------
+    ZonaCerradaE1_F01 = getObjectFromGUID(zonaCerradaE1_F01_GUID)
+    ZonaCerradaE1_F02 = getObjectFromGUID(zonaCerradaE1_F02_GUID)
+    ZonaCerradaE1_F03 = getObjectFromGUID(zonaCerradaE1_F03_GUID)
+    ZonaCerradaE1_F04 = getObjectFromGUID(zonaCerradaE1_F04_GUID)
+    -------------------------------------------
+    ------------------------------------------------------
+    ----------------------- Equipo 2----------------------
+    ----------------Canastas-------------------
+    zonaCanastaE2_C01 = getObjectFromGUID(zonaCanastaE2_C01_GUID)
+    zonaCanastaE2_C02 = getObjectFromGUID(zonaCanastaE2_C02_GUID)
+    zonaCanastaE2_C03 = getObjectFromGUID(zonaCanastaE2_C03_GUID)
+    zonaCanastaE2_C04 = getObjectFromGUID(zonaCanastaE2_C04_GUID)
+    zonaCanastaE2_C05 = getObjectFromGUID(zonaCanastaE2_C05_GUID)
+    zonaCanastaE2_C06 = getObjectFromGUID(zonaCanastaE2_C06_GUID)
+    zonaCanastaE2_C07 = getObjectFromGUID(zonaCanastaE2_C07_GUID)
+    zonaCanastaE2_C08 = getObjectFromGUID(zonaCanastaE2_C08_GUID)
+    zonaCanastaE2_C09 = getObjectFromGUID(zonaCanastaE2_C09_GUID)
+    -------------------------------------------
+    ----------------Cerradas/Flores------------
+    ZonaCerradaE2_C01 = getObjectFromGUID(zonaCerradaE2_C01_GUID)
+    ZonaCerradaE2_C02 = getObjectFromGUID(zonaCerradaE2_C02_GUID)
+    ZonaCerradaE2_C03 = getObjectFromGUID(zonaCerradaE2_C03_GUID)
+    ZonaCerradaE2_C04 = getObjectFromGUID(zonaCerradaE2_C04_GUID)
+    ZonaCerradaE2_C05 = getObjectFromGUID(zonaCerradaE2_C05_GUID)
+    ZonaCerradaE2_C06 = getObjectFromGUID(zonaCerradaE2_C06_GUID)
+    ZonaCerradaE2_C07 = getObjectFromGUID(zonaCerradaE2_C07_GUID)
+    ZonaCerradaE2_C08 = getObjectFromGUID(zonaCerradaE2_C08_GUID)
+    -------------------------Flores------------
+    ZonaCerradaE2_F01 = getObjectFromGUID(zonaCerradaE2_F01_GUID)
+    ZonaCerradaE2_F02 = getObjectFromGUID(zonaCerradaE2_F02_GUID)
+    ZonaCerradaE2_F03 = getObjectFromGUID(zonaCerradaE2_F03_GUID)
+    ZonaCerradaE2_F04 = getObjectFromGUID(zonaCerradaE2_F04_GUID)
+    -------------------------------------------
+    ------------------------------------------------------
+    ---------------------------------------------------------------------
+    -------------------GENERANDO BLOQUES DE ZONAS------------------------
+    ----------------------- Equipo 1----------------------
     zonasCanastaE1 = {zonaCanastaE1_C01, zonaCanastaE1_C02,
     zonaCanastaE1_C03, zonaCanastaE1_C04, zonaCanastaE1_C05,
     zonaCanastaE1_C06, zonaCanastaE1_C07, zonaCanastaE1_C08,
     zonaCanastaE1_C09}
 
+    zonasCerradasE1 = {zonaCerradaE1_C01,zonaCerradaE1_C02,
+    zonaCerradaE1_C03,zonaCerradaE1_C04,zonaCerradaE1_C05,
+    zonaCerradaE1_C06,zonaCerradaE1_C07,zonaCerradaE1_C08}
+
+    zonasFloresE1 = {zonaCerradaE1_F1,zonaCerradaE1_F2,
+    zonaCerradaE1_F3,zonaCerradaE1_F4}
+    ----------------------- Equipo 2----------------------
     zonasCanastaE2 = {zonaCanastaE2_C01, zonaCanastaE2_C02,
     zonaCanastaE2_C03, zonaCanastaE2_C04, zonaCanastaE2_C05,
     zonaCanastaE2_C06, zonaCanastaE2_C07, zonaCanastaE2_C08,
     zonaCanastaE2_C09}
 
-    -- zonaCanastaE2_C01.setRotation({0,270,0})
-    -- zonaCanastaE2_C02.setRotation({0,270,0})
-    -- zonaCanastaE2_C03.setRotation({0,270,0})
-    -- zonaCanastaE2_C04.setRotation({0,270,0})
-    -- zonaCanastaE2_C05.setRotation({0,270,0})
-    -- zonaCanastaE2_C06.setRotation({0,270,0})
-    -- zonaCanastaE2_C07.setRotation({0,270,0})
-    -- zonaCanastaE2_C08.setRotation({0,270,0})
-    -- zonaCanastaE2_C09.setRotation({0,270,0})
-    --
-    -- zonaCanastaE2_C01.setScale({2.36,1,10.25})
-    -- zonaCanastaE2_C02.setScale({2.36,1,10.25})
-    -- zonaCanastaE2_C03.setScale({2.36,1,10.25})
-    -- zonaCanastaE2_C04.setScale({2.36,1,10.25})
-    -- zonaCanastaE2_C05.setScale({2.36,1,10.25})
-    -- zonaCanastaE2_C06.setScale({2.36,1,10.25})
-    -- zonaCanastaE2_C07.setScale({2.36,1,10.25})
-    -- zonaCanastaE2_C08.setScale({2.36,1,10.25})
-    -- zonaCanastaE2_C09.setScale({2.36,1,10.25})
-    --
-    -- zonaCanastaE2_C01.setPosition({13,1,-7.7})
-    -- zonaCanastaE2_C02.setPosition({13,1,-3.97})
-    -- zonaCanastaE2_C03.setPosition({13,1,-0.24})
-    -- zonaCanastaE2_C04.setPosition({13,1,3.49})
-    -- zonaCanastaE2_C05.setPosition({13,1,7.22})
-    -- zonaCanastaE2_C06.setPosition({13.5,1,10.95})
-    -- zonaCanastaE2_C07.setPosition({13,1,14.68})
-    -- zonaCanastaE2_C08.setPosition({13.5,1,18.41})
-    -- zonaCanastaE2_C09.setPosition({13,1,22.14})
+    zonasCerradasE2 = {zonaCerradaE2_C01,zonaCerradaE2_C02,
+    zonaCerradaE2_C03,zonaCerradaE2_C04,zonaCerradaE2_C05,
+    zonaCerradaE2_C06,zonaCerradaE2_C07,zonaCerradaE2_C08}
+
+    zonasFloresE2 = {zonaCerradaE2_F1,zonaCerradaE2_F2,
+    zonaCerradaE2_F3,zonaCerradaE2_F4}
+    ---------------------------------------------------------------------
 
     posicionZonaE1 = {}
     nObjetosActualE1 = {}
@@ -126,13 +188,18 @@ function colocaCartasEnZona(nObjetosActual,zona)
     posicionCarta.y = posicionZonai.y
     posicionCarta.z = posicionZonai.z
     -- print(nObjetosActual[3])
-    if (nObjetos ~= nObjetosActual) and (nObjetos < 8) then
-      local nombrePriCarta = ''
-      local tipoPriCarta = ''
+    if (nObjetos ~= nObjetosActual) and (nObjetos < 9) then
       nObjetosActual = nObjetos
       for j,carta in pairs(objectsInZone) do
         local nombreCarta = carta.getName()
         local tipoCarta = ''
+        if (j < 8 and  nombreCarta == 'Oculta') then
+          print('La carta oculta se tiene que poner al final')
+          return nObjetosActual
+        elseif j==8 and nombreCarta ~= 'Oculta' then
+          print('La carta número 8 solo puede ser la carta oculta')
+          return nObjetosActual
+        end
         if (nombreCarta == 'Joker') or
            (nombreCarta == '2c') or
            (nombreCarta == '2r') or
@@ -152,7 +219,7 @@ function colocaCartasEnZona(nObjetosActual,zona)
         if j == 1 then
           tipoCanasta = tipoCarta
           print('La canasta será del tipo: ', tipoCarta)
-        elseif ((tipoCanasta ~= tipoCarta) and (tipoCarta ~= 'Mono' )) or
+        elseif (nombreCarta ~= 'Oculta') and ((tipoCanasta ~= tipoCarta) and (tipoCarta ~= 'Mono' )) or
                 ((tipoCanasta ~= 'Mono') and (nMonos > (nObjetos/2))) then
           print('Esta carta no es válida para esta canasta')
           return nObjetosActual
