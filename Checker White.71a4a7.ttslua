@@ -1,0 +1,22 @@
+function onLoad(save_state)
+  -- p = "Hola"
+  self.createButton({
+      label="DESBLOQUEAR", click_function="recogeCartas",
+      function_owner=self, position={0,0.3,0},
+      height=300, width=500, font_size=70,
+  })
+  self.setLock(true)
+end
+
+function recogeCartas ()
+  -- print()
+  local zona_GUID = '45f2be'
+  local zona =getObjectFromGUID(zona_GUID)
+  local objectsInZone = zona.getObjects()
+  local i = 1
+
+  while i <= #objectsInZone do
+    objectsInZone[i].setLock(false)
+    i = i+1
+  end
+end
