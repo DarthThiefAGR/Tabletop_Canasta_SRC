@@ -12,7 +12,6 @@ function onLoad()
     zonaCanastaE1_C07_GUID = '1ad7ac'
     zonaCanastaE1_C08_GUID = '875f5e'
     zonaCanastaE1_C09_GUID = 'bdafdd'
-    zonaCanastaE1_C10_GUID = '6f6ccf'
     zonaCanastaE1_C01 =getObjectFromGUID(zonaCanastaE1_C01_GUID)
     zonaCanastaE1_C02 =getObjectFromGUID(zonaCanastaE1_C02_GUID)
     zonaCanastaE1_C03 =getObjectFromGUID(zonaCanastaE1_C03_GUID)
@@ -22,45 +21,41 @@ function onLoad()
     zonaCanastaE1_C07 =getObjectFromGUID(zonaCanastaE1_C07_GUID)
     zonaCanastaE1_C08 =getObjectFromGUID(zonaCanastaE1_C08_GUID)
     zonaCanastaE1_C09 =getObjectFromGUID(zonaCanastaE1_C09_GUID)
-    zonaCanastaE1_C10 =getObjectFromGUID(zonaCanastaE1_C10_GUID)
 
     zonasCanastaE1 = {zonaCanastaE1_C01, zonaCanastaE1_C02,
     zonaCanastaE1_C03, zonaCanastaE1_C04, zonaCanastaE1_C05,
     zonaCanastaE1_C06, zonaCanastaE1_C07, zonaCanastaE1_C08,
     zonaCanastaE1_C09, zonaCanastaE1_C10}
+
+    -- zonaCanastaE1_C01.setRotation({0,90,0})
+    -- zonaCanastaE1_C02.setRotation({0,90,0})
+    -- zonaCanastaE1_C03.setRotation({0,90,0})
+    -- zonaCanastaE1_C04.setRotation({0,90,0})
+    -- zonaCanastaE1_C05.setRotation({0,90,0})
+    -- zonaCanastaE1_C06.setRotation({0,90,0})
+    -- zonaCanastaE1_C07.setRotation({0,90,0})
+    -- zonaCanastaE1_C08.setRotation({0,90,0})
+    -- zonaCanastaE1_C09.setRotation({0,90,0})
+
+    -- zonaCanastaE1_C01.setScale({2.36,1,10.25})
+    -- zonaCanastaE1_C02.setScale({2.36,1,10.25})
+    -- zonaCanastaE1_C03.setScale({2.36,1,10.25})
+    -- zonaCanastaE1_C04.setScale({2.36,1,10.25})
+    -- zonaCanastaE1_C05.setScale({2.36,1,10.25})
+    -- zonaCanastaE1_C06.setScale({2.36,1,10.25})
+    -- zonaCanastaE1_C07.setScale({2.36,1,10.25})
+    -- zonaCanastaE1_C08.setScale({2.36,1,10.25})
+    -- zonaCanastaE1_C09.setScale({2.36,1,10.25})
     --
-    -- zonaCanastaE1_C01.setRotation({0,0,0})
-    -- zonaCanastaE1_C02.setRotation({0,0,0})
-    -- zonaCanastaE1_C03.setRotation({0,0,0})
-    -- zonaCanastaE1_C04.setRotation({0,0,0})
-    -- zonaCanastaE1_C05.setRotation({0,0,0})
-    -- zonaCanastaE1_C06.setRotation({0,0,0})
-    -- zonaCanastaE1_C07.setRotation({0,0,0})
-    -- zonaCanastaE1_C08.setRotation({0,0,0})
-    -- zonaCanastaE1_C09.setRotation({0,0,0})
-    -- zonaCanastaE1_C10.setRotation({0,0,0})
-    --
-    -- zonaCanastaE1_C01.setScale({2,1,7.75})
-    -- zonaCanastaE1_C02.setScale({2,1,7.75})
-    -- zonaCanastaE1_C03.setScale({2,1,7.75})
-    -- zonaCanastaE1_C04.setScale({2,1,7.75})
-    -- zonaCanastaE1_C05.setScale({2,1,7.75})
-    -- zonaCanastaE1_C06.setScale({2,1,7.75})
-    -- zonaCanastaE1_C07.setScale({2,1,7.75})
-    -- zonaCanastaE1_C08.setScale({2,1,7.75})
-    -- zonaCanastaE1_C09.setScale({2,1,7.75})
-    -- zonaCanastaE1_C10.setScale({2,1,7.75})
-    --
-    -- zonaCanastaE1_C01.setPosition({4,1,12.25})
-    -- zonaCanastaE1_C02.setPosition({1.5,1,12.25})
-    -- zonaCanastaE1_C03.setPosition({-1,1,12.25})
-    -- zonaCanastaE1_C04.setPosition({-3.5,1,12.25})
-    -- zonaCanastaE1_C05.setPosition({-6,1,12.25})
-    -- zonaCanastaE1_C06.setPosition({-8.5,1,12.25})
-    -- zonaCanastaE1_C07.setPosition({-11,1,12.25})
-    -- zonaCanastaE1_C08.setPosition({-13.5,1,12.25})
-    -- zonaCanastaE1_C09.setPosition({-16,1,12.25})
-    -- zonaCanastaE1_C10.setPosition({-18.5,1,12.25})
+    -- zonaCanastaE1_C01.setPosition({13,1,-7.7})
+    -- zonaCanastaE1_C02.setPosition({13,1,-3.97})
+    -- zonaCanastaE1_C03.setPosition({13,1,-0.24})
+    -- zonaCanastaE1_C04.setPosition({13,1,3.49})
+    -- zonaCanastaE1_C05.setPosition({13,1,7.22})
+    -- zonaCanastaE1_C06.setPosition({13.5,1,10.95})
+    -- zonaCanastaE1_C07.setPosition({13,1,14.68})
+    -- zonaCanastaE1_C08.setPosition({13.5,1,18.41})
+    -- zonaCanastaE1_C09.setPosition({13,1,22.14})
     posicionZona = {}
     nObjetosActual = {}
     for i, zona in pairs(zonasCanastaE1) do
@@ -87,15 +82,14 @@ function colocaCartasEnZona(i,zona)
     local objectsInZone = zona.getObjects()
     local nObjetos = #objectsInZone
     local posicionCarta = {}
-    local rotation = {0,0,0}
+    local rotation = {0,90,0}
     local posicionZonai = zona.getPosition()
     local tipoCanasta = ''
-    local nDoes = 0
-    local nJokers = 0
+    local nMonos = 0
     local nNormales = 0
-    posicionCarta.x = posicionZonai.x
+    posicionCarta.x = posicionZonai.x-3.3
     posicionCarta.y = posicionZonai.y
-    posicionCarta.z = posicionZonai.z -2.25
+    posicionCarta.z = posicionZonai.z
     -- print(nObjetosActual[3])
 
     if (nObjetos ~= nObjetosActual[i]) and (nObjetos < 8) then
@@ -105,61 +99,39 @@ function colocaCartasEnZona(i,zona)
       for j,carta in pairs(objectsInZone) do
         local nombreCarta = carta.getName()
         local tipoCarta = ''
-        if (nombreCarta == 'Joker') then
-          nJokers = nJokers + 1
-        elseif (nombreCarta == '2c') or
+        if (nombreCarta == 'Joker') or
+           (nombreCarta == '2c') or
            (nombreCarta == '2r') or
            (nombreCarta == '2p') or
            (nombreCarta == '2t') then
-          nDoes = nDoes + 1
-        end
-        if nombreCarta == 'Joker' then
-          tipoCarta = 'Joker'
+          nMonos = nMonos + 1
+          tipoCarta = 'Mono'
         else
           tipoCarta = string.sub(nombreCarta,
                       string.len(nombreCarta)-2,
                       string.len(nombreCarta)-1)
         end
+        if tipoCarta == '3' then
+          print('No se pueden hacer canastas de 3')
+          return 0
+        end
         if j == 1 then
-          nombrePriCarta = nombreCarta
-          tipoPriCarta = tipoCarta
-          print('Primera carta es de tipo: ', tipoCarta)
-        elseif j == 2 then
-          -- local nombreSegCarta = nombreCarta
-          if (nombrePriCarta == 'Joker') then
-            if (nombreCarta == 'Joker') then
-              print('Las dos primeras cartas no pueden ser Joker')
-              return 0
-            else
-              tipoCanasta = tipoCarta
-            end
-          elseif (tipoPriCarta == '2') and (tipoCarta ~='2') then
-            tipoCanasta = tipoCarta
-          elseif (tipoPriCarta == tipoCarta) then
-            tipoCanasta = tipoCarta
-          elseif (tipoCarta == 'Joker') then
-            tipoCanasta = tipoPriCarta
-          else
-            print('No es una canasta válida')
-            return 0
-          end
-          print ('La canasta será de tipo ', tipoCanasta)
-        elseif j >= 3 then
-          if ((tipoCanasta ~='2') and ((nJokers+nDoes) > (nObjetos/2)) or
-             ((tipoCanasta =='2') and (nJokers > nObjetos/2))) then
-              print('Canasta no válida: nº de monos mayor')
-              return 0
-          end
+          tipoCanasta = tipoCarta
+          print('La canasta será del tipo: ', tipoCarta)
+        elseif ((tipoCanasta ~= tipoCarta) and (tipoCarta ~= 'Mono' )) or
+                ((tipoCanasta ~= 'Mono') and (nMonos > (nObjetos/2))) then
+          print('Esta carta no es válida para esta canasta')
+          return 0
+        else
+          print('Esta carta es válida')
         end
       end
       for _, object in ipairs(objectsInZone) do
         object.setPosition(posicionCarta)
         object.setRotation(rotation)
-        if nObjetos >=3 then
-          object.setLock(true)
-        end
-        posicionCarta.z = posicionCarta.z+0.75
-        posicionCarta.y = posicionCarta.y+0.00005
+        object.setLock(true)
+        posicionCarta.x = posicionCarta.x+0.75
+        posicionCarta.y = posicionCarta.y+0.0001
       end
   end
 end
