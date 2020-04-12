@@ -1,5 +1,9 @@
+---------------------------------
+-- BOTÓN CANASTA 04 - EQUIPO 01
+---------------------------------
+
 function onLoad(save_state)
-  -- p = "Hola"
+
   self.createButton({
       label="DESBLOQUEAR", click_function="recogeCartas",
       function_owner=self, position={0,0.3,0},

@@ -1,5 +1,9 @@
+---------------------------------
+-- BOTÓN CANASTA 05 - EQUIPO 01
+---------------------------------
+
 function onLoad(save_state)
-  -- p = "Hola"
+
   self.createButton({
       label="DESBLOQUEAR", click_function="recogeCartas",
       function_owner=self, position={0,0.3,0},
@@ -19,4 +23,5 @@ function recogeCartas ()
     objectsInZone[i].setLock(false)
     i = i+1
   end
+
 end

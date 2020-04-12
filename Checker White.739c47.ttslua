@@ -1,3 +1,7 @@
+---------------------------------
+-- BOTÓN CANASTA 02 - EQUIPO 01
+---------------------------------
+
 function onLoad(save_state)
   -- p = "Hola"
   self.createButton({
@@ -10,7 +14,7 @@ end
 
 function recogeCartas ()
   -- print()
-  local zona_GUID = '1e1fee'
+  local zona_GUID = '875f5e'
   local zona =getObjectFromGUID(zona_GUID)
   local objectsInZone = zona.getObjects()
   local i = 1

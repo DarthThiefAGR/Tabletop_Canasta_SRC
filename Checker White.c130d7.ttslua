@@ -1,3 +1,7 @@
+---------------------------------
+-- BOTÓN CANASTA 08 - EQUIPO 01
+---------------------------------
+
 function onLoad(save_state)
   -- p = "Hola"
   self.createButton({

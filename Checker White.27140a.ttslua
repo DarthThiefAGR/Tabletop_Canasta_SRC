@@ -1,22 +1,29 @@
-function onLoad(save_state)
-  -- p = "Hola"
-  self.createButton({
-      label="DESBLOQUEAR", click_function="recogeCartas",
-      function_owner=self, position={0,0.3,0},
-      height=300, width=500, font_size=70,
-  })
+---------------------------------
+-- BOTÓN CANASTA 01 - EQUIPO 01
+---------------------------------
+
+#include !/Zonas/zonas
+#include !/Funciones/funciones
+#include !/Zonas/objetos
+
+function onLoad()
+
+  param = {
+    label='CERRAR',
+    click_function='pulsar_boton',
+    function_owner=self,
+    position={0,0.3,0},
+    height=300,
+    width=500,
+    font_size=90,
+    tooltip = 'Cerrar canasta',
+  }
+
+  self.createButton(param)
   self.setLock(true)
+
 end
 
-function recogeCartas ()
-  -- print()
-  local zona_GUID = 'db7d7a'
-  local zona =getObjectFromGUID(zona_GUID)
-  local objectsInZone = zona.getObjects()
-  local i = 1
-
-  while i <= #objectsInZone do
-    objectsInZone[i].setLock(false)
-    i = i+1
-  end
+function pulsar_boton()
+  agrupar_canasta(zonaCanastaE1_C01_GUID,zonaCerradaE1_C01_GUID,bloque_canasta_E1_C01_GUID)
 end
