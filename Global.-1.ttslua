@@ -1,13 +1,8 @@
---[[ Lua code. See documentation: https://api.tabletopsimulator.com/ --]]
-
---[[ The onLoad event is called after the game save finishes loading. --]]
-
-
 function onLoad()
 
     -------------------------------GUID_ZONAS----------------------------
-    #include !/Zonas_Objetos/zonas_GUID
-    #include !/Zonas_Objetos/objetos_GUID
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
 
     ---------------------------------------------------------------------
     ---------------------------------------------------------------------

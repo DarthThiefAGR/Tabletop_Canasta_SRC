@@ -1,0 +1,56 @@
+-- -------------------------------GUID_ZONAS----------------------------
+-- ----------------------- Equipo 1----------------------
+-- ----------------Canastas-------------------
+zonaCanastaE1_C01_GUID = 'db7d7a'
+zonaCanastaE1_C02_GUID = '1e1fee'
+zonaCanastaE1_C03_GUID = '1a0d9d'
+zonaCanastaE1_C04_GUID = '45f2be'
+zonaCanastaE1_C05_GUID = '65d35b'
+zonaCanastaE1_C06_GUID = '29035b'
+zonaCanastaE1_C07_GUID = '1ad7ac'
+zonaCanastaE1_C08_GUID = '875f5e'
+zonaCanastaE1_C09_GUID = 'bdafdd'
+-- -------------------------------------------
+-- ----------------Cerradas/Flores------------
+zonaCerradaE1_C01_GUID = '2ef863'
+zonaCerradaE1_C02_GUID = '880f29'
+zonaCerradaE1_C03_GUID = 'f2b64b'
+zonaCerradaE1_C04_GUID = '1359fa'
+zonaCerradaE1_C05_GUID = '8463b8'
+zonaCerradaE1_C06_GUID = '04dcae'
+zonaCerradaE1_C07_GUID = '1ef3ec'
+zonaCerradaE1_C08_GUID = 'da892d'
+-------------------------Flores------------
+zonaCerradaE1_F01_GUID = 'ed889e'
+zonaCerradaE1_F02_GUID = '9f2a5d'
+zonaCerradaE1_F03_GUID = '0b88c3'
+zonaCerradaE1_F04_GUID = '5883a5'
+-------------------------------------------
+------------------------------------------------------
+----------------------- Equipo 2----------------------
+----------------Canastas-------------------
+zonaCanastaE2_C01_GUID = '2e09c7'
+zonaCanastaE2_C02_GUID = '970291'
+zonaCanastaE2_C03_GUID = '649098'
+zonaCanastaE2_C04_GUID = 'b8caf3'
+zonaCanastaE2_C05_GUID = 'e26404'
+zonaCanastaE2_C06_GUID = 'ed78e4'
+zonaCanastaE2_C07_GUID = 'a6714b'
+zonaCanastaE2_C08_GUID = 'df0ee8'
+zonaCanastaE2_C09_GUID = 'ccf4ad'
+-------------------------------------------
+----------------Cerradas/Flores------------
+zonaCerradaE2_C01_GUID = '8ebbc8'
+zonaCerradaE2_C02_GUID = '7283e5'
+zonaCerradaE2_C03_GUID = '8279ef'
+zonaCerradaE2_C04_GUID = '3493a2'
+zonaCerradaE2_C05_GUID = 'e67d0f'
+zonaCerradaE2_C06_GUID = '07c6a3'
+zonaCerradaE2_C07_GUID = 'd2e8d9'
+zonaCerradaE2_C08_GUID = 'abfa5d'
+-------------------------Flores------------
+zonaCerradaE2_F01_GUID = '4e6a03'
+zonaCerradaE2_F02_GUID = 'e54478'
+zonaCerradaE2_F03_GUID = 'f2eba4'
+zonaCerradaE2_F04_GUID = '4889e2'
+-------------------------------------------

@@ -1,0 +1,205 @@
+function detectar_tipo_canasta(cartas_en_zona,Ncartas)
+
+  -- Variable de salida
+  tipo_canasta = {}
+  Nmonos = {}
+
+  -- Detectar cartas que forman la canasta
+  Nmonos = 0
+  C_oculta = ''
+
+  for k = 1,Ncartas do
+
+    carta        = cartas_en_zona[k]
+    carta_name   = carta.getName()
+
+    carta2letra = carta_name.sub(carta_name,2,3)
+
+    if carta2letra == 'ok' then
+      carta_palo = 'Joker'
+      carta_numero = 'Joker'
+    elseif carta_name == 'Oculta' then
+      carta_palo = 'Oculta'
+      carta_numero = 'Oculta'
+      C_oculta = 'oculta'
+    elseif carta_name == 'Oculta Apoyada' then
+      carta_palo = 'Oculta Apoyada'
+      carta_numero = 'Oculta Apoyada'
+      C_oculta = 'oculta_apoyada'
+    else
+      carta_palo   = carta_name.sub(carta_name,-1)
+      carta_numero = carta_name.sub(carta_name,1,#carta_name-1)
+    end
+
+    if carta_numero == '2' or carta_palo == 'Joker' then
+      Nmonos = Nmonos + 1
+    end
+
+
+  end
+
+  -- Detectamos tipo de canasta
+  if Nmonos >= 1 and Nmonos < 7 then
+    tipo_canasta[1] = 'sucia'
+  elseif Nmonos == 0 then
+    tipo_canasta[1] = 'limpia'
+  elseif Nmonos == 7 then
+    tipo_canasta[1] = 'monos'
+  end
+
+  -- Guardamos variables
+  tipo_canasta[2] = Nmonos
+  tipo_canasta[3] = C_oculta
+
+  return tipo_canasta
+
+end
+
+function bloque_nombre(C,Equipo,Canasta)
+  nombre = C[1] .. Equipo .. C[2] .. Canasta .. C[3]
+  return nombre
+end
+
+_G['agrupar_canasta'] = function(zonaCanasta,Equipo)
+
+    -- Buscamos zona objetivo para colocar canastas
+    C = {}
+    C[1] = 'zonaCerradaE'
+    C[2] = '_C0'
+    C[3] = '_GUID'
+
+    B = {}
+    B[1] = 'bloque_canasta_E'
+    B[2] = '_C0'
+    B[3] = '_GUID'
+
+
+    zona_vacia = 0
+    cont = 1
+
+    --Buscamos zona vacia
+    while zona_vacia == 0 do
+      Canasta_Cerrada_Name = bloque_nombre(C,Equipo,cont)
+      zona_objetivo = getObjectFromGUID(_G[Canasta_Cerrada_Name])
+      zona_objetivo_cont = zona_objetivo.getObjects()
+      if zona_objetivo_cont[2] == nil then
+        zona_vacia = cont
+      else
+        cont = cont + 1
+      end
+    end
+
+    --Zona Objetivo
+    zona_objetivo_GUID = bloque_nombre(C,Equipo,zona_vacia)
+    zona_objetivo = getObjectFromGUID(_G[zona_objetivo_GUID])
+
+    --Base en Zona Objetivo
+    bloque_objetivo_GUID = bloque_nombre(B,Equipo,zona_vacia)
+    bloque_objetivo = getObjectFromGUID(_G[bloque_objetivo_GUID])
+
+    --Zona canasta
+    zona_canasta_GUID = zonaCanasta
+    zona_canasta = getObjectFromGUID(zona_canasta_GUID)
+
+    --Posición de zona objetivo
+    pos_obj  = zona_objetivo.getPosition()
+    pos_obj  = {pos_obj[1],pos_obj[2],pos_obj[3]}
+    pos_objP = {pos_obj[1],pos_obj[2]+1,pos_obj[3]}
+
+    --Adquirimos cartas de la zona
+    cartas_en_zona = zona_canasta.getObjects()
+    Ncartas = #cartas_en_zona
+
+    --Tipo de canasta
+    tipo_canasta = detectar_tipo_canasta(cartas_en_zona,Ncartas)
+    canasta_tipo = tipo_canasta[1]
+    Nmonos = tipo_canasta[2]
+    C_oculta = tipo_canasta[3]
+
+    -- Según la canasta detectada
+    if Ncartas >= 7 then
+
+      -- Desbloqueamos cartas_en_zona
+      for k = 1,Ncartas do
+          cartas_en_zona[k].setLock(false)
+      end
+
+      --Detectamos carta que irá en primera posición
+      carta_a_mover = 0
+      carta_abajo = 0
+
+      for k = 1,Ncartas do
+
+        carta        = cartas_en_zona[k]
+        carta_name   = carta.getName()
+        carta_palo   = carta_name.sub(carta_name,-1)
+        carta_numero = carta_name.sub(carta_name,1,#carta_name-1)
+
+        if canasta_tipo == 'sucia' then
+          if ((carta_palo == 't') or (carta_palo == 'p')) then
+            if carta_numero ~= '2' then
+              carta_a_mover = k
+            end
+          end
+        elseif canasta_tipo == 'limpia' then
+          if ((carta_palo == 'c') or (carta_palo == 'r')) then
+            if carta_numero ~= '2' then
+              carta_a_mover = k
+            end
+          end
+        elseif canasta_tipo == 'monos' then
+          if carta_numero == '2' then
+              carta_a_mover = k
+          end
+        end
+
+        if C_oculta ~= '' then
+          if carta_name == 'oculta' or carta_name == 'oculta_apoyada' then
+            carta_abajo = k
+          end
+        end
+
+      end
+
+      --Si encontramos carta adecuada, colocamos en objetivo
+      if carta_a_mover > 0 then
+
+        for k = 1,Ncartas do
+          if k ~= carta_a_mover then
+            carta = cartas_en_zona[k]
+            carta.setPosition(pos_obj)
+          end
+        end
+
+        --Ponemos la última carta encima
+        carta = cartas_en_zona[carta_a_mover]
+        carta.setPosition(pos_objP)
+
+        -- Según tipo de canasta, coloreamos base
+        if C_oculta == 'oculta_apoyada' then
+          bloque_objetivo.setColorTint({0.1725,0.34112,0.55294})
+        elseif C_oculta == 'oculta' then
+          bloque_objetivo.setColorTint({0.439,0.1725,0.55294})
+        elseif C_oculta == '' then
+          bloque_objetivo.setColorTint({0.3,0.3,0.3})
+        end
+
+      end
+
+    elseif Ncartas > 0 then
+
+      --La canasta está incompleta
+      mensaje1 = 'Canasta incompleta, faltan '
+      mensaje2 = mensaje1 .. (7-Ncartas)
+      mensaje3 = mensaje2 .. ' cartas'
+      printToAll(mensaje3, {r=1,g=0,b=0})
+
+    elseif Ncartas == 0 then
+
+      --La canasta está sin empezar
+      printToAll('Canasta sin empezar', {r=1,g=0,b=0})
+
+    end
+
+
+end
