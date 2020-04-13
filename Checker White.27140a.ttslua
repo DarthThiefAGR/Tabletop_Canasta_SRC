@@ -2,9 +2,9 @@
 -- BOTÓN CANASTA 01 - EQUIPO 01
 ---------------------------------
 
-#include !/Zonas/zonas
 #include !/Funciones/funciones
-#include !/Zonas/objetos
+#include !/Zonas_Objetos/zonas_GUID
+#include !/Zonas_Objetos/objetos_GUID
 
 function onLoad()
 
@@ -25,5 +25,5 @@ function onLoad()
 end
 
 function pulsar_boton()
-  agrupar_canasta(zonaCanastaE1_C01_GUID,zonaCerradaE1_C01_GUID,bloque_canasta_E1_C01_GUID)
+  agrupar_canasta(zonaCanastaE1_C01_GUID,1)
 end

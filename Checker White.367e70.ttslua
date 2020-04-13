@@ -2,26 +2,28 @@
 -- BOTÓN CANASTA 05 - EQUIPO 01
 ---------------------------------
 
-function onLoad(save_state)
+#include !/Funciones/funciones
+#include !/Zonas_Objetos/zonas_GUID
+#include !/Zonas_Objetos/objetos_GUID
 
-  self.createButton({
-      label="DESBLOQUEAR", click_function="recogeCartas",
-      function_owner=self, position={0,0.3,0},
-      height=300, width=500, font_size=70,
-  })
+function onLoad()
+
+  param = {
+    label='CERRAR',
+    click_function='pulsar_boton',
+    function_owner=self,
+    position={0,0.3,0},
+    height=300,
+    width=500,
+    font_size=90,
+    tooltip = 'Cerrar canasta',
+  }
+
+  self.createButton(param)
   self.setLock(true)
+
 end
 
-function recogeCartas ()
-  -- print()
-  local zona_GUID = '65d35b'
-  local zona =getObjectFromGUID(zona_GUID)
-  local objectsInZone = zona.getObjects()
-  local i = 1
-
-  while i <= #objectsInZone do
-    objectsInZone[i].setLock(false)
-    i = i+1
-  end
-
+function pulsar_boton()
+  agrupar_canasta(zonaCanastaE1_C05_GUID,1)
 end

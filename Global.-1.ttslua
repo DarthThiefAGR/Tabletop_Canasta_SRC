@@ -6,12 +6,8 @@
 function onLoad()
 
     -------------------------------GUID_ZONAS----------------------------
-    #include !/Zonas/zonas
-    #include !/Zonas/objetos
-
-    --------------------------VARIABLES GLOBALES-------------------------
-    N_CANASTAS_EQUIPO_01 = 0
-    N_CANASTAS_EQUIPO_02 = 0
+    #include !/Zonas_Objetos/zonas_GUID
+    #include !/Zonas_Objetos/objetos_GUID
 
     ---------------------------------------------------------------------
     ---------------------------------------------------------------------
