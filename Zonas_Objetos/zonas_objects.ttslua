@@ -55,7 +55,6 @@ ZonaCerradaE2_F03 = getObjectFromGUID(zonaCerradaE2_F03_GUID)
 ZonaCerradaE2_F04 = getObjectFromGUID(zonaCerradaE2_F04_GUID)
 -------------------------------------------
 
-
     ---------------------------------------------------------------------
     -------------------GENERANDO BLOQUES DE ZONAS------------------------
     ----------------------- Equipo 1----------------------

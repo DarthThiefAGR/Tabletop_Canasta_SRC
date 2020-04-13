@@ -1,0 +1,129 @@
+function puntos_ronda_notas(M_puntos_E1,M_puntos_E2)
+
+  -- Puntos de los equipos
+  puntos_base_E1     = M_puntos_E1[1]
+  puntos_mano_E1     = M_puntos_E1[2]
+  puntos_subtotal_E1 = M_puntos_E1[3]
+  puntos_total_E1    = M_puntos_E1[4]
+
+  puntos_base_E2     = M_puntos_E2[1]
+  puntos_mano_E2     = M_puntos_E2[2]
+  puntos_subtotal_E2 = M_puntos_E2[3]
+  puntos_total_E2    = M_puntos_E2[4]
+
+  -- Longitud de los números
+  N_E1_1 = string.len(puntos_base_E1)
+  N_E1_2 = string.len(puntos_mano_E1)
+  N_E1_3 = string.len(puntos_subtotal_E1)
+  N_E1_4 = string.len(puntos_total_E1)
+
+  N_E2_1 = string.len(puntos_base_E2)
+  N_E2_2 = string.len(puntos_mano_E2)
+  N_E2_3 = string.len(puntos_subtotal_E2)
+  N_E2_4 = string.len(puntos_total_E2)
+
+  -- Texto base
+  TBase = {}
+  TBase[1] = '---------------------------------------\n--------------   RONDA 1 --------------\n---------------------------------------\n-----------  EQUIPO 1 ---- EQUIPO 2 ---\n'
+  TBase[2] = '    BASE:     '
+  TBase[3] = '    MANO:     '
+  TBase[4] = 'SUBTOTAL:     '
+  TBase[5] = '---------------------------------------\n'
+  TBase[6] = '   TOTAL:     '
+  TBase[7] = '         '
+
+  -- Creamos números para rellenar en tabla
+
+  -- EQUIPO 1 --
+  if N_E1_1 == 1 then
+    TN_E1_1 = '   ' .. puntos_base_E1
+  elseif N_E1_1 == 2 then
+    TN_E1_1 = '  ' .. puntos_base_E1
+  elseif N_E1_1 == 3 then
+    TN_E1_1 = ' ' .. puntos_base_E1
+  elseif N_E1_1 == 4 then
+    TN_E1_1 = puntos_base_E1
+  end
+
+  if N_E1_2 == 1 then
+    TN_E1_2 = '   ' .. puntos_mano_E1
+  elseif N_E1_2 == 2 then
+    TN_E1_2 = '  ' .. puntos_mano_E1
+  elseif N_E1_2 == 3 then
+    TN_E1_2 = ' ' .. puntos_mano_E1
+  elseif N_E1_2 == 4 then
+    TN_E1_2 = puntos_mano_E1
+  end
+
+  if N_E1_3 == 1 then
+    TN_E1_3 = '   ' .. puntos_subtotal_E1
+  elseif N_E1_3 == 2 then
+    TN_E1_3 = '  ' .. puntos_subtotal_E1
+  elseif N_E1_3 == 3 then
+    TN_E1_3 = ' ' .. puntos_subtotal_E1
+  elseif N_E1_3 == 4 then
+    TN_E1_3 = puntos_subtotal_E1
+  end
+
+  if N_E1_4 == 1 then
+    TN_E1_4 = '   ' .. puntos_total_E1
+  elseif N_E1_4 == 2 then
+    TN_E1_4 = '  ' .. puntos_total_E1
+  elseif N_E1_4 == 3 then
+    TN_E1_4 = ' ' .. puntos_total_E1
+  elseif N_E1_4 == 4 then
+    TN_E1_4 = puntos_total_E1
+  end
+
+  -- EQUIPO 2 --
+  if N_E2_1 == 1 then
+    TN_E2_1 = '   ' .. puntos_base_E2
+  elseif N_E2_1 == 2 then
+    TN_E2_1 = '  ' .. puntos_base_E2
+  elseif N_E2_1 == 3 then
+    TN_E2_1 = ' ' .. puntos_base_E2
+  elseif N_E2_1 == 4 then
+    TN_E2_1 = puntos_base_E2
+  end
+
+  if N_E2_2 == 1 then
+    TN_E2_2 = '   ' .. puntos_mano_E2
+  elseif N_E2_2 == 2 then
+    TN_E2_2 = '  ' .. puntos_mano_E2
+  elseif N_E2_2 == 3 then
+    TN_E2_2 = ' ' .. puntos_mano_E2
+  elseif N_E2_2 == 4 then
+    TN_E2_2 = puntos_mano_E2
+  end
+
+  if N_E2_3 == 1 then
+    TN_E2_3 = '   ' .. puntos_subtotal_E2
+  elseif N_E2_3 == 2 then
+    TN_E2_3 = '  ' .. puntos_subtotal_E2
+  elseif N_E2_3 == 3 then
+    TN_E2_3 = ' ' .. puntos_subtotal_E2
+  elseif N_E2_3 == 4 then
+    TN_E2_3 = puntos_subtotal_E2
+  end
+
+  if N_E2_4 == 1 then
+    TN_E2_4 = '   ' .. puntos_total_E2
+  elseif N_E2_4 == 2 then
+    TN_E2_4 = '  ' .. puntos_total_E2
+  elseif N_E2_4 == 3 then
+    TN_E2_4 = ' ' .. puntos_total_E2
+  elseif N_E2_4 == 4 then
+    TN_E2_4 = puntos_total_E2
+  end
+
+  -- Creamos textos a escribir
+ texto_a_escribir = TBase[1] .. TBase[2] .. TN_E1_1 .. TBase[7] .. TN_E2_1 .. '\n'
+                 .. TBase[3] .. TN_E1_2 .. TBase[7] .. TN_E2_2 .. '\n'
+                 .. TBase[4] .. TN_E1_3 .. TBase[7] .. TN_E2_3 .. '\n'
+                 .. TBase[5]
+                 .. TBase[6] .. TN_E1_4 .. TBase[7] .. TN_E2_4 .. '\n'
+                 .. TBase[5]
+
+  return texto_a_escribir
+
+end

@@ -11,11 +11,11 @@ function onLoad()
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_objects
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_objects
 
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_jugadores
 
     -- RESETEAMOS MESA
     --contador_ronda.setValue(0)
-    reset_table()
-
+    --reset_table()
 
     -- SCRIPT ZONAS DE CANASTAS
     posicionZonaE1 = {}
