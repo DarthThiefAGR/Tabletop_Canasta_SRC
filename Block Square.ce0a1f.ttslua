@@ -1,0 +1,26 @@
+---------------------------------
+-- BOTÓN FINALIZAR RONDA
+---------------------------------
+
+function onLoad()
+
+  param = {
+    label='EMPEZAR\nRONDA',
+    click_function='pulsar_boton2',
+    function_owner=self,
+    position={0,0.5,0},
+    height=400,
+    width=450,
+    font_size=90,
+    color={1,1,1},
+    tooltip = 'Empezar ronda - Repartir',
+  }
+
+  self.createButton(param)
+  self.setLock(true)
+
+end
+
+function pulsar_boton2()
+  print('Prueba')
+end

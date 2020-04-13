@@ -1,4 +1,4 @@
--- EQUIPO 1 --
+-- BASE CANASTA EQUIPO 1 --
 bloque_canasta_E1_C01_GUID = '6f139a'
 bloque_canasta_E1_C02_GUID = '32bf01'
 bloque_canasta_E1_C03_GUID = 'ceaefc'
@@ -8,7 +8,7 @@ bloque_canasta_E1_C06_GUID = '39a73f'
 bloque_canasta_E1_C07_GUID = 'db0e7a'
 bloque_canasta_E1_C08_GUID = 'd6933a'
 
--- EQUIPO 2 --
+-- BASE CANASTA EQUIPO 2 --
 bloque_canasta_E2_C01_GUID = '485745'
 bloque_canasta_E2_C02_GUID = 'f5df8d'
 bloque_canasta_E2_C03_GUID = 'a970d2'
@@ -17,3 +17,6 @@ bloque_canasta_E2_C05_GUID = '399d90'
 bloque_canasta_E2_C06_GUID = '6d7a78'
 bloque_canasta_E2_C07_GUID = 'f0f466'
 bloque_canasta_E2_C08_GUID = 'dc6c83'
+
+-- BOTÓN FINALIZAR RONDA
+boton_finalizar_ronda_GUID = '5d2de2'

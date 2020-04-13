@@ -2,10 +2,10 @@
 -- BOTÓN CANASTA 06 - EQUIPO 01
 ---------------------------------
 
-#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/funciones
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/funciones_boton
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
-
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_GUID
 function onLoad()
 
   param = {

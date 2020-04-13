@@ -1,0 +1,16 @@
+-- CONTADOR PUNTOS CANASTAS --
+contador_puntos_canastas_E1 = getObjectFromGUID(contador_puntos_canastas_E1_GUID)
+contador_puntos_canastas_E2 = getObjectFromGUID(contador_puntos_canastas_E2_GUID)
+
+-- CONTADOR PUNTOS TOTALES --
+contador_puntos_total_E1 = getObjectFromGUID(contador_puntos_total_E1_GUID)
+contador_puntos_total_E2 = getObjectFromGUID(contador_puntos_total_E2_GUID)
+
+-- CONTADOR RONDA
+contador_ronda = getObjectFromGUID(contador_ronda_GUID)
+
+-- Bloqueamos contadores
+contador_puntos_canastas_E1.interactable = false
+contador_puntos_canastas_E2.interactable = false
+contador_puntos_total_E1.interactable = false
+contador_puntos_total_E2.interactable = false

@@ -1,0 +1,10 @@
+-- CONTADOR PUNTOS CANASTAS --
+contador_puntos_canastas_E1_GUID = '821d9e'
+contador_puntos_canastas_E2_GUID = '5043d9'
+
+-- CONTADOR PUNTOS TOTALES --
+contador_puntos_total_E1_GUID = 'f204af'
+contador_puntos_total_E2_GUID = '784c65'
+
+-- CONTADOR RONDA
+contador_ronda_GUID = 'a17f07'

@@ -1,96 +1,23 @@
 function onLoad()
 
-    -------------------------------GUID_ZONAS----------------------------
+    -- INCLUDES
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/resetear_mesa
+
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_GUID
 
-    ---------------------------------------------------------------------
-    ---------------------------------------------------------------------
-    --------------GENERANDO OBJETOS DESDE lAS GUIDS----------------------
-    ----------------------- Equipo 1----------------------
-    ----------------Canastas-------------------
-    zonaCanastaE1_C01 = getObjectFromGUID(zonaCanastaE1_C01_GUID)
-    zonaCanastaE1_C02 = getObjectFromGUID(zonaCanastaE1_C02_GUID)
-    zonaCanastaE1_C03 = getObjectFromGUID(zonaCanastaE1_C03_GUID)
-    zonaCanastaE1_C04 = getObjectFromGUID(zonaCanastaE1_C04_GUID)
-    zonaCanastaE1_C05 = getObjectFromGUID(zonaCanastaE1_C05_GUID)
-    zonaCanastaE1_C06 = getObjectFromGUID(zonaCanastaE1_C06_GUID)
-    zonaCanastaE1_C07 = getObjectFromGUID(zonaCanastaE1_C07_GUID)
-    zonaCanastaE1_C08 = getObjectFromGUID(zonaCanastaE1_C08_GUID)
-    zonaCanastaE1_C09 = getObjectFromGUID(zonaCanastaE1_C09_GUID)
-    -------------------------------------------
-    ----------------Cerradas/Flores------------
-    ZonaCerradaE1_C01 = getObjectFromGUID(zonaCerradaE1_C01_GUID)
-    ZonaCerradaE1_C02 = getObjectFromGUID(zonaCerradaE1_C02_GUID)
-    ZonaCerradaE1_C03 = getObjectFromGUID(zonaCerradaE1_C03_GUID)
-    ZonaCerradaE1_C04 = getObjectFromGUID(zonaCerradaE1_C04_GUID)
-    ZonaCerradaE1_C05 = getObjectFromGUID(zonaCerradaE1_C05_GUID)
-    ZonaCerradaE1_C06 = getObjectFromGUID(zonaCerradaE1_C06_GUID)
-    ZonaCerradaE1_C07 = getObjectFromGUID(zonaCerradaE1_C07_GUID)
-    ZonaCerradaE1_C08 = getObjectFromGUID(zonaCerradaE1_C08_GUID)
-    -------------------------Flores------------
-    ZonaCerradaE1_F01 = getObjectFromGUID(zonaCerradaE1_F01_GUID)
-    ZonaCerradaE1_F02 = getObjectFromGUID(zonaCerradaE1_F02_GUID)
-    ZonaCerradaE1_F03 = getObjectFromGUID(zonaCerradaE1_F03_GUID)
-    ZonaCerradaE1_F04 = getObjectFromGUID(zonaCerradaE1_F04_GUID)
-    -------------------------------------------
-    ------------------------------------------------------
-    ----------------------- Equipo 2----------------------
-    ----------------Canastas-------------------
-    zonaCanastaE2_C01 = getObjectFromGUID(zonaCanastaE2_C01_GUID)
-    zonaCanastaE2_C02 = getObjectFromGUID(zonaCanastaE2_C02_GUID)
-    zonaCanastaE2_C03 = getObjectFromGUID(zonaCanastaE2_C03_GUID)
-    zonaCanastaE2_C04 = getObjectFromGUID(zonaCanastaE2_C04_GUID)
-    zonaCanastaE2_C05 = getObjectFromGUID(zonaCanastaE2_C05_GUID)
-    zonaCanastaE2_C06 = getObjectFromGUID(zonaCanastaE2_C06_GUID)
-    zonaCanastaE2_C07 = getObjectFromGUID(zonaCanastaE2_C07_GUID)
-    zonaCanastaE2_C08 = getObjectFromGUID(zonaCanastaE2_C08_GUID)
-    zonaCanastaE2_C09 = getObjectFromGUID(zonaCanastaE2_C09_GUID)
-    -------------------------------------------
-    ----------------Cerradas/Flores------------
-    ZonaCerradaE2_C01 = getObjectFromGUID(zonaCerradaE2_C01_GUID)
-    ZonaCerradaE2_C02 = getObjectFromGUID(zonaCerradaE2_C02_GUID)
-    ZonaCerradaE2_C03 = getObjectFromGUID(zonaCerradaE2_C03_GUID)
-    ZonaCerradaE2_C04 = getObjectFromGUID(zonaCerradaE2_C04_GUID)
-    ZonaCerradaE2_C05 = getObjectFromGUID(zonaCerradaE2_C05_GUID)
-    ZonaCerradaE2_C06 = getObjectFromGUID(zonaCerradaE2_C06_GUID)
-    ZonaCerradaE2_C07 = getObjectFromGUID(zonaCerradaE2_C07_GUID)
-    ZonaCerradaE2_C08 = getObjectFromGUID(zonaCerradaE2_C08_GUID)
-    -------------------------Flores------------
-    ZonaCerradaE2_F01 = getObjectFromGUID(zonaCerradaE2_F01_GUID)
-    ZonaCerradaE2_F02 = getObjectFromGUID(zonaCerradaE2_F02_GUID)
-    ZonaCerradaE2_F03 = getObjectFromGUID(zonaCerradaE2_F03_GUID)
-    ZonaCerradaE2_F04 = getObjectFromGUID(zonaCerradaE2_F04_GUID)
-    -------------------------------------------
-    ------------------------------------------------------
-    ---------------------------------------------------------------------
-    -------------------GENERANDO BLOQUES DE ZONAS------------------------
-    ----------------------- Equipo 1----------------------
-    zonasCanastaE1 = {zonaCanastaE1_C01, zonaCanastaE1_C02,
-    zonaCanastaE1_C03, zonaCanastaE1_C04, zonaCanastaE1_C05,
-    zonaCanastaE1_C06, zonaCanastaE1_C07, zonaCanastaE1_C08,
-    zonaCanastaE1_C09}
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_objects
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_objects
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_objects
 
-    zonasCerradasE1 = {zonaCerradaE1_C01,zonaCerradaE1_C02,
-    zonaCerradaE1_C03,zonaCerradaE1_C04,zonaCerradaE1_C05,
-    zonaCerradaE1_C06,zonaCerradaE1_C07,zonaCerradaE1_C08}
 
-    zonasFloresE1 = {zonaCerradaE1_F1,zonaCerradaE1_F2,
-    zonaCerradaE1_F3,zonaCerradaE1_F4}
-    ----------------------- Equipo 2----------------------
-    zonasCanastaE2 = {zonaCanastaE2_C01, zonaCanastaE2_C02,
-    zonaCanastaE2_C03, zonaCanastaE2_C04, zonaCanastaE2_C05,
-    zonaCanastaE2_C06, zonaCanastaE2_C07, zonaCanastaE2_C08,
-    zonaCanastaE2_C09}
+    -- RESETEAMOS MESA
+    --contador_ronda.setValue(0)
+    reset_table()
 
-    zonasCerradasE2 = {zonaCerradaE2_C01,zonaCerradaE2_C02,
-    zonaCerradaE2_C03,zonaCerradaE2_C04,zonaCerradaE2_C05,
-    zonaCerradaE2_C06,zonaCerradaE2_C07,zonaCerradaE2_C08}
 
-    zonasFloresE2 = {zonaCerradaE2_F1,zonaCerradaE2_F2,
-    zonaCerradaE2_F3,zonaCerradaE2_F4}
-    ---------------------------------------------------------------------
-
+    -- SCRIPT ZONAS DE CANASTAS
     posicionZonaE1 = {}
     nObjetosActualE1 = {}
     posicionZonaE2 = {}

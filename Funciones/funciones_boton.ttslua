@@ -55,10 +55,58 @@ function detectar_tipo_canasta(cartas_en_zona,Ncartas)
 
 end
 
+
+function actualizar_puntos_canastas(Equipo,C_oculta,canasta_tipo)
+
+  CN = {}
+  CN[1] = 'contador_puntos_canastas_E'
+  CN[2] = '_GUID'
+
+  contador_objetivo_GUID = CN[1] .. Equipo .. CN[2]
+  contador_objetivo = getObjectFromGUID(_G[contador_objetivo_GUID])
+
+  -- Puntuación actual
+  puntuacion_actual = contador_objetivo.getValue()
+
+  -- Según el tipo de canasta...
+  if C_oculta == 'Oculta' then
+    if canasta_tipo == 'sucia' then
+      puntuacion = 800
+    elseif canasta_tipo == 'limpia' then
+      puntuacion = 1000
+    elseif canasta_tipo == 'monos' then
+      puntuacion = 2500
+    end
+  elseif C_oculta == 'Oculta Apoyada' then
+    if canasta_tipo == 'sucia' then
+      puntuacion = 500
+    elseif canasta_tipo == 'limpia' then
+      puntuacion = 500
+    end
+  elseif C_oculta == '' then
+    if canasta_tipo == 'sucia' then
+      puntuacion = 300
+    elseif canasta_tipo == 'limpia' then
+      puntuacion = 500
+    elseif canasta_tipo == 'monos' then
+      puntuacion = 2000
+    end
+  end
+
+  -- Actualizamos
+  puntuacion_nueva = puntuacion_actual + puntuacion
+  contador_objetivo.setValue(puntuacion_nueva)
+
+end
+
+
 function bloque_nombre(C,Equipo,Canasta)
   nombre = C[1] .. Equipo .. C[2] .. Canasta .. C[3]
   return nombre
 end
+
+
+
 
 _G['agrupar_canasta'] = function(zonaCanasta,Equipo)
 
@@ -185,6 +233,9 @@ _G['agrupar_canasta'] = function(zonaCanasta,Equipo)
         end
 
       end
+
+      -- Actualizamos contador de puntos de canastas
+      actualizar_puntos_canastas(Equipo,C_oculta,canasta_tipo)
 
     elseif Ncartas > 0 then
 

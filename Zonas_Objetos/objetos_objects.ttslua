@@ -1,0 +1,19 @@
+-- BASE CANASTA EQUIPO 1 --
+bloque_canasta_E1_C01 = getObjectFromGUID(bloque_canasta_E1_C01_GUID)
+bloque_canasta_E1_C02 = getObjectFromGUID(bloque_canasta_E1_C02_GUID)
+bloque_canasta_E1_C03 = getObjectFromGUID(bloque_canasta_E1_C03_GUID)
+bloque_canasta_E1_C04 = getObjectFromGUID(bloque_canasta_E1_C04_GUID)
+bloque_canasta_E1_C05 = getObjectFromGUID(bloque_canasta_E1_C05_GUID)
+bloque_canasta_E1_C06 = getObjectFromGUID(bloque_canasta_E1_C06_GUID)
+bloque_canasta_E1_C07 = getObjectFromGUID(bloque_canasta_E1_C07_GUID)
+bloque_canasta_E1_C08 = getObjectFromGUID(bloque_canasta_E1_C08_GUID)
+
+-- BASE CANASTA EQUIPO 2 --
+bloque_canasta_E2_C01 = getObjectFromGUID(bloque_canasta_E2_C01_GUID)
+bloque_canasta_E2_C02 = getObjectFromGUID(bloque_canasta_E2_C02_GUID)
+bloque_canasta_E2_C03 = getObjectFromGUID(bloque_canasta_E2_C03_GUID)
+bloque_canasta_E2_C04 = getObjectFromGUID(bloque_canasta_E2_C04_GUID)
+bloque_canasta_E2_C05 = getObjectFromGUID(bloque_canasta_E2_C05_GUID)
+bloque_canasta_E2_C06 = getObjectFromGUID(bloque_canasta_E2_C06_GUID)
+bloque_canasta_E2_C07 = getObjectFromGUID(bloque_canasta_E2_C07_GUID)
+bloque_canasta_E2_C08 = getObjectFromGUID(bloque_canasta_E2_C08_GUID)
