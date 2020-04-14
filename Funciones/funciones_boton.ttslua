@@ -55,6 +55,34 @@ function detectar_tipo_canasta(cartas_en_zona,Ncartas)
 
 end
 
+function detectar_flores_colocadas(Equipo)
+
+  local Nflores = 0
+
+  -- Zonas de flores - Contabilizamos
+  zona_F_name = {}
+  zona_F_obj  = {}
+
+  for k = 1,4 do
+
+    zona_F_name[k] = 'zonaCerradaE' .. Equipo .. '_F0' .. k .. '_GUID'
+    zona_F_obj[k]  = getObjectFromGUID(_G[zona_F_name[k]])
+
+    cartas_F  = zona_F_obj[k].getObjects()
+    Ncarta_F = #cartas_F
+
+    if Ncarta_F == 1 then
+      cartaF_name = cartas_F[1].getName()
+      if cartaF_name == '3r' or cartaF_name == '3c' then
+        Nflores = Nflores + 1
+      end
+    end
+
+  end
+
+  return Nflores
+
+end
 
 function actualizar_puntos_canastas(Equipo,C_oculta,canasta_tipo)
 
@@ -67,6 +95,18 @@ function actualizar_puntos_canastas(Equipo,C_oculta,canasta_tipo)
 
   -- Puntuación actual
   puntuacion_actual = contador_objetivo.getValue()
+
+  -- Flores
+  Nflores = detectar_flores_colocadas(Equipo)
+
+  if Nflores > 0 and puntuacion_actual <= 0 then
+  -- Corregimos puntuación de flores si se da el caso
+    if Nflores < 4 then
+      puntuacion_actual = puntuacion_actual + 2*Nflores*100
+    elseif Nflores == 4 then
+      puntuacion_actual = puntuacion_actual + 1600
+    end
+  end
 
   -- Según el tipo de canasta...
   if C_oculta == 'Oculta' then
@@ -120,7 +160,6 @@ _G['agrupar_canasta'] = function(zonaCanasta,Equipo)
     B[1] = 'bloque_canasta_E'
     B[2] = '_C0'
     B[3] = '_GUID'
-
 
     zona_vacia = 0
     cont = 1
