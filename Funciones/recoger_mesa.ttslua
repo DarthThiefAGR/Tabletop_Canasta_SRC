@@ -1,0 +1,142 @@
+function recoger_mesa()
+
+  -- Objetos de la mesa
+  objetos_mesa = getAllObjects()
+  Nobjetos = #objetos_mesa
+
+  objetos_a_agrupar = {}
+  kk = 1
+
+  -- Posición de zona del mazo de robo - ocultas y ocultas apoyadas
+  Z_mazo_robo   = getObjectFromGUID(Z_mazo_robo_GUID)
+  pos_mazo_robo = Z_mazo_robo.getPosition()
+  rot_mazo_robo = Z_mazo_robo.getRotation()
+
+  Z_ocultas              = getObjectFromGUID(Z_marcador_ocultas_GUID)
+  pos_mazo_ocultas       = Z_ocultas.getPosition()
+  rot_mazo_ocultas       = Z_ocultas.getRotation()
+
+  Z_ocultas_apoyo        = getObjectFromGUID(Z_marcador_ocultas_apoyo_GUID)
+  pos_mazo_ocultas_apoyo = Z_ocultas_apoyo.getPosition()
+  rot_mazo_ocultas_apoyo = Z_ocultas_apoyo.getRotation()
+
+  -- Vemos cuantas cartas hay en sus posiciones correctas
+  OBJ_mazo_robo     =  Z_mazo_robo.getObjects()
+  OBJ_ocultas       =  Z_ocultas.getObjects()
+  OBJ_ocultas_apoyo =  Z_ocultas_apoyo.getObjects()
+
+  N_OBJ_mazo_robo     = #OBJ_mazo_robo
+  N_OBJ_ocultas       = #OBJ_ocultas
+  N_OBJ_ocultas_apoyo = #OBJ_ocultas_apoyo
+
+  if N_OBJ_mazo_robo ~= 0 then
+    CARD_mazo_robo     = OBJ_mazo_robo[1].getObjects()
+    N_CARD_mazo_robo = #CARD_mazo_robo
+  else
+    N_CARD_mazo_robo = 0
+  end
+  if N_OBJ_ocultas ~= 0 then
+    CARD_ocultas       = OBJ_ocultas[1].getObjects()
+    N_CARD_ocultas = #CARD_ocultas
+  else
+    N_CARD_ocultas = 0
+  end
+  if N_OBJ_ocultas_apoyo ~= 0 then
+    CARD_ocultas_apoyo = OBJ_ocultas_apoyo[1].getObjects()
+    N_CARD_ocultas_apoyo = #CARD_ocultas_apoyo
+  else
+    N_CARD_ocultas_apoyo = 0
+  end
+
+  if N_CARD_mazo_robo ~= 104 or N_CARD_ocultas ~= 4 or N_CARD_ocultas_apoyo ~= 4 then
+
+      printToAll('Ordenando mesa',{1,0,0})
+
+      -- Encontrar cartas / mazos
+      for k = 1,Nobjetos do
+
+        objeto_nombre = objetos_mesa[k].name
+        if objeto_nombre == 'Card' or objeto_nombre == 'CardCustom' or objeto_nombre == 'Deck' then
+          objetos_a_agrupar[kk] = k
+          kk = kk + 1
+        end
+
+      end
+
+
+      -- Recolocar cartas / mazos encontrados
+
+      Cont_Robo         = 0
+      Cont_Ocultas      = 0
+      Cont_Ocultas_Apoy = 0
+
+      for i = 1,(kk-1) do
+
+        objeto = objetos_mesa[objetos_a_agrupar[i]]
+        objeto_nombre = objeto.name
+
+        if objeto_nombre == 'Deck' then
+
+          mazo    = objeto.getObjects()
+          Ncartas = #mazo
+          objeto.setLock(false)
+
+          for j = 1,Ncartas do
+
+            carta_name = mazo[j].name
+
+            if carta_name == 'Oculta' then
+              param = {position = pos_mazo_ocultas,
+                       rotation = rot_mazo_ocultas,
+                       index = 1}
+              objeto.takeObject(param)
+              Cont_Ocultas = Cont_Ocultas + 1
+            elseif carta_name == 'Oculta Apoyada' then
+              param = {position = pos_mazo_ocultas_apoyo,
+                       rotation = rot_mazo_ocultas_apoyo,
+                       index = 1}
+              objeto.takeObject(param)
+              Cont_Ocultas_Apoy = Cont_Ocultas_Apoy + 1
+            else
+              param = {position = pos_mazo_robo,
+                       rotation = rot_mazo_robo,
+                       index = 1}
+              objeto.takeObject(param)
+              Cont_Robo = Cont_Robo + 1
+            end
+
+          end
+
+        elseif objeto_nombre == 'Card' or objeto_nombre == 'CardCustom'  then
+
+          carta_name = objeto.getName()
+          print(carta_name)
+          if carta_name == 'Oculta' then
+            objeto.setLock(false)
+            objeto.setPosition(pos_mazo_ocultas)
+            objeto.setRotation(rot_mazo_ocultas)
+            Cont_Ocultas = Cont_Ocultas + 1
+          elseif carta_name == 'Oculta Apoyada' then
+            objeto.setLock(false)
+            objeto.setPosition(pos_mazo_ocultas_apoyo)
+            objeto.setRotation(rot_mazo_ocultas_apoyo)
+            Cont_Ocultas_Apoy = Cont_Ocultas_Apoy + 1
+          else
+            objeto.setLock(false)
+            objeto.setPosition(pos_mazo_robo)
+            objeto.setRotation(rot_mazo_robo)
+            Cont_Robo = Cont_Robo + 1
+          end
+        end
+
+      end
+      print(Cont_Robo)
+      print(Cont_Ocultas)
+      print(Cont_Ocultas_Apoy)
+
+  else
+    printToAll('Mesa ordenada', {0,1,0})
+  end
+
+
+end
