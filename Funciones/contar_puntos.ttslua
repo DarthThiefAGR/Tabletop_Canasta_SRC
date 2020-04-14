@@ -23,14 +23,14 @@ function contar_puntos()
   puntosE1_mesa = 0
   puntosE2_mesa = 0
 
--- PUNTOS TOTALES
-contador_puntos_total_E1 = getObjectFromGUID(contador_puntos_total_E1_GUID)
-contador_puntos_total_E2 = getObjectFromGUID(contador_puntos_total_E2_GUID)
+  -- PUNTOS TOTALES
+  contador_puntos_total_E1 = getObjectFromGUID(contador_puntos_total_E1_GUID)
+  contador_puntos_total_E2 = getObjectFromGUID(contador_puntos_total_E2_GUID)
 
-puntos_total_E1 = contador_puntos_total_E1.getValue()
-puntos_total_E2 = contador_puntos_total_E2.getValue()
+  puntos_total_E1 = contador_puntos_total_E1.getValue()
+  puntos_total_E2 = contador_puntos_total_E2.getValue()
 
--- PUNTOS EN LAS MANOS
+  -- PUNTOS EN LAS MANOS
   for k = 1,Ncartas_1_E1 do
     carta          = mano1_E1[k]
     carta_valor    = carta.getDescription()
@@ -155,6 +155,8 @@ puntos_total_E2 = contador_puntos_total_E2.getValue()
   puntos_total_E1 = puntos_total_E1 + puntos_subtotal_E1
   puntos_total_E2 = puntos_total_E2 + puntos_subtotal_E2
 
+  -- PRESENTAMOS RESULTADOS
+  print('')
   print('EQUIPO 1')
   print('puntos_base_E1 = ',puntos_base_E1)
   print('cerrado_E1 = ',cerrado_E1)
@@ -192,6 +194,7 @@ puntos_total_E2 = contador_puntos_total_E2.getValue()
   -- Llamamos a la función que genera los textos para bloc de notas
   texto_escribir = puntos_ronda_notas(M_puntos_E1,M_puntos_E2)
 
+  -- Editamos block de notas
   paramsE1 = {
       index = 0,
       title = "PUNTOS",

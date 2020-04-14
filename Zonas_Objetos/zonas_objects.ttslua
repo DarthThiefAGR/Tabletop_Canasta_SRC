@@ -67,8 +67,8 @@ ZonaCerradaE2_F04 = getObjectFromGUID(zonaCerradaE2_F04_GUID)
     zonaCerradaE1_C03,zonaCerradaE1_C04,zonaCerradaE1_C05,
     zonaCerradaE1_C06,zonaCerradaE1_C07,zonaCerradaE1_C08}
 
-    zonasFloresE1 = {zonaCerradaE1_F1,zonaCerradaE1_F2,
-    zonaCerradaE1_F3,zonaCerradaE1_F4}
+    zonasFloresE1 = {ZonaCerradaE1_F01,ZonaCerradaE1_F02,
+    ZonaCerradaE1_F03,ZonaCerradaE1_F04}
     ----------------------- Equipo 2----------------------
     zonasCanastaE2 = {zonaCanastaE2_C01, zonaCanastaE2_C02,
     zonaCanastaE2_C03, zonaCanastaE2_C04, zonaCanastaE2_C05,
@@ -79,6 +79,6 @@ ZonaCerradaE2_F04 = getObjectFromGUID(zonaCerradaE2_F04_GUID)
     zonaCerradaE2_C03,zonaCerradaE2_C04,zonaCerradaE2_C05,
     zonaCerradaE2_C06,zonaCerradaE2_C07,zonaCerradaE2_C08}
 
-    zonasFloresE2 = {zonaCerradaE2_F1,zonaCerradaE2_F2,
-    zonaCerradaE2_F3,zonaCerradaE2_F4}
+    zonasFloresE2 = {ZonaCerradaE2_F01,ZonaCerradaE2_F02,
+    ZonaCerradaE2_F03,ZonaCerradaE2_F04}
     ---------------------------------------------------------------------

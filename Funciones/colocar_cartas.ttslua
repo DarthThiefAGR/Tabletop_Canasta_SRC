@@ -1,0 +1,114 @@
+function colocarFloresEnZona(nObjetosActual,zona)
+
+  local objectsInZone = zona.getObjects()
+  local nObjetos      = #objectsInZone
+  local posicionCarta = {}
+  local rotation      = zona.getRotation()
+  local posicionZonai = zona.getPosition()
+
+  
+  if (nObjetos ~= nObjetosActual) and nObjetos == 1 then
+
+    posicionCarta.x = posicionZonai.x
+    posicionCarta.y = posicionZonai.y
+    posicionCarta.z = posicionZonai.z
+
+    carta = objectsInZone[1]
+    carta_name = carta.getName()
+
+    if carta_name == '3r' or carta_name == '3c' then
+      objectsInZone[1].setPosition(posicionCarta)
+      objectsInZone[1].setRotation(rotation)
+      objectsInZone[1].setLock(true)
+    end
+
+  end
+
+  nObjetosActual = nObjetos
+
+  return nObjetosActual
+
+end
+
+function colocaCartasEnZona(nObjetosActual,zona)
+
+    local objectsInZone = zona.getObjects()
+    local nObjetos = #objectsInZone
+    local posicionCarta = {}
+    local rotation = zona.getRotation()
+    local posicionZonai = zona.getPosition()
+    local tipoCanasta = ''
+    local nMonos = 0
+    local nNormales = 0
+    local signo = 1
+
+    if posicionZonai.x < 0 then
+      signo = -1
+    end
+
+    posicionCarta.x = posicionZonai.x-(3.3*signo)
+    posicionCarta.y = posicionZonai.y
+    posicionCarta.z = posicionZonai.z
+
+    if (nObjetos ~= nObjetosActual) and (nObjetos < 9) then
+
+      nObjetosActual = nObjetos
+
+      for j,carta in pairs(objectsInZone) do
+
+        local nombreCarta = carta.getName()
+        local tipoCarta = ''
+
+        if (j < 8 and (nombreCarta == 'Oculta' or nombreCarta == 'Oculta Apoyada')) then
+          printToAll('La carta oculta se tiene que poner al final', {r=1,g=0,b=0})
+          return nObjetosActual
+        elseif j == 8 and (nombreCarta ~= 'Oculta' and nombreCarta ~= 'Oculta Apoyada') then
+          printToAll('La carta número 8 solo puede ser la carta oculta', {r=1,g=0,b=0})
+          return nObjetosActual
+        end
+
+        if (nombreCarta == 'Joker') or
+           (nombreCarta == '2c') or
+           (nombreCarta == '2r') or
+           (nombreCarta == '2p') or
+           (nombreCarta == '2t') then
+          nMonos = nMonos + 1
+          tipoCarta = 'Mono'
+        else
+          tipoCarta = string.sub(nombreCarta,
+                      string.len(nombreCarta)-2,
+                      string.len(nombreCarta)-1)
+        end
+
+        if tipoCarta == '3' then
+          print('No se pueden hacer canastas de 3')
+          return nObjetosActual
+        end
+
+        if j == 1 then
+          tipoCanasta = tipoCarta
+          print('La canasta será del tipo: ', tipoCarta)
+        elseif (nombreCarta ~= 'Oculta') and (nombreCarta ~= 'Oculta Apoyada')
+                and ((tipoCanasta ~= tipoCarta) and (tipoCarta ~= 'Mono' )) or
+                ((tipoCanasta ~= 'Mono') and (nMonos > (nObjetos/2))) then
+          print('Esta carta no es válida para esta canasta')
+          return nObjetosActual
+        else
+          print('Esta carta es válida')
+        end
+
+      end
+
+      for _, object in ipairs(objectsInZone) do
+        object.setPosition(posicionCarta)
+        object.setRotation(rotation)
+        object.setLock(true)
+        posicionCarta.x = posicionCarta.x+(0.75*signo)
+        posicionCarta.y = posicionCarta.y+0.0001
+      end
+
+  end
+
+  return nObjetosActual
+
+end
