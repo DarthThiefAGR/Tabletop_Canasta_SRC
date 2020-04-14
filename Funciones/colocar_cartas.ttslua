@@ -1,4 +1,4 @@
-function colocarFloresEnZona(nObjetosActual,zona)
+function colocarFloresEnZona(salidaF,zona,equipo)
 
   local objectsInZone = zona.getObjects()
   local nObjetos      = #objectsInZone
@@ -6,7 +6,10 @@ function colocarFloresEnZona(nObjetosActual,zona)
   local rotation      = zona.getRotation()
   local posicionZonai = zona.getPosition()
 
-  
+  nObjetosActual = salidaF[1]
+  carta_actual   = salidaF[2]
+
+  -- Colocamos carta en su sitio, si es una flor
   if (nObjetos ~= nObjetosActual) and nObjetos == 1 then
 
     posicionCarta.x = posicionZonai.x
@@ -17,16 +20,81 @@ function colocarFloresEnZona(nObjetosActual,zona)
     carta_name = carta.getName()
 
     if carta_name == '3r' or carta_name == '3c' then
+      -- Colocamos flor en su sitio
       objectsInZone[1].setPosition(posicionCarta)
       objectsInZone[1].setRotation(rotation)
       objectsInZone[1].setLock(true)
+      -- Contabilizamos puntos
+      contar_puntos_flor(equipo,'in')
+      -- Guardamos carta
+      carta_actual = 'flor'
+    else
+      carta_actual = 'no_flor'
     end
 
   end
 
+  -- Sacamos flor
+  if (nObjetos ~= nObjetosActual) and nObjetos == 0 then
+    --print(carta_actual)
+    if carta_actual == 'flor' then
+      contar_puntos_flor(equipo,'out')
+      carta_actual = 'no_flor'
+    end
+  end
+
   nObjetosActual = nObjetos
 
-  return nObjetosActual
+  salidaF[1] = nObjetosActual
+  salidaF[2] = carta_actual
+  return salidaF
+
+end
+
+function contar_puntos_flor(equipo,in_out)
+
+  -- Puntos en el contador de puntos canasta
+  contador_nombre = 'contador_puntos_canastas_E' .. equipo
+  contador_obj = _G[contador_nombre]
+
+  -- Número de flores del equipo
+  zonaF_nombre = 'zonasFloresE' .. equipo
+  zonaF_obj = _G[zonaF_nombre]
+  Nflores = 0
+
+  for _,zona in ipairs(zonaF_obj) do
+    carta = zona.getObjects()
+    Ncarta = #carta
+    if Ncarta == 1 then
+      Nflores = Nflores + 1
+    end
+  end
+
+  -- Contabilizamos nuevos puntos
+  puntos_actuales = contador_obj.getValue()
+
+  if in_out == 'in' then
+    signo = 1
+  else
+    signo = -1
+  end
+
+  if Nflores < 4 then
+    if puntos_actuales <= 0 then
+      puntos_actuales = puntos_actuales - signo*100
+    elseif puntos_actuales > 0 then
+      puntos_actuales = puntos_actuales + signo*100
+    end
+  elseif Nflores == 4 then
+    if puntos_actuales <= 0 then
+      puntos_actuales = puntos_actuales - signo*500
+    elseif puntos_actuales > 0 then
+      puntos_actuales = puntos_actuales + signo*500
+    end
+  end
+
+  -- Actualizamos contador
+  contador_obj.setValue(puntos_actuales)
 
 end
 

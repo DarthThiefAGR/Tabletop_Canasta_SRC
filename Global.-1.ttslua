@@ -24,7 +24,10 @@ function onLoad()
     nObjetosActualF1 = {}
     posicionZonaF2 = {}
     nObjetosActualF2 = {}
+    carta_actualF1 = {}
+    carta_actualF2 = {}
 
+    -- CANASTAS
     for i, zona in pairs(zonasCanastaE1) do
       posicionZonaE1.i = zona.getPosition()
       nObjetosActualE1[i] = #(zona.getObjects())
@@ -33,25 +36,46 @@ function onLoad()
       posicionZonaE2.i = zona.getPosition()
       nObjetosActualE2[i] = #(zona.getObjects())
     end
+
+    -- FLORES
+    salidaF1 = {}
+    salidaF2 = {}
+
     for i, zona in pairs(zonasFloresE1) do
       posicionZonaF1.i = zona.getPosition()
       nObjetosActualF1[i] = #(zona.getObjects())
+      carta_actualF1[i] = 'no_flor'
+      salidaF1[i] = {}
     end
     for i, zona in pairs(zonasFloresE2) do
       posicionZonaF2.i = zona.getPosition()
       nObjetosActualF2[i] = #(zona.getObjects())
+      carta_actualF1[i] = 'no_flor'
+      salidaF2[i] = {}
     end
+
+    for i, zona in pairs(zonasFloresE1) do
+      salidaF1[i][1] = nObjetosActualF1[i]
+      salidaF1[i][2] = carta_actualF1[i]
+    end
+    for i, zona in pairs(zonasFloresE2) do
+      salidaF2[i][1] = nObjetosActualF2[i]
+      salidaF2[i][2] = carta_actualF2[i]
+    end
+
 
 end
 
 function onUpdate()
 
+  -- FLORES
   for i,zona in ipairs(zonasFloresE1) do
-    nObjetosActualF1[i] = colocarFloresEnZona(nObjetosActualF1[i],zona)
+    salidaF1[i] = colocarFloresEnZona(salidaF1[i],zona,1)
   end
   for i,zona in ipairs(zonasFloresE2) do
-    nObjetosActualF2[i] = colocarFloresEnZona(nObjetosActualF2[i],zona)
+    salidaF2[i] = colocarFloresEnZona(salidaF2[i],zona,2)
   end
+  -- CANASTAS
   for i,zona in ipairs(zonasCanastaE1) do
     nObjetosActualE1[i] = colocaCartasEnZona(nObjetosActualE1[i],zona)
   end
