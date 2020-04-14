@@ -1,3 +1,8 @@
+function recoger_mesa()
+  print('')
+end
+
+
 function detectar_tipo_canasta(cartas_en_zona,Ncartas)
 
   -- Variable de salida
@@ -156,10 +161,15 @@ _G['agrupar_canasta'] = function(zonaCanasta,Equipo)
     C[2] = '_C0'
     C[3] = '_GUID'
 
-    B = {}
-    B[1] = 'bloque_canasta_E'
-    B[2] = '_C0'
-    B[3] = '_GUID'
+    B1 = {}
+    B1[1] = 'bloque_canasta_E'
+    B1[2] = '_C0'
+    B1[3] = '_GUID'
+
+    B2 = {}
+    B2[1] = 'bloque_canasta_tipo_E'
+    B2[2] = '_C0'
+    B2[3] = '_GUID'
 
     zona_vacia = 0
     cont = 1
@@ -167,9 +177,9 @@ _G['agrupar_canasta'] = function(zonaCanasta,Equipo)
     --Buscamos zona vacia
     while zona_vacia == 0 do
       Canasta_Cerrada_Name = bloque_nombre(C,Equipo,cont)
-      zona_objetivo = getObjectFromGUID(_G[Canasta_Cerrada_Name])
-      zona_objetivo_cont = zona_objetivo.getObjects()
-      if zona_objetivo_cont[2] == nil then
+      zona_objetivo        = getObjectFromGUID(_G[Canasta_Cerrada_Name])
+      zona_objetivo_cont   = zona_objetivo.getObjects()
+      if zona_objetivo_cont[3] == nil then
         zona_vacia = cont
       else
         cont = cont + 1
@@ -181,8 +191,12 @@ _G['agrupar_canasta'] = function(zonaCanasta,Equipo)
     zona_objetivo = getObjectFromGUID(_G[zona_objetivo_GUID])
 
     --Base en Zona Objetivo
-    bloque_objetivo_GUID = bloque_nombre(B,Equipo,zona_vacia)
+    bloque_objetivo_GUID = bloque_nombre(B1,Equipo,zona_vacia)
     bloque_objetivo = getObjectFromGUID(_G[bloque_objetivo_GUID])
+
+    --Base en Zona Objetivo
+    bloque_objetivo_tipo_GUID = bloque_nombre(B2,Equipo,zona_vacia)
+    bloque_objetivo_tipo = getObjectFromGUID(_G[bloque_objetivo_tipo_GUID])
 
     --Zona canasta
     zona_canasta_GUID = zonaCanasta
@@ -264,11 +278,19 @@ _G['agrupar_canasta'] = function(zonaCanasta,Equipo)
 
         -- Según tipo de canasta, coloreamos base
         if C_oculta == 'oculta_apoyada' then
-          bloque_objetivo.setColorTint({0.1725,0.34112,0.55294})
+          bloque_objetivo.setColorTint({0.173,0.341,0.553})
         elseif C_oculta == 'oculta' then
-          bloque_objetivo.setColorTint({0.439,0.1725,0.55294})
+          bloque_objetivo.setColorTint({0.439,0.173,0.553})
         elseif C_oculta == '' then
-          bloque_objetivo.setColorTint({0.3,0.3,0.3})
+          bloque_objetivo.setColorTint({0.8,0.8,0.8})
+        end
+
+        if canasta_tipo == 'sucia' then
+          bloque_objetivo_tipo.setColorTint({0.270, 0.270, 0.270})
+        elseif canasta_tipo == 'limpia' then
+          bloque_objetivo_tipo.setColorTint({0.654, 0.047, 0.086})
+        elseif canasta_tipo == 'monos' then
+          bloque_objetivo_tipo.setColorTint({0.039, 0.533, 0.023})
         end
 
       end

@@ -18,5 +18,25 @@ bloque_canasta_E2_C06_GUID = '6d7a78'
 bloque_canasta_E2_C07_GUID = 'f0f466'
 bloque_canasta_E2_C08_GUID = 'dc6c83'
 
+-- BASE CANASTA TIPO - EQUIPO 1 -
+bloque_canasta_tipo_E1_C01_GUID = '06faf3'
+bloque_canasta_tipo_E1_C02_GUID = '2c848f'
+bloque_canasta_tipo_E1_C03_GUID = 'b35dc9'
+bloque_canasta_tipo_E1_C04_GUID = 'f83701'
+bloque_canasta_tipo_E1_C05_GUID = 'eb0137'
+bloque_canasta_tipo_E1_C06_GUID = 'd6844a'
+bloque_canasta_tipo_E1_C07_GUID = '095259'
+bloque_canasta_tipo_E1_C08_GUID = '39ce4c'
+
+-- BASE CANASTA TIPO - EQUIPO 2 -
+bloque_canasta_tipo_E2_C01_GUID = '809966'
+bloque_canasta_tipo_E2_C02_GUID = 'a36fe2'
+bloque_canasta_tipo_E2_C03_GUID = '6a1079'
+bloque_canasta_tipo_E2_C04_GUID = 'ce3a1f'
+bloque_canasta_tipo_E2_C05_GUID = '073759'
+bloque_canasta_tipo_E2_C06_GUID = 'd426db'
+bloque_canasta_tipo_E2_C07_GUID = 'c9fede'
+bloque_canasta_tipo_E2_C08_GUID = '095776'
+
 -- BOTÓN FINALIZAR RONDA
 boton_finalizar_ronda_GUID = '5d2de2'

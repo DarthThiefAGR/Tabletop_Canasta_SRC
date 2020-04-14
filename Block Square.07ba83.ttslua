@@ -1,27 +1,26 @@
 ---------------------------------
--- BOTÓN FINALIZAR RONDA
+-- BOTÓN RECOGER MESA
 ---------------------------------
 -- INCLUDES
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_jugadores
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_GUID
-#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
 
-#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/contar_puntos
-#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/texto_notas
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/funciones_boton
+
 
 function onLoad()
 
   param = {
-    label='FINALIZAR\nRONDA',
-    click_function='pulsar_boton_finalizar',
+    label='RECOGER',
+    click_function='pulsar_boton_recoger',
     function_owner=self,
     position={0,0.5,0},
     height=400,
     width=450,
     font_size=90,
     color={1,1,1},
-    tooltip = 'Finalizar ronda - Contar puntos',
+    tooltip = 'Recoger mesa',
   }
 
   self.createButton(param)
@@ -29,6 +28,6 @@ function onLoad()
 
 end
 
-function pulsar_boton_finalizar()
-  contar_puntos()
+function pulsar_boton_recoger()
+  recoger_mesa()
 end

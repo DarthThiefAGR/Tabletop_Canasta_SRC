@@ -14,6 +14,11 @@ function onLoad()
 
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_jugadores
 
+
+
+
+
+
     -- SCRIPT ZONAS DE CANASTAS
     posicionZonaE1 = {}
     nObjetosActualE1 = {}

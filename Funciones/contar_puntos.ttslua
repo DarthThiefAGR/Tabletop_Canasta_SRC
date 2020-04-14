@@ -102,7 +102,7 @@ function contar_puntos()
   cerrado_E1 = 0
   cerrado_E2 = 0
 
-  -- Para cada equipo
+  -- PUNTOS EN CARTAS EN CANASTAS CERRADAS
   for j = 1,2 do
 
     puntosv = 'cerrado_E' .. j
@@ -114,20 +114,38 @@ function contar_puntos()
       zc_objects = _G[zc_name].getObjects()
       N_zc = #zc_objects
 
-      if N_zc > 1 then
+      if N_zc > 2 then
+
         obj_name = zc_objects[1].name
-        if obj_name == 'Deck' then
-          mazo = zc_objects[1]
-        else
-          mazo = zc_objects[2]
-        end
-        cartas = mazo.getObjects()
-        Ncmazo = #cartas
-        for i = 1,Ncmazo do
-          valor = cartas[i].description
-          if valor ~= '' then
-            _G[puntosv] = _G[puntosv] + valor
+
+        if obj_name ~= 'Deck' or obj_name ~= 'Card' then
+          obj_name = zc_objects[2].name
+          if obj_name == 'Deck' or obj_name == 'Card' then
+            mazo     = zc_objects[2]
+            tipomazo = obj_name
+          else
+            obj_name = zc_objects[3].name
+            mazo     = zc_objects[3]
+            tipomazo = obj_name
           end
+        else
+          mazo = zc_objects[1]
+          tipomazo = obj_name
+        end
+
+        -- Contamos valores de cartas
+        if tipomazo == 'Deck' then
+          cartas = mazo.getObjects()
+          Ncmazo = #cartas
+          for i = 1,Ncmazo do
+            valor = cartas[i].description
+            if valor ~= '' then
+              _G[puntosv] = _G[puntosv] + valor
+            end
+          end
+        else
+          valor = mazo.getDescription()
+          _G[puntosv] = _G[puntosv] + valor
         end
       end
 
