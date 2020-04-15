@@ -1,7 +1,6 @@
 function onLoad()
 
     -- INCLUDES
-    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/resetear_mesa
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/colocar_cartas
 
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
@@ -82,10 +81,10 @@ function onUpdate()
   end
   -- CANASTAS
   for i,zona in ipairs(zonasCanastaE1) do
-    nObjetosActualE1[i] = colocaCartasEnZona(nObjetosActualE1[i],zona)
+    nObjetosActualE1[i] = colocaCartasEnZona_v3(nObjetosActualE1[i],zona)
   end
   for i,zona in ipairs(zonasCanastaE2) do
-    nObjetosActualE2[i] = colocaCartasEnZona(nObjetosActualE2[i],zona)
+    nObjetosActualE2[i] = colocaCartasEnZona_v3(nObjetosActualE2[i],zona)
   end
 
 end
