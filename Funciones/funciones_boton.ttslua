@@ -114,7 +114,7 @@ function actualizar_puntos_canastas(Equipo,C_oculta,canasta_tipo)
   end
 
   -- Según el tipo de canasta...
-  if C_oculta == 'Oculta' then
+  if C_oculta == 'oculta' then
     if canasta_tipo == 'sucia' then
       puntuacion = 800
     elseif canasta_tipo == 'limpia' then
@@ -122,7 +122,7 @@ function actualizar_puntos_canastas(Equipo,C_oculta,canasta_tipo)
     elseif canasta_tipo == 'monos' then
       puntuacion = 2500
     end
-  elseif C_oculta == 'Oculta Apoyada' then
+  elseif C_oculta == 'oculta_apoyada' then
     if canasta_tipo == 'sucia' then
       puntuacion = 500
     elseif canasta_tipo == 'limpia' then
