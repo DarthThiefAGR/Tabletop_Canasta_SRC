@@ -11,7 +11,7 @@ function colocarFloresEnZona(salidaF,zona,equipo)
   carta_actual       = salidaF[2]
 
   -- Colocamos carta en su sitio, si es una flor
-  if (nObjetos ~= nObjetosActual) and nObjetos == 1 and activar_colocacion == 'si' then
+  if (nObjetos ~= nObjetosActual) and nObjetos == 1 then
 
     posicionCarta.x = posicionZonai.x
     posicionCarta.y = posicionZonai.y
@@ -20,10 +20,11 @@ function colocarFloresEnZona(salidaF,zona,equipo)
     carta = objectsInZone[1]
     carta_name = carta.getName()
 
+    print(carta_name)
     if carta_name == '3r' or carta_name == '3c' then
       -- Colocamos flor en su sitio
       objectsInZone[1].setPosition(posicionCarta)
-      objectsInZone[1].setRotation(rotation)
+      objectsInZone[1].setRotation(rotacionZonai)
       objectsInZone[1].setLock(true)
       -- Contabilizamos puntos
       contar_puntos_flor(equipo,'in')
@@ -77,7 +78,7 @@ function contar_puntos_flor(equipo,in_out)
   if in_out == 'out' then
     if Nflores == 3 then
       if puntos_actuales <= 0 then
-        puntos_actuales = puntos_actuales + 500
+        puntos_actuales = puntos_actuales + 100
       elseif puntos_actuales > 0 then
         puntos_actuales = puntos_actuales - 500
       end
@@ -91,7 +92,7 @@ function contar_puntos_flor(equipo,in_out)
   elseif in_out == 'in' then
     if Nflores == 4 then
       if puntos_actuales <= 0 then
-        puntos_actuales = puntos_actuales - 500
+        puntos_actuales = puntos_actuales - 100
       elseif puntos_actuales > 0 then
         puntos_actuales = puntos_actuales + 500
       end
@@ -339,13 +340,14 @@ function colocaCartasEnZona_v3(salidaE,zona)
         signo = -1
       end
 
-      posX = paramXA - (nObjetos-1)*paramXB*signo
+      posX = paramXA*signo - (nObjetos-1)*paramXB*signo
       -- Posición de la zona
       posicionCarta.x = posicionZonai.x - posX
       posicionCarta.y = paramYA
       posicionCarta.z = posicionZonai.z
 
-      angX = signo * ( (8-nObjetos)*(angA/8) + angB )
+      --angX = signo * ( (8-nObjetos)*(angA/8) + angB )
+      angX = angB
       rotacionCarta.x = angX
       rotacionCarta.y = rotacionZonai.y
       rotacionCarta.z = rotacionZonai.z
