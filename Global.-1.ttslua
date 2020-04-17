@@ -11,19 +11,9 @@ function onLoad()
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_objects
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_objects
 
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/variables_ocultas
+
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_jugadores
-
-
-    -- -- CANASTAS
-    -- for i, zona in pairs(zonasCanastaE1) do
-    --   posicionZonaE1.i = zona.getPosition()
-    --   nObjetosActualE1[i] = #(zona.getObjects())
-    -- end
-    -- for i, zona in pairs(zonasCanastaE2) do
-    --   posicionZonaE2.i = zona.getPosition()
-    --   nObjetosActualE2[i] = #(zona.getObjects())
-    -- end
-
 
     -- CANASTAS
     salidaE1 = {}
@@ -34,26 +24,31 @@ function onLoad()
     nObjetosActualE2 = {}
     tipo_canasta_E1 = {}
     tipo_canasta_E2 = {}
-
+    activar_colocacion_E1 = {}
+    activar_colocacion_E2 = {}
 
     for i, zona in pairs(zonasCanastaE1) do
       nObjetosActualE1[i] = #(zona.getObjects())
       tipo_canasta_E1[i] = ''
+      activar_colocacion_E1[i] = 0
       salidaE1[i] = {}
     end
     for i, zona in pairs(zonasCanastaE2) do
       nObjetosActualE2[i] = #(zona.getObjects())
       tipo_canasta_E2[i] = ''
+      activar_colocacion_E2[i] = 0
       salidaE2[i] = {}
     end
 
     for i, zona in pairs(zonasCanastaE1) do
       salidaE1[i][1] = nObjetosActualE1[i]
       salidaE1[i][2] = tipo_canasta_E1[i]
+      salidaE1[i][3] = activar_colocacion_E1[i]
     end
     for i, zona in pairs(zonasCanastaE2) do
       salidaE2[i][1] = nObjetosActualE2[i]
       salidaE2[i][2] = tipo_canasta_E2[i]
+      salidaE2[i][3] = activar_colocacion_E2[i]
     end
 
 
@@ -61,9 +56,9 @@ function onLoad()
     salidaF1 = {}
     salidaF2 = {}
 
-    posicionZonaF1 = {}
+    posicionZonaF1   = {}
     nObjetosActualF1 = {}
-    posicionZonaF2 = {}
+    posicionZonaF2   = {}
     nObjetosActualF2 = {}
     carta_actualF1 = {}
     carta_actualF2 = {}

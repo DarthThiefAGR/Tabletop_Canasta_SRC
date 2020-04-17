@@ -1,0 +1,33 @@
+---------------------------------
+-- BOTÓN RECOGER MESA
+---------------------------------
+-- INCLUDES
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_jugadores
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_GUID
+
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/repartir_cartas
+
+
+function onLoad()
+
+  param = {
+    label='REPARTIR',
+    click_function='pulsar_boton_repartir',
+    function_owner=self,
+    position={0,0.5,0},
+    height=400,
+    width=450,
+    font_size=90,
+    color={1,1,1},
+    tooltip = 'Repartir cartas',
+  }
+
+  self.createButton(param)
+  self.setLock(true)
+
+end
+
+function pulsar_boton_repartir()
+  repartir_cartas()
+end

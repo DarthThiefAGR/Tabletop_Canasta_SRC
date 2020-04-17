@@ -1,0 +1,4 @@
+
+-- Variable para apagar las zonas de captura de canastas
+variable_zona_canastas_GUID = 'b847c2'
+variable_zona_canastas = getObjectFromGUID(variable_zona_canastas_GUID)

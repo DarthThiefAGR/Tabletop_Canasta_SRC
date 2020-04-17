@@ -7,11 +7,11 @@ function colocarFloresEnZona(salidaF,zona,equipo)
   local posicionZonai = zona.getPosition()
   local rotacionZonai = zona.getRotation()
 
-  nObjetosActual = salidaF[1]
-  carta_actual   = salidaF[2]
+  nObjetosActual     = salidaF[1]
+  carta_actual       = salidaF[2]
 
   -- Colocamos carta en su sitio, si es una flor
-  if (nObjetos ~= nObjetosActual) and nObjetos == 1 then
+  if (nObjetos ~= nObjetosActual) and nObjetos == 1 and activar_colocacion == 'si' then
 
     posicionCarta.x = posicionZonai.x
     posicionCarta.y = posicionZonai.y
@@ -112,8 +112,9 @@ end
 
 function colocaCartasEnZona_v3(salidaE,zona)
 
-    nObjetosActual = salidaE[1]
-    tipo_canasta   = salidaE[2]
+    nObjetosActual     = salidaE[1]
+    tipo_canasta       = salidaE[2]
+    activar_colocacion = salidaE[3]
 
     local objectsInZone = zona.getObjects()
     local nObjetos      = #objectsInZone
@@ -133,6 +134,10 @@ function colocaCartasEnZona_v3(salidaE,zona)
     -- Si ha variado el número de objetos en el interior de la zona
     -- y el número de cartas es 8 como máximo, ejecutamos el script
     if (nObjetos ~= nObjetosActual) and (nObjetos <= 8) then
+
+      if activar_colocacion == 0 then
+        print('No funciona')
+      end
 
       print('')
       print('nObjetosActual = ',nObjetosActual)
@@ -359,6 +364,7 @@ function colocaCartasEnZona_v3(salidaE,zona)
   arg_out = {}
   arg_out[1] = nObjetosActual
   arg_out[2] = tipo_canasta
+  arg_out[3] = 0
 
   return arg_out
 
