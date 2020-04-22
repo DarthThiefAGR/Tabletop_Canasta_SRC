@@ -1,6 +1,5 @@
 -- -------------------------------GUID_ZONAS----------------------------
 
-
 -- MAZO DE ROBO
 Z_mazo_robo_GUID = 'd5fc5d'
 -- MONTÓN OCULTO
@@ -11,6 +10,8 @@ Z_mazo_descarte_GUID = '5d0d4e'
 Z_marcador_ocultas_GUID = 'e0d23b'
 -- ZONA MARCADOR OCULTAS APOYADAS
 Z_marcador_ocultas_apoyo_GUID = '3670f3'
+-- ZONA AUXILIAR 01
+Z_auxiliar_01_GUID = 'b70628'
 
 -- ----------------------- Equipo 1----------------------
 -- ----------------Canastas-------------------

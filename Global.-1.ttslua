@@ -1,3 +1,6 @@
+function onPlayerTurn()
+end
+
 function onLoad()
 
     -- INCLUDES
@@ -7,25 +10,17 @@ function onLoad()
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_GUID
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/textos_GUID
 
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_objects
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_objects
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_objects
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/textos_objects
 
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/variables_ocultas
 
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_jugadores
 
-
-    -- FIX
-    for k = 1,8 do
-      for i = 1,2 do
-        blui = 'bloque_canasta_tipo_E' .. i .. '_C0' .. k .. '_GUID'
-        bloque_canasta = getObjectFromGUID(_G[blui])
-        scale = bloque_canasta.getScale()
-        bloque_canasta.setScale({1.1*scale[1], scale[2], 1.07*scale[3]})
-      end
-    end
 
     -- CANASTAS
     salidaE1 = {}

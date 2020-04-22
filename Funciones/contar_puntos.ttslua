@@ -1,5 +1,9 @@
 function contar_puntos()
 
+  -- CONTADOR RONDA
+  contador_ronda = getObjectFromGUID(contador_ronda_GUID)
+  ronda = contador_ronda.getValue()
+
   -- MANOS DE JUGADORES
   mano1_E1 = Jugador_1_E1.getHandObjects()
   mano2_E1 = Jugador_2_E1.getHandObjects()
@@ -11,225 +15,254 @@ function contar_puntos()
   Ncartas_1_E2 = #mano1_E2
   Ncartas_2_E2 = #mano2_E2
 
-  -- VARIABLES
-  puntosE1 = 0
-  puntosE2 = 0
+  -- Condición para poder recoger - 1 mano vacia
+  Cond_Manos = Ncartas_1_E1*Ncartas_2_E1*Ncartas_1_E2*Ncartas_2_E2
 
-  puntosE1_mano1 = 0
-  puntosE1_mano2 = 0
-  puntosE2_mano1 = 0
-  puntosE2_mano2 = 0
+  if Cond_Manos == 0 then
 
-  puntosE1_mesa = 0
-  puntosE2_mesa = 0
+    -- VARIABLES
+    puntosE1 = 0
+    puntosE2 = 0
 
-  -- PUNTOS TOTALES
-  contador_puntos_total_E1 = getObjectFromGUID(contador_puntos_total_E1_GUID)
-  contador_puntos_total_E2 = getObjectFromGUID(contador_puntos_total_E2_GUID)
+    puntosE1_mano1 = 0
+    puntosE1_mano2 = 0
+    puntosE2_mano1 = 0
+    puntosE2_mano2 = 0
 
-  puntos_total_E1 = contador_puntos_total_E1.getValue()
-  puntos_total_E2 = contador_puntos_total_E2.getValue()
+    puntosE1_mesa = 0
+    puntosE2_mesa = 0
 
-  -- PUNTOS EN LAS MANOS
-  for k = 1,Ncartas_1_E1 do
-    carta          = mano1_E1[k]
-    carta_valor    = carta.getDescription()
-    puntosE1_mano1 = puntosE1_mano1 + carta_valor
-  end
+    -- PUNTOS TOTALES
+    contador_puntos_total_E1 = getObjectFromGUID(contador_puntos_total_E1_GUID)
+    contador_puntos_total_E2 = getObjectFromGUID(contador_puntos_total_E2_GUID)
 
-  for k = 1,Ncartas_2_E1 do
-    carta          = mano2_E1[k]
-    carta_valor    = carta.getDescription()
-    puntosE1_mano2 = puntosE1_mano2 + carta_valor
-  end
+    puntos_total_E1 = contador_puntos_total_E1.getValue()
+    puntos_total_E2 = contador_puntos_total_E2.getValue()
 
-  for k = 1,Ncartas_1_E2 do
-    carta          = mano1_E2[k]
-    carta_valor    = carta.getDescription()
-    puntosE2_mano1 = puntosE2_mano1 + carta_valor
-  end
+    -- PUNTOS EN LAS MANOS
+    for k = 1,Ncartas_1_E1 do
+      carta          = mano1_E1[k]
+      carta_valor    = carta.getDescription()
+      puntosE1_mano1 = puntosE1_mano1 + carta_valor
+    end
 
-  for k = 1,Ncartas_2_E2 do
-    carta          = mano2_E2[k]
-    carta_valor    = carta.getDescription()
-    puntosE2_mano2 = puntosE2_mano2 + carta_valor
-  end
+    for k = 1,Ncartas_2_E1 do
+      carta          = mano2_E1[k]
+      carta_valor    = carta.getDescription()
+      puntosE1_mano2 = puntosE1_mano2 + carta_valor
+    end
 
-  -- PUNTOS EN MESA
-  mesaE1 = getObjectFromGUID(zonaCanastaE1_GUID)
-  mesaE2 = getObjectFromGUID(zonaCanastaE2_GUID)
-  mesaE1_cartas = mesaE1.getObjects()
-  mesaE2_cartas = mesaE2.getObjects()
+    for k = 1,Ncartas_1_E2 do
+      carta          = mano1_E2[k]
+      carta_valor    = carta.getDescription()
+      puntosE2_mano1 = puntosE2_mano1 + carta_valor
+    end
 
-  NmesaE1 = #mesaE1_cartas
-  NmesaE2 = #mesaE2_cartas
+    for k = 1,Ncartas_2_E2 do
+      carta          = mano2_E2[k]
+      carta_valor    = carta.getDescription()
+      puntosE2_mano2 = puntosE2_mano2 + carta_valor
+    end
 
-  for k = 1,NmesaE1 do
-    carta          = mesaE1_cartas[k]
-    carta_valor    = carta.getDescription()
-    puntosE1_mesa = puntosE1_mesa + carta_valor
-  end
-  for i = 1,NmesaE2 do
-    carta          = mesaE2_cartas[i]
-    carta_valor    = carta.getDescription()
-    puntosE2_mesa = puntosE2_mesa + carta_valor
-  end
+    -- PUNTOS EN MESA
+    mesaE1 = getObjectFromGUID(zonaCanastaE1_GUID)
+    mesaE2 = getObjectFromGUID(zonaCanastaE2_GUID)
+    mesaE1_cartas = mesaE1.getObjects()
+    mesaE2_cartas = mesaE2.getObjects()
 
-  -- PUNTOS EN CARTAS DE CANASTAS
-  -- EQUIPO 1
-  ZonaCerradaE1_C01 = getObjectFromGUID(zonaCerradaE1_C01_GUID)
-  ZonaCerradaE1_C02 = getObjectFromGUID(zonaCerradaE1_C02_GUID)
-  ZonaCerradaE1_C03 = getObjectFromGUID(zonaCerradaE1_C03_GUID)
-  ZonaCerradaE1_C04 = getObjectFromGUID(zonaCerradaE1_C04_GUID)
-  ZonaCerradaE1_C05 = getObjectFromGUID(zonaCerradaE1_C05_GUID)
-  ZonaCerradaE1_C06 = getObjectFromGUID(zonaCerradaE1_C06_GUID)
-  ZonaCerradaE1_C07 = getObjectFromGUID(zonaCerradaE1_C07_GUID)
-  ZonaCerradaE1_C08 = getObjectFromGUID(zonaCerradaE1_C08_GUID)
-  -- EQUIPO 2
-  ZonaCerradaE2_C01 = getObjectFromGUID(zonaCerradaE2_C01_GUID)
-  ZonaCerradaE2_C02 = getObjectFromGUID(zonaCerradaE2_C02_GUID)
-  ZonaCerradaE2_C03 = getObjectFromGUID(zonaCerradaE2_C03_GUID)
-  ZonaCerradaE2_C04 = getObjectFromGUID(zonaCerradaE2_C04_GUID)
-  ZonaCerradaE2_C05 = getObjectFromGUID(zonaCerradaE2_C05_GUID)
-  ZonaCerradaE2_C06 = getObjectFromGUID(zonaCerradaE2_C06_GUID)
-  ZonaCerradaE2_C07 = getObjectFromGUID(zonaCerradaE2_C07_GUID)
-  ZonaCerradaE2_C08 = getObjectFromGUID(zonaCerradaE2_C08_GUID)
+    NmesaE1 = #mesaE1_cartas
+    NmesaE2 = #mesaE2_cartas
 
-  zc1 = 'ZonaCerradaE'
-  zc2 = '_C0'
+    for k = 1,NmesaE1 do
+      carta          = mesaE1_cartas[k]
+      carta_valor    = carta.getDescription()
+      puntosE1_mesa = puntosE1_mesa + carta_valor
+    end
+    for i = 1,NmesaE2 do
+      carta          = mesaE2_cartas[i]
+      carta_valor    = carta.getDescription()
+      puntosE2_mesa = puntosE2_mesa + carta_valor
+    end
 
-  equipo = 1
-  cerrado_E1 = 0
-  cerrado_E2 = 0
+    -- PUNTOS EN CARTAS DE CANASTAS
+    -- EQUIPO 1
+    ZonaCerradaE1_C01 = getObjectFromGUID(zonaCerradaE1_C01_GUID)
+    ZonaCerradaE1_C02 = getObjectFromGUID(zonaCerradaE1_C02_GUID)
+    ZonaCerradaE1_C03 = getObjectFromGUID(zonaCerradaE1_C03_GUID)
+    ZonaCerradaE1_C04 = getObjectFromGUID(zonaCerradaE1_C04_GUID)
+    ZonaCerradaE1_C05 = getObjectFromGUID(zonaCerradaE1_C05_GUID)
+    ZonaCerradaE1_C06 = getObjectFromGUID(zonaCerradaE1_C06_GUID)
+    ZonaCerradaE1_C07 = getObjectFromGUID(zonaCerradaE1_C07_GUID)
+    ZonaCerradaE1_C08 = getObjectFromGUID(zonaCerradaE1_C08_GUID)
+    -- EQUIPO 2
+    ZonaCerradaE2_C01 = getObjectFromGUID(zonaCerradaE2_C01_GUID)
+    ZonaCerradaE2_C02 = getObjectFromGUID(zonaCerradaE2_C02_GUID)
+    ZonaCerradaE2_C03 = getObjectFromGUID(zonaCerradaE2_C03_GUID)
+    ZonaCerradaE2_C04 = getObjectFromGUID(zonaCerradaE2_C04_GUID)
+    ZonaCerradaE2_C05 = getObjectFromGUID(zonaCerradaE2_C05_GUID)
+    ZonaCerradaE2_C06 = getObjectFromGUID(zonaCerradaE2_C06_GUID)
+    ZonaCerradaE2_C07 = getObjectFromGUID(zonaCerradaE2_C07_GUID)
+    ZonaCerradaE2_C08 = getObjectFromGUID(zonaCerradaE2_C08_GUID)
 
-  -- PUNTOS EN CARTAS EN CANASTAS CERRADAS
-  for j = 1,2 do
+    zc1 = 'ZonaCerradaE'
+    zc2 = '_C0'
 
-    puntosv = 'cerrado_E' .. j
+    equipo = 1
+    cerrado_E1 = 0
+    cerrado_E2 = 0
 
-    -- Para cada uno de los 8 montones de canastas, contamos cartas
-    for k = 1,8 do
+    -- PUNTOS EN CARTAS EN CANASTAS CERRADAS
+    for j = 1,2 do
 
-      zc_name = zc1 .. j .. zc2 .. k
-      zc_objects = _G[zc_name].getObjects()
-      N_zc = #zc_objects
+      puntosv = 'cerrado_E' .. j
 
-      if N_zc > 2 then
+      -- Para cada uno de los 8 montones de canastas, contamos cartas
+      for k = 1,8 do
 
-        obj_name = zc_objects[1].name
+        zc_name = zc1 .. j .. zc2 .. k
+        zc_objects = _G[zc_name].getObjects()
+        N_zc = #zc_objects
 
-        if obj_name ~= 'Deck' or obj_name ~= 'Card' then
-          obj_name = zc_objects[2].name
-          if obj_name == 'Deck' or obj_name == 'Card' then
-            mazo     = zc_objects[2]
-            tipomazo = obj_name
-          else
-            obj_name = zc_objects[3].name
-            mazo     = zc_objects[3]
-            tipomazo = obj_name
-          end
-        else
-          mazo = zc_objects[1]
-          tipomazo = obj_name
-        end
+        if N_zc > 2 then
 
-        -- Contamos valores de cartas
-        if tipomazo == 'Deck' then
-          cartas = mazo.getObjects()
-          Ncmazo = #cartas
-          for i = 1,Ncmazo do
-            valor = cartas[i].description
-            if valor ~= '' then
-              _G[puntosv] = _G[puntosv] + valor
+          obj_name = zc_objects[1].name
+
+          if obj_name ~= 'Deck' or obj_name ~= 'Card' then
+            obj_name = zc_objects[2].name
+            if obj_name == 'Deck' or obj_name == 'Card' then
+              mazo     = zc_objects[2]
+              tipomazo = obj_name
+            else
+              obj_name = zc_objects[3].name
+              mazo     = zc_objects[3]
+              tipomazo = obj_name
             end
+          else
+            mazo = zc_objects[1]
+            tipomazo = obj_name
           end
-        else
-          valor = mazo.getDescription()
-          _G[puntosv] = _G[puntosv] + valor
+
+          -- Contamos valores de cartas
+          if tipomazo == 'Deck' then
+            cartas = mazo.getObjects()
+            Ncmazo = #cartas
+            for i = 1,Ncmazo do
+              valor = cartas[i].description
+              if valor ~= '' then
+                _G[puntosv] = _G[puntosv] + valor
+              end
+            end
+          else
+            valor = mazo.getDescription()
+            _G[puntosv] = _G[puntosv] + valor
+          end
         end
+
       end
 
     end
 
+    -- PUNTOS DE CANASTAS CERRADAS Y FLORES
+    contador_puntos_canastas_E1 = getObjectFromGUID(contador_puntos_canastas_E1_GUID)
+    contador_puntos_canastas_E2 = getObjectFromGUID(contador_puntos_canastas_E2_GUID)
+
+    puntos_canastas_E1 = contador_puntos_canastas_E1.getValue()
+    puntos_canastas_E2 = contador_puntos_canastas_E2.getValue()
+
+    -- DETECTAR SI SE HA CERRADO O NO
+    signoE1 = 1
+    if puntos_canastas_E1 <= 0 then
+      signoE1 = -1
+    end
+    signoE2 = 1
+    if puntos_canastas_E2 <= 0 then
+      signoE2 = -1
+    end
+
+
+    -- CONTABILIZAR PUNTOS
+    puntos_base_E1 = puntos_canastas_E1
+    puntos_mano_E1 = signoE1*(cerrado_E1 + puntosE1_mesa) - puntosE1_mano1 - puntosE1_mano2
+    puntos_base_E2 = puntos_canastas_E2
+    puntos_mano_E2 = signoE2*(cerrado_E2 + puntosE2_mesa) - puntosE2_mano1 - puntosE2_mano2
+
+    puntos_subtotal_E1 = puntos_base_E1 + puntos_mano_E1
+    puntos_subtotal_E2 = puntos_base_E2 + puntos_mano_E2
+
+    puntos_total_E1 = puntos_total_E1 + puntos_subtotal_E1
+    puntos_total_E2 = puntos_total_E2 + puntos_subtotal_E2
+
+    -- PRESENTAMOS RESULTADOS
+    print('')
+    print('EQUIPO 1')
+    print('puntos_base_E1 = ',puntos_base_E1)
+    print('cerrado_E1 = ',cerrado_E1)
+    print('puntosE1_mesa = ',puntosE1_mesa)
+    print('puntosE1_mano1 = ',puntosE1_mano1)
+    print('puntosE1_mano2 = ',puntosE1_mano2)
+    print('puntos_mano_E1 = ',puntos_mano_E1)
+    print('puntos_subtotal_E1 = ',puntos_subtotal_E1)
+    print('puntos_total_E1 = ',puntos_total_E1)
+    print('')
+    print('EQUIPO 2')
+    print('puntos_base_E2 = ',puntos_base_E2)
+    print('cerrado_E2 = ',cerrado_E2)
+    print('puntosE2_mesa = ',puntosE2_mesa)
+    print('puntosE2_mano1 = ',puntosE2_mano1)
+    print('puntosE2_mano2 = ',puntosE2_mano2)
+    print('puntos_mano_E2 = ',puntos_mano_E2)
+    print('puntos_subtotal_E2 = ',puntos_subtotal_E2)
+    print('puntos_total_E2 = ',puntos_total_E2)
+
+    -- AÑADIR A BLOC DE NOTAS
+    -- Creamos variables de entrada
+    M_puntos_E1 = {}
+    M_puntos_E1[1] = puntos_base_E1
+    M_puntos_E1[2] = puntos_mano_E1
+    M_puntos_E1[3] = puntos_subtotal_E1
+    M_puntos_E1[4] = puntos_total_E1
+
+    M_puntos_E2 = {}
+    M_puntos_E2[1] = puntos_base_E2
+    M_puntos_E2[2] = puntos_mano_E2
+    M_puntos_E2[3] = puntos_subtotal_E2
+    M_puntos_E2[4] = puntos_total_E2
+
+
+
+    -- Llamamos a la función que genera los textos para bloc de notas
+    texto_escribir = puntos_ronda_notas(ronda,M_puntos_E1,M_puntos_E2)
+
+    if ronda == 1 then
+      -- Editamos block de notas
+      paramsE1 = {
+          index = 0,
+          title = "PUNTOS",
+          body = texto_escribir,
+          color = "Grey"
+      }
+      editNotebookTab(paramsE1)
+    else
+      -- BLoc de notas actual
+      tabInfo = getNotebookTabs()
+      txt_actual = tabInfo[1].body
+      texto_escribir = txt_actual .. '\n' .. texto_escribir
+      -- Editamos block de notas
+      paramsE1 = {
+          index = 0,
+          title = "PUNTOS",
+          body = texto_escribir,
+          color = "Grey"
+      }
+      editNotebookTab(paramsE1)
+    end
+
+
+  else
+
+    printToAll('Ronda sin finalizar', {1,0,0})
+
   end
 
-  -- PUNTOS DE CANASTAS CERRADAS Y FLORES
-  contador_puntos_canastas_E1 = getObjectFromGUID(contador_puntos_canastas_E1_GUID)
-  contador_puntos_canastas_E2 = getObjectFromGUID(contador_puntos_canastas_E2_GUID)
-
-  puntos_canastas_E1 = contador_puntos_canastas_E1.getValue()
-  puntos_canastas_E2 = contador_puntos_canastas_E2.getValue()
-
-  -- DETECTAR SI SE HA CERRADO O NO
-  signoE1 = 1
-  if puntos_canastas_E1 <= 0 then
-    signoE1 = -1
-  end
-  signoE2 = 1
-  if puntos_canastas_E2 <= 0 then
-    signoE2 = -1
-  end
-
-
-  -- CONTABILIZAR PUNTOS
-  puntos_base_E1 = puntos_canastas_E1
-  puntos_mano_E1 = signoE1*(cerrado_E1 + puntosE1_mesa) - puntosE1_mano1 - puntosE1_mano2
-  puntos_base_E2 = puntos_canastas_E2
-  puntos_mano_E2 = signoE2*(cerrado_E2 + puntosE2_mesa) - puntosE2_mano1 - puntosE2_mano2
-
-  puntos_subtotal_E1 = puntos_base_E1 + puntos_mano_E1
-  puntos_subtotal_E2 = puntos_base_E2 + puntos_mano_E2
-
-  puntos_total_E1 = puntos_total_E1 + puntos_subtotal_E1
-  puntos_total_E2 = puntos_total_E2 + puntos_subtotal_E2
-
-  -- PRESENTAMOS RESULTADOS
-  print('')
-  print('EQUIPO 1')
-  print('puntos_base_E1 = ',puntos_base_E1)
-  print('cerrado_E1 = ',cerrado_E1)
-  print('puntosE1_mesa = ',puntosE1_mesa)
-  print('puntosE1_mano1 = ',puntosE1_mano1)
-  print('puntosE1_mano2 = ',puntosE1_mano2)
-  print('puntos_mano_E1 = ',puntos_mano_E1)
-  print('puntos_subtotal_E1 = ',puntos_subtotal_E1)
-  print('puntos_total_E1 = ',puntos_total_E1)
-  print('')
-  print('EQUIPO 2')
-  print('puntos_base_E2 = ',puntos_base_E2)
-  print('cerrado_E2 = ',cerrado_E2)
-  print('puntosE2_mesa = ',puntosE2_mesa)
-  print('puntosE2_mano1 = ',puntosE2_mano1)
-  print('puntosE2_mano2 = ',puntosE2_mano2)
-  print('puntos_mano_E2 = ',puntos_mano_E2)
-  print('puntos_subtotal_E2 = ',puntos_subtotal_E2)
-  print('puntos_total_E2 = ',puntos_total_E2)
-
-  -- AÑADIR A BLOC DE NOTAS
-  -- Creamos variables de entrada
-  M_puntos_E1 = {}
-  M_puntos_E1[1] = puntos_base_E1
-  M_puntos_E1[2] = puntos_mano_E1
-  M_puntos_E1[3] = puntos_subtotal_E1
-  M_puntos_E1[4] = puntos_total_E1
-
-  M_puntos_E2 = {}
-  M_puntos_E2[1] = puntos_base_E2
-  M_puntos_E2[2] = puntos_mano_E2
-  M_puntos_E2[3] = puntos_subtotal_E2
-  M_puntos_E2[4] = puntos_total_E2
-
-  -- Llamamos a la función que genera los textos para bloc de notas
-  texto_escribir = puntos_ronda_notas(M_puntos_E1,M_puntos_E2)
-
-  -- Editamos block de notas
-  paramsE1 = {
-      index = 0,
-      title = "PUNTOS",
-      body = texto_escribir,
-      color = "Grey"
-  }
-
-  editNotebookTab(paramsE1)
 
 end

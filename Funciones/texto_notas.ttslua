@@ -1,4 +1,4 @@
-function puntos_ronda_notas(M_puntos_E1,M_puntos_E2)
+function puntos_ronda_notas(ronda,M_puntos_E1,M_puntos_E2)
 
   -- Puntos de los equipos
   puntos_base_E1     = M_puntos_E1[1]
@@ -24,7 +24,7 @@ function puntos_ronda_notas(M_puntos_E1,M_puntos_E2)
 
   -- Texto base
   TBase = {}
-  TBase[1] = '----------------------------------------\n--------------   RONDA 1 -------------\n----------------------------------------\n------------  EQUIPO 1 - EQUIPO 2 ---\n'
+  TBase[1] = '----------------------------------------\n--------------   RONDA ' .. ronda .. ' -------------\n----------------------------------------\n------------  EQUIPO 1 - EQUIPO 2 ---\n'
   TBase[2] = '        BASE:     '
   TBase[3] = '      MANO:     '
   TBase[4] = 'SUBTOTAL:     '

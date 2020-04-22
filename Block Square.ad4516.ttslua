@@ -1,0 +1,77 @@
+---------------------------------
+-- BOTÓN RECOGER MESA
+---------------------------------
+-- INCLUDES
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_jugadores
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/textos_GUID
+
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/repartir_cartas
+
+function onLoad()
+
+  param = {
+    label='PRUEBA',
+    click_function='prupru',
+    function_owner=self,
+    position={0,0.5,0},
+    height=400,
+    width=450,
+    font_size=90,
+    color={1,1,1},
+    tooltip = 'Prueba',
+  }
+
+  self.createButton(param)
+  self.setLock(true)
+
+end
+
+function pulsar_boton()
+  pasar_turno()
+end
+
+function prupru()
+
+      -- COLOCAR textos
+      for i = 1,2 do
+        for j = 1,9 do
+          txt_canasta_tipo_GUID = 'canasta_tipo_E' .. i .. '_C0' .. j .. '_GUID'
+          zona_canasta_GUID     = 'zonaCanastaE' .. i .. '_C0' .. j .. '_GUID'
+
+          txt_canasta_tipo = getObjectFromGUID(_G[txt_canasta_tipo_GUID])
+          zona_canasta     = getObjectFromGUID(_G[zona_canasta_GUID])
+
+          pos0 = zona_canasta.getPosition()
+
+          signo = 1
+          angZ = 270
+          if pos0[1] < 0  then
+            signo = -1
+            angZ = 90
+          end
+          pos0 = {pos0[1]-6.7*signo,0.96,pos0[3]}
+          txt_canasta_tipo.setPosition(pos0)
+          txt_canasta_tipo.setRotation({90,angZ,0})
+          --txt_canasta_tipo.color = {1,1,1}
+          txt_canasta_tipo.setValue('A')
+          --txt_canasta_tipo.setFontColor({r = 1, g = 1, b = 1})
+        end
+      end
+
+end
+
+function pasar_turno()
+
+  Turns.enable = true
+  Turns.reverse_order = true
+  Turns.disable_interactations = true
+
+
+  msg = "Hello all."
+  rgb = {r=1, g=0, b=0}
+  broadcastToAll(msg, rgb)
+
+end

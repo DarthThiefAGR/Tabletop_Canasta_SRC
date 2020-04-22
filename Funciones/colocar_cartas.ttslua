@@ -1,6 +1,3 @@
-
-
-
 function colocaCartasEnZona_v3(salidaE,zona)
 
     nObjetosActual     = salidaE[1]

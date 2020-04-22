@@ -1,16 +1,63 @@
 function reset_table()
 
-  --ronda = contador_ronda.getvalue()
-  ronda = 0
-  
+  -- CONTADOR PUNTOS CANASTAS --
+  contador_puntos_canastas_E1 = getObjectFromGUID(contador_puntos_canastas_E1_GUID)
+  contador_puntos_canastas_E2 = getObjectFromGUID(contador_puntos_canastas_E2_GUID)
+
+  -- CONTADOR PUNTOS TOTALES --
+  contador_puntos_total_E1 = getObjectFromGUID(contador_puntos_total_E1_GUID)
+  contador_puntos_total_E2 = getObjectFromGUID(contador_puntos_total_E2_GUID)
+
+  -- CONTADOR RONDA
+  contador_ronda = getObjectFromGUID(contador_ronda_GUID)
+
+  -- BASE CANASTA EQUIPO 1 --
+  bloque_canasta_E1_C01 = getObjectFromGUID(bloque_canasta_E1_C01_GUID)
+  bloque_canasta_E1_C02 = getObjectFromGUID(bloque_canasta_E1_C02_GUID)
+  bloque_canasta_E1_C03 = getObjectFromGUID(bloque_canasta_E1_C03_GUID)
+  bloque_canasta_E1_C04 = getObjectFromGUID(bloque_canasta_E1_C04_GUID)
+  bloque_canasta_E1_C05 = getObjectFromGUID(bloque_canasta_E1_C05_GUID)
+  bloque_canasta_E1_C06 = getObjectFromGUID(bloque_canasta_E1_C06_GUID)
+  bloque_canasta_E1_C07 = getObjectFromGUID(bloque_canasta_E1_C07_GUID)
+  bloque_canasta_E1_C08 = getObjectFromGUID(bloque_canasta_E1_C08_GUID)
+
+  -- BASE CANASTA EQUIPO 2 --
+  bloque_canasta_E2_C01 = getObjectFromGUID(bloque_canasta_E2_C01_GUID)
+  bloque_canasta_E2_C02 = getObjectFromGUID(bloque_canasta_E2_C02_GUID)
+  bloque_canasta_E2_C03 = getObjectFromGUID(bloque_canasta_E2_C03_GUID)
+  bloque_canasta_E2_C04 = getObjectFromGUID(bloque_canasta_E2_C04_GUID)
+  bloque_canasta_E2_C05 = getObjectFromGUID(bloque_canasta_E2_C05_GUID)
+  bloque_canasta_E2_C06 = getObjectFromGUID(bloque_canasta_E2_C06_GUID)
+  bloque_canasta_E2_C07 = getObjectFromGUID(bloque_canasta_E2_C07_GUID)
+  bloque_canasta_E2_C08 = getObjectFromGUID(bloque_canasta_E2_C08_GUID)
+
+  -- BASE CANASTA TIPO - EQUIPO 1 -
+  bloque_canasta_tipo_E1_C01 = getObjectFromGUID(bloque_canasta_tipo_E1_C01_GUID)
+  bloque_canasta_tipo_E1_C02 = getObjectFromGUID(bloque_canasta_tipo_E1_C02_GUID)
+  bloque_canasta_tipo_E1_C03 = getObjectFromGUID(bloque_canasta_tipo_E1_C03_GUID)
+  bloque_canasta_tipo_E1_C04 = getObjectFromGUID(bloque_canasta_tipo_E1_C04_GUID)
+  bloque_canasta_tipo_E1_C05 = getObjectFromGUID(bloque_canasta_tipo_E1_C05_GUID)
+  bloque_canasta_tipo_E1_C06 = getObjectFromGUID(bloque_canasta_tipo_E1_C06_GUID)
+  bloque_canasta_tipo_E1_C07 = getObjectFromGUID(bloque_canasta_tipo_E1_C07_GUID)
+  bloque_canasta_tipo_E1_C08 = getObjectFromGUID(bloque_canasta_tipo_E1_C08_GUID)
+
+  -- BASE CANASTA TIPO - EQUIPO 2 -
+  bloque_canasta_tipo_E2_C01 = getObjectFromGUID(bloque_canasta_tipo_E2_C01_GUID)
+  bloque_canasta_tipo_E2_C02 = getObjectFromGUID(bloque_canasta_tipo_E2_C02_GUID)
+  bloque_canasta_tipo_E2_C03 = getObjectFromGUID(bloque_canasta_tipo_E2_C03_GUID)
+  bloque_canasta_tipo_E2_C04 = getObjectFromGUID(bloque_canasta_tipo_E2_C04_GUID)
+  bloque_canasta_tipo_E2_C05 = getObjectFromGUID(bloque_canasta_tipo_E2_C05_GUID)
+  bloque_canasta_tipo_E2_C06 = getObjectFromGUID(bloque_canasta_tipo_E2_C06_GUID)
+  bloque_canasta_tipo_E2_C07 = getObjectFromGUID(bloque_canasta_tipo_E2_C07_GUID)
+  bloque_canasta_tipo_E2_C08 = getObjectFromGUID(bloque_canasta_tipo_E2_C08_GUID)
+
+  ronda = contador_ronda.getValue()
+
   if ronda >= 1 then
 
   -- PONEMOS PUNTOS DE CONTADORES DE CANASTAS A CERO
   contador_puntos_canastas_E1.setValue(0)
   contador_puntos_canastas_E2.setValue(0)
-
-  -- PASAMOS DE RONDA
-  contador_ronda.setValue(ronda+1)
 
   elseif ronda == 0 then
 
@@ -20,28 +67,20 @@ function reset_table()
     contador_puntos_total_E1.setValue(0)
     contador_puntos_total_E2.setValue(0)
 
-    -- PONEMOS RONDA A CERO
-    contador_ronda.setValue(0)
-
   end
 
+  -- PASAMOS DE RONDA
+  contador_ronda.setValue(ronda+1)
+  
   -- RESETEAMOS COLORES DE BASES DE CANASTA
-  bloque_canasta_E1_C01.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E1_C02.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E1_C03.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E1_C04.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E1_C05.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E1_C06.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E1_C07.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E1_C08.setColorTint({0.7,0.7,0.7})
+  for i = 1,2 do
+    for j = 1,8 do
+      bloque = 'bloque_canasta_E' .. i .. '_C0' .. j
+      bloque_tipo = 'bloque_canasta_tipo_E' .. i .. '_C0' .. j
+      _G[bloque].setColorTint({0.7,0.7,0.7})
+      _G[bloque_tipo].setColorTint({0.7,0.7,0.7})
+    end
+  end
 
-  bloque_canasta_E2_C01.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E2_C02.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E2_C03.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E2_C04.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E2_C05.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E2_C06.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E2_C07.setColorTint({0.7,0.7,0.7})
-  bloque_canasta_E2_C08.setColorTint({0.7,0.7,0.7})
 
 end
