@@ -160,12 +160,22 @@ function contar_puntos()
   puntos_canastas_E1 = contador_puntos_canastas_E1.getValue()
   puntos_canastas_E2 = contador_puntos_canastas_E2.getValue()
 
+  -- DETECTAR SI SE HA CERRADO O NO
+  signoE1 = 1
+  if puntos_canastas_E1 <= 0 then
+    signoE1 = -1
+  end
+  signoE2 = 1
+  if puntos_canastas_E2 <= 0 then
+    signoE2 = -1
+  end
+
 
   -- CONTABILIZAR PUNTOS
   puntos_base_E1 = puntos_canastas_E1
-  puntos_mano_E1 = cerrado_E1 + puntosE1_mesa - puntosE1_mano1 - puntosE1_mano2
+  puntos_mano_E1 = signoE1*(cerrado_E1 + puntosE1_mesa) - puntosE1_mano1 - puntosE1_mano2
   puntos_base_E2 = puntos_canastas_E2
-  puntos_mano_E2 = cerrado_E2 + puntosE2_mesa - puntosE2_mano1 - puntosE2_mano2
+  puntos_mano_E2 = signoE2*(cerrado_E2 + puntosE2_mesa) - puntosE2_mano1 - puntosE2_mano2
 
   puntos_subtotal_E1 = puntos_base_E1 + puntos_mano_E1
   puntos_subtotal_E2 = puntos_base_E2 + puntos_mano_E2
