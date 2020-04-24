@@ -11,6 +11,28 @@ function reset_table()
   -- CONTADOR RONDA
   contador_ronda = getObjectFromGUID(contador_ronda_GUID)
 
+  -- TEXTOS CANASTA EQUIPO 1
+  canasta_tipo_E1_C01 = getObjectFromGUID(canasta_tipo_E1_C01_GUID)
+  canasta_tipo_E1_C02 = getObjectFromGUID(canasta_tipo_E1_C02_GUID)
+  canasta_tipo_E1_C03 = getObjectFromGUID(canasta_tipo_E1_C03_GUID)
+  canasta_tipo_E1_C04 = getObjectFromGUID(canasta_tipo_E1_C04_GUID)
+  canasta_tipo_E1_C05 = getObjectFromGUID(canasta_tipo_E1_C05_GUID)
+  canasta_tipo_E1_C06 = getObjectFromGUID(canasta_tipo_E1_C06_GUID)
+  canasta_tipo_E1_C07 = getObjectFromGUID(canasta_tipo_E1_C07_GUID)
+  canasta_tipo_E1_C08 = getObjectFromGUID(canasta_tipo_E1_C08_GUID)
+  canasta_tipo_E1_C09 = getObjectFromGUID(canasta_tipo_E1_C09_GUID)
+
+  -- TEXTOS CANASTA EQUIPO 1
+  canasta_tipo_E2_C01 = getObjectFromGUID(canasta_tipo_E2_C01_GUID)
+  canasta_tipo_E2_C02 = getObjectFromGUID(canasta_tipo_E2_C02_GUID)
+  canasta_tipo_E2_C03 = getObjectFromGUID(canasta_tipo_E2_C03_GUID)
+  canasta_tipo_E2_C04 = getObjectFromGUID(canasta_tipo_E2_C04_GUID)
+  canasta_tipo_E2_C05 = getObjectFromGUID(canasta_tipo_E2_C05_GUID)
+  canasta_tipo_E2_C06 = getObjectFromGUID(canasta_tipo_E2_C06_GUID)
+  canasta_tipo_E2_C07 = getObjectFromGUID(canasta_tipo_E2_C07_GUID)
+  canasta_tipo_E2_C08 = getObjectFromGUID(canasta_tipo_E2_C08_GUID)
+  canasta_tipo_E2_C09 = getObjectFromGUID(canasta_tipo_E2_C09_GUID)
+
   -- BASE CANASTA EQUIPO 1 --
   bloque_canasta_E1_C01 = getObjectFromGUID(bloque_canasta_E1_C01_GUID)
   bloque_canasta_E1_C02 = getObjectFromGUID(bloque_canasta_E1_C02_GUID)
@@ -71,8 +93,8 @@ function reset_table()
 
   -- PASAMOS DE RONDA
   contador_ronda.setValue(ronda+1)
-  
-  -- RESETEAMOS COLORES DE BASES DE CANASTA
+
+  -- RESETEAMOS COLORES DE BASES DE CANASTA Y TEXTOS
   for i = 1,2 do
     for j = 1,8 do
       bloque = 'bloque_canasta_E' .. i .. '_C0' .. j
@@ -82,5 +104,11 @@ function reset_table()
     end
   end
 
+  for i = 1,2 do
+    for j = 1,9 do
+      txt_gui = 'canasta_tipo_E' .. i .. '_C0' .. j
+      _G[txt_gui].setValue(' ')
+    end
+  end
 
 end

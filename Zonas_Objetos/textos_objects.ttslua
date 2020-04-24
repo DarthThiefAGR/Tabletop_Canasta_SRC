@@ -1,3 +1,4 @@
+-- TEXTOS CANASTA EQUIPO 1
 canasta_tipo_E1_C01 = getObjectFromGUID(canasta_tipo_E1_C01_GUID)
 canasta_tipo_E1_C02 = getObjectFromGUID(canasta_tipo_E1_C02_GUID)
 canasta_tipo_E1_C03 = getObjectFromGUID(canasta_tipo_E1_C03_GUID)
@@ -6,7 +7,9 @@ canasta_tipo_E1_C05 = getObjectFromGUID(canasta_tipo_E1_C05_GUID)
 canasta_tipo_E1_C06 = getObjectFromGUID(canasta_tipo_E1_C06_GUID)
 canasta_tipo_E1_C07 = getObjectFromGUID(canasta_tipo_E1_C07_GUID)
 canasta_tipo_E1_C08 = getObjectFromGUID(canasta_tipo_E1_C08_GUID)
+canasta_tipo_E1_C09 = getObjectFromGUID(canasta_tipo_E1_C09_GUID)
 
+-- TEXTOS CANASTA EQUIPO 1
 canasta_tipo_E2_C01 = getObjectFromGUID(canasta_tipo_E2_C01_GUID)
 canasta_tipo_E2_C02 = getObjectFromGUID(canasta_tipo_E2_C02_GUID)
 canasta_tipo_E2_C03 = getObjectFromGUID(canasta_tipo_E2_C03_GUID)
@@ -15,3 +18,4 @@ canasta_tipo_E2_C05 = getObjectFromGUID(canasta_tipo_E2_C05_GUID)
 canasta_tipo_E2_C06 = getObjectFromGUID(canasta_tipo_E2_C06_GUID)
 canasta_tipo_E2_C07 = getObjectFromGUID(canasta_tipo_E2_C07_GUID)
 canasta_tipo_E2_C08 = getObjectFromGUID(canasta_tipo_E2_C08_GUID)
+canasta_tipo_E2_C09 = getObjectFromGUID(canasta_tipo_E2_C09_GUID)
