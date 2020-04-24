@@ -1,0 +1,69 @@
+---------------------------------
+-- BOTÓN RECOGER MESA
+---------------------------------
+-- INCLUDES
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_jugadores
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/textos_GUID
+
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_pos_sca
+
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/repartir_cartas
+
+function onLoad()
+
+  param = {
+    label='CORTAR',
+    click_function='cortar_aleatorio',
+    function_owner=self,
+    position={0,0.5,0},
+    height=400,
+    width=450,
+    font_size=110,
+    color={1,1,1},
+    tooltip = 'Echar a suerte turnos de la partida',
+  }
+
+  self.createButton(param)
+  self.setLock(true)
+
+end
+
+function cortar_aleatorio()
+
+  -- Mazo de reparto
+  mazo_reparto_obj = getObjectFromGUID(mazo_reparto_GUID)
+  corte_rand = math.random(49-5,49+5)
+
+  -- if corte_rand == 49 then
+  --   printToAll('¡CORTE PERFECTO!', {1,1,1})
+  --   broadcastToAll('¡CORTE PERFECTO!', {1,1,1})
+  -- else
+  --   printToAll('Ohh...', {1,1,1})
+  --   broadcastToAll('Ohh...', {1,1,1})
+  -- end
+
+  -- Cortamos
+  mazo_reparto_obj.cut(corte_rand)
+
+  -- Esperamos y hacemos desaparecer el botón
+
+  -- Esperamos, ponemos mazo de reparto en su zona, y activamos turnos
+  Wait.time(function() empezar_reparto() end, 1.5)
+
+end
+
+function empezar_reparto()
+
+  -- Hacemos desaparecer botón
+  self.setPosition({0,0,0})
+  self.setScale({0.01,0.01,0.01})
+
+  -- Hacemos aparecer botón de reparto
+  boton_repartir_cartas = getObjectFromGUID(boton_repartir_cartas_GUID)
+  boton_repartir_cartas.setPosition(boton_repartir_cartas_pos0)
+
+
+end

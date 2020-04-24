@@ -1,0 +1,77 @@
+---------------------------------
+-- BOTÓN RECOGER MESA
+---------------------------------
+-- INCLUDES
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_jugadores
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/textos_GUID
+
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_pos_sca
+
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/repartir_cartas
+
+function onLoad()
+
+  param = {
+    label='SORTEAR\nTURNOS',
+    click_function='sortear_turnos',
+    function_owner=self,
+    position={0,0.5,0},
+    height=400,
+    width=450,
+    font_size=90,
+    color={1,1,1},
+    tooltip = 'Echar a suerte turnos de la partida',
+  }
+
+  self.createButton(param)
+  self.setLock(true)
+
+end
+
+function pulsar_boton()
+  pasar_turno()
+end
+
+
+function sortear_turnos()
+
+  turno_orden_1 = {'Red','Blue','Green','Yellow'}
+  turno_orden_2 = {'Blue','Green','Yellow','Red'}
+  turno_orden_3 = {'Green','Yellow','Red','Blue'}
+  turno_orden_4 = {'Yellow','Red','Blue','Green'}
+
+  --math.randomseed( os.time() )
+  sorteo_resultado = math.random(1,4)
+  turno_orden_sel = 'turno_orden_' .. sorteo_resultado
+  turno_orden = _G[turno_orden_sel]
+  jugador_inicial = Player[turno_orden[1]].steam_name
+
+  txt_a_todos = jugador_inicial .. ' empieza cortando'
+  printToAll(txt_a_todos, {1,0,0})
+
+  -- Hacemos desaparecer botón
+  self.setPosition({0,0,0})
+  self.setScale({0.01,0.01,0.01})
+
+  -- Esperamos, ponemos mazo de reparto en su zona, y activamos turnos
+  Wait.time(function() empezar_ronda() end, 1.5)
+
+end
+
+function empezar_ronda()
+
+  -- Colocamos mazo de robo en su zona
+  zona_reparto_obj = getObjectFromGUID(Z_mazo_robo_GUID)
+  mazo_reparto_obj = getObjectFromGUID(mazo_reparto_GUID)
+  pos0 = zona_reparto_obj.getPosition()
+  mazo_reparto_obj.setPosition(pos0)
+
+  -- Hacemos aparecer botón de corte aleatorio
+  boton_corte_aleatorio = getObjectFromGUID(boton_corte_aleatorio_GUID)
+  boton_corte_aleatorio.setPosition(boton_corte_aleatorio_pos0)
+
+
+end

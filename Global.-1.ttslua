@@ -6,6 +6,7 @@ function onLoad()
     -- INCLUDES
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/colocar_cartas
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/colocar_flores
+    #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/colocar_cartas_descarte
 
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
@@ -22,11 +23,10 @@ function onLoad()
     #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_jugadores
 
 
-    -- CANASTAS
+    -- SCRIPT ZONAS DE CANASTAS
     salidaE1 = {}
     salidaE2 = {}
 
-    -- SCRIPT ZONAS DE CANASTAS
     nObjetosActualE1 = {}
     nObjetosActualE2 = {}
     tipo_canasta_E1 = {}
@@ -59,7 +59,7 @@ function onLoad()
     end
 
 
-    -- FLORES
+    -- SCRIPT DE FLORES
     salidaF1 = {}
     salidaF2 = {}
 
@@ -92,6 +92,11 @@ function onLoad()
       salidaF2[i][2] = carta_actualF2[i]
     end
 
+    -- -- SCRIPT DE ZONA DE DESCARTES
+    -- zonaDescarte = getObjectFromGUID(Z_mazo_descarte_GUID)
+    -- salidaDE = {}
+    -- salidaDE[1] = 0
+
 
 end
 
@@ -111,5 +116,8 @@ function onUpdate()
   for i,zona in ipairs(zonasCanastaE2) do
     salidaE2[i] = colocaCartasEnZona_v3(salidaE2[i],zona)
   end
+
+  -- salidaDE = colocar_cartas_descarte(salidaDE,zonaDescarte)
+
 
 end

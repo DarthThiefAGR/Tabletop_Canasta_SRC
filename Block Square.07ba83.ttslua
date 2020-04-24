@@ -31,6 +31,6 @@ function onLoad()
 end
 
 function pulsar_boton_recoger()
-  --recoger_mesa()
+  recoger_mesa()
   reset_table()
 end

@@ -38,5 +38,17 @@ bloque_canasta_tipo_E2_C06_GUID = 'd426db'
 bloque_canasta_tipo_E2_C07_GUID = 'c9fede'
 bloque_canasta_tipo_E2_C08_GUID = '095776'
 
+-- MAZO DE ROBO
+mazo_reparto_GUID = 'bc1419'
+
+-- BOTÓN SORTEAR TURNOS
+boton_sortear_turnos_GUID = 'd36203'
+
+-- BOTÓN CORTE ALEATORIO
+boton_corte_aleatorio_GUID = 'ad58de'
+
+-- BOTÓN REPARTIR CARTAS
+boton_repartir_cartas_GUID = '22f205'
+
 -- BOTÓN FINALIZAR RONDA
 boton_finalizar_ronda_GUID = '5d2de2'
