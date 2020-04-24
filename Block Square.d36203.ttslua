@@ -51,6 +51,11 @@ function sortear_turnos()
 
   txt_a_todos = jugador_inicial .. ' empieza cortando'
   printToAll(txt_a_todos, {1,0,0})
+  broadcastToAll(txt_a_todos, {1,0,0})
+
+  -- Guardamos inicio de turno en texto marcador
+  texto_primer_turno = getObjectFromGUID(texto_primer_turno_GUID)
+  texto_primer_turno.setValue(turno_orden[1])
 
   -- Hacemos desaparecer botón
   self.setPosition({0,0,0})
@@ -60,6 +65,9 @@ function sortear_turnos()
   Wait.time(function() empezar_ronda() end, 1.5)
 
 end
+
+
+
 
 function empezar_ronda()
 

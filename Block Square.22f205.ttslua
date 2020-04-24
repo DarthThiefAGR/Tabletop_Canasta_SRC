@@ -6,6 +6,7 @@
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_GUID
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/textos_GUID
 
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/repartir_cartas
 
@@ -13,7 +14,7 @@ function onLoad()
 
   param = {
     label='REPARTIR',
-    click_function='pulsar_boton_repartir',
+    click_function='repartir_cartas',
     function_owner=self,
     position={0,0.5,0},
     height=400,
@@ -28,6 +29,43 @@ function onLoad()
 
 end
 
-function pulsar_boton_repartir()
-  --reset_table()
+function repartir_cartas()
+
+  -- Miramos de quién fue el primer turno
+  turno_inicial = 'White'
+
+  -- Comprobamos si se le ha dado la vuelta al corte
+  Z_mazo_robo = getObjectFromGUID(Z_mazo_robo_GUID)
+  Z_mazo_robo_OBJ = Z_mazo_robo.getObjects()
+
+  mazo_1  = Z_mazo_robo_OBJ[1].getObjects()
+  mazo_2  = Z_mazo_robo_OBJ[2].getObjects()
+
+  pos1 = Z_mazo_robo_OBJ[1].getPosition()
+  pos2 = Z_mazo_robo_OBJ[2].getPosition()
+
+  if pos1[2] > pos2[2] then
+    mazo_corte = Z_mazo_robo_OBJ[1]
+  else
+    mazo_corte = Z_mazo_robo_OBJ[2]
+  end
+
+  rot_corte = mazo_corte.getRotation()
+
+  print(rot_corte[3])
+  if rot_corte[3] >= -0.1 and rot_corte[3] <= 0.1 then
+
+    -- Cogemos inicio de turno en texto marcador
+    texto_primer_turno = getObjectFromGUID(texto_primer_turno_GUID)
+    turno_inicial = texto_primer_turno.TextTool.getValue()
+    reparto_de_cartas(turno_inicial)
+
+  else
+
+    printToAll('¡Mirar mazo de corte!', {1,0,0})
+    broadcastToAll('¡Mirar mazo de corte!', {1,0,0})
+
+  end
+
+
 end

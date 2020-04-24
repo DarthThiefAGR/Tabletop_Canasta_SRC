@@ -1,74 +1,36 @@
-function repartir_cartas()
+function reparto_de_cartas(turno_inicial)
 
-  -- Zona de pre-reparto
-  zona_pre_reparto_GUID = '49cc56'
-  zona_pre_reparto     = getObjectFromGUID(zona_pre_reparto_GUID)
-  pos_zona_pre_reparto = zona_pre_reparto.getPosition()
+  -- Turnos
+  turno_orden_1 = {'Red','Blue','Green','Yellow'}
+  turno_orden_2 = {'Blue','Green','Yellow','Red'}
+  turno_orden_3 = {'Green','Yellow','Red','Blue'}
+  turno_orden_4 = {'Yellow','Red','Blue','Green'}
 
-  -- Posición de zona del mazo de robo - ocultas y ocultas apoyadas
-  Z_mazo_robo   = getObjectFromGUID(Z_mazo_robo_GUID)
-  pos_mazo_robo = Z_mazo_robo.getPosition()
-  rot_mazo_robo = Z_mazo_robo.getRotation()
-  pos_mazo_robo_off = {pos_mazo_robo[1],5,pos_mazo_robo[3]}
-  rot_mazo_robo = {rot_mazo_robo[1],rot_mazo_robo[2],180}
+  -- Manos de jugadores
+  mano_1_E1 = Jugador_1_E1.getHandObjects()
+  mano_2_E1 = Jugador_2_E1.getHandObjects()
+  mano_1_E2 = Jugador_1_E2.getHandObjects()
+  mano_2_E2 = Jugador_2_E2.getHandObjects()
 
-  OBJ_mazo_robo     =  Z_mazo_robo.getObjects()
-  N_OBJ_mazo_robo     = #OBJ_mazo_robo
+  N_mano_1_E1 = #mano_1_E1
+  N_mano_2_E1 = #mano_2_E1
+  N_mano_1_E2 = #mano_1_E2
+  N_mano_2_E2 = #mano_2_E2
 
-  if N_OBJ_mazo_robo ~= 0 then
-    CARD_mazo_robo     = OBJ_mazo_robo[1].getObjects()
-    N_CARD_mazo_robo = #CARD_mazo_robo
+  print('N_mano_1_E1 = ',N_mano_1_E1)
+  print('N_mano_2_E1 = ',N_mano_2_E1)
+  print('N_mano_1_E2 = ',N_mano_1_E2)
+  print('N_mano_2_E2 = ',N_mano_2_E2)
+
+  -- Detectar orden de reparto
+  if     turno_inicial == turno_orden_1[1] then
+    orden_reparto = turno_orden_3
+  elseif turno_inicial == turno_orden_2[1] then
+    orden_reparto = turno_orden_4
+  elseif turno_inicial == turno_orden_3[1] then
+    orden_reparto = turno_orden_1
+  elseif turno_inicial == turno_orden_4[1] then
+    orden_reparto = turno_orden_2
   end
 
-  if N_CARD_mazo_robo == 104 then
-    printToAll('Repartiendo', {0,1,0})
-
-  lista_reparto = {}
-  lista_reparto = {Jugador_1_E1_color, Jugador_2_E1_color,
-                   Jugador_1_E2_color, Jugador_2_E2_color}
-  contador_reparto = 1
-
-    for k = 1,5 do
-
-      carta = CARD_mazo_robo[k]
-      jugador_a_repartir = lista_reparto[contador_reparto]
-
-      param = {position = pos_zona_pre_reparto,
-               rotation = rot_mazo_robo,
-               index = 1,
-      --callback_function = function(obj) espera_post_coger(obj,jugador_a_repartir) end,
-          }
-      OBJ_mazo_robo[1].takeObject(param)
-
-      Wait.frames(function() repartir_espera(zona_pre_reparto,jugador_a_repartir) end, 60)
-
-      contador_reparto = contador_reparto + 1
-      if contador_reparto > 4 then
-        contador_reparto = 1
-      end
-
-    end
-
-
-  else
-    printToAll('No se pueden repartir, faltan cartas', {1,0,0})
-  end
-
-
-end
-
-function espera_post_coger(obj,jugador)
-  Wait.frames(function() post_repartir(obj,jugador) end, 5)
-end
-
-function post_repartir(obj,jugador)
-  print(jugador)
-  obj.deal(1,jugador)
-end
-
-function repartir_espera(zona_pre_reparto,jugador)
-  carta_zona_reparto = zona_pre_reparto.getObjects()
-  print(#carta_zona_reparto)
-  print(jugador)
-  carta_zona_reparto[1].setPosition({3,3,3})
 end

@@ -1,3 +1,5 @@
+-- TEXTOS TIPO CANASTA
+
 canasta_tipo_E1_C01_GUID = '71df96'
 canasta_tipo_E1_C02_GUID = '58aceb'
 canasta_tipo_E1_C03_GUID = '1eef00'
@@ -17,3 +19,6 @@ canasta_tipo_E2_C06_GUID = '87fd03'
 canasta_tipo_E2_C07_GUID = 'a42ff5'
 canasta_tipo_E2_C08_GUID = '938c06'
 canasta_tipo_E2_C09_GUID = '92a2d0'
+
+-- INDICADOR DE PRIMER TURNO (CORTE DE MAZO)
+texto_primer_turno_GUID = '8927f3'

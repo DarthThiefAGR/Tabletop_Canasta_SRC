@@ -37,23 +37,14 @@ function cortar_aleatorio()
   mazo_reparto_obj = getObjectFromGUID(mazo_reparto_GUID)
   corte_rand = math.random(49-5,49+5)
 
-  -- if corte_rand == 49 then
-  --   printToAll('¡CORTE PERFECTO!', {1,1,1})
-  --   broadcastToAll('¡CORTE PERFECTO!', {1,1,1})
-  -- else
-  --   printToAll('Ohh...', {1,1,1})
-  --   broadcastToAll('Ohh...', {1,1,1})
-  -- end
-
   -- Cortamos
-  mazo_reparto_obj.cut(corte_rand)
-
-  -- Esperamos y hacemos desaparecer el botón
+  mazo_reparto_obj.cut()
 
   -- Esperamos, ponemos mazo de reparto en su zona, y activamos turnos
-  Wait.time(function() empezar_reparto() end, 1.5)
+  Wait.time(function() empezar_reparto(corte_rand) end, 1.0)
 
 end
+
 
 function empezar_reparto()
 
