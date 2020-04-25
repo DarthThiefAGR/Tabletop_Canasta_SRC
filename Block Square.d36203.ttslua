@@ -60,6 +60,7 @@ function sortear_turnos()
     sorteo_resultado = math.random(1,4)
     sorteo_resultado = math.random(1,4)
 
+
     -- Seleccionamos jugador resultado
     turno_orden_sel  = 'turno_orden_' .. sorteo_resultado
     turno_orden      = _G[turno_orden_sel]

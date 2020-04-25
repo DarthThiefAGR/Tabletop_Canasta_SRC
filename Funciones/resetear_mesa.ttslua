@@ -12,6 +12,7 @@ function reset_table(mesa_recogida)
 
     -- CONTADOR RONDA
     contador_ronda = getObjectFromGUID(contador_ronda_GUID)
+    ronda = contador_ronda.getValue()
 
     -- TEXTOS CANASTA EQUIPO 1
     canasta_tipo_E1_C01 = getObjectFromGUID(canasta_tipo_E1_C01_GUID)

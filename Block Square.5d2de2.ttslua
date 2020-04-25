@@ -37,4 +37,9 @@ function pulsar_boton_finalizar()
   -- FINALIZAMOS SISTEMA DE TURNOS
   Turns.enable = false
 
+  -- DESAPARECEMOS BOTÓN
+  pos0 = self.getPosition()
+  self.setPosition({pos0[1],-1,pos0[3]})
+  self.setScale({0.01,0.01,0.01})
+
 end

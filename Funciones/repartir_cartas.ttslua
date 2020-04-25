@@ -104,11 +104,6 @@ function reparto_de_cartas(turno_inicial,mazo_corte,mazo_reparto)
   end
 
 
-  param1 = {position = Z_monton_oculto_pos,
-            rotation = Z_monton_oculto_rot,
-            callback_function = function(obj) create_hidden_deck_v2(obj,mazo_reparto) end,
-            }
-
   -- Ponemos primera carta del montón oculto
   paramN = {position = Z_monton_oculto_pos,
             rotation = Z_monton_oculto_rot,
@@ -129,30 +124,4 @@ end
 
 function deal_card(mazo,color)
   mazo.deal(1,color)
-end
-
-function create_hidden_deck_v2(obj_i,carta0)
-
-  carta0.putObject(obj_i)
-
-end
-
-function primera_carta_monton_ocult(obj0,mazo)
-
-  for k = 1,2 do
-  param = {position = Z_mazo_descarte_pos,
-          rotation = Z_mazo_descarte_rot,
-          callback_function = function(obj) create_hidden_deck(obj,obj0) end,
-          }
-
-  mazo.takeObject(param)
-  end
-
-end
-
-
-function create_hidden_deck(obj_i,carta0)
-
-  carta0.putObject(obj_i)
-
 end

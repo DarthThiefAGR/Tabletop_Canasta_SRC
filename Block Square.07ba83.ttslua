@@ -40,30 +40,41 @@ function pulsar_boton_recoger()
   -- Reseteamos mesa y pasamos de ronda
   reset_table(mesa_recogida)
 
-  -- Volvemos a hacer aparecer el botón de corte
-  boton_corte_aleatorio = getObjectFromGUID(boton_corte_aleatorio_GUID)
-  boton_corte_aleatorio.setPosition(boton_corte_aleatorio_pos0)
-  boton_corte_aleatorio.setScale(boton_bloque_scale0)
+  if mesa_recogida then
+    -- Volvemos a hacer aparecer el botón de corte
+    boton_corte_aleatorio = getObjectFromGUID(boton_corte_aleatorio_GUID)
+    boton_corte_aleatorio.setPosition(boton_corte_aleatorio_pos0)
+    boton_corte_aleatorio.setScale(boton_bloque_scale0)
 
-  -- Reactivamos el sistema de turnos pasando el turno del texto
-  texto_primer_turno = getObjectFromGUID(texto_primer_turno_GUID)
-  turno_inicial = texto_primer_turno.TextTool.getValue()
+    -- Reactivamos el sistema de turnos pasando el turno del texto
+    texto_primer_turno = getObjectFromGUID(texto_primer_turno_GUID)
+    turno_inicial = texto_primer_turno.TextTool.getValue()
 
-  turno_orden_S = {'Red','Blue','Green','Yellow'}
+    turno_orden_S = {'Red','Blue','Green','Yellow'}
 
-  if     turno_inicial == turno_orden_S[1] then
-    turno_inicial_NEW = turno_orden_S[2]
-  elseif turno_inicial == turno_orden_S[2] then
-    turno_inicial_NEW = turno_orden_S[3]
-  elseif turno_inicial == turno_orden_S[3] then
-    turno_inicial_NEW = turno_orden_S[4]
-  elseif turno_inicial == turno_orden_S[4] then
-    turno_inicial_NEW = turno_orden_S[1]
+    if     turno_inicial == turno_orden_S[1] then
+      turno_inicial_NEW = turno_orden_S[2]
+    elseif turno_inicial == turno_orden_S[2] then
+      turno_inicial_NEW = turno_orden_S[3]
+    elseif turno_inicial == turno_orden_S[3] then
+      turno_inicial_NEW = turno_orden_S[4]
+    elseif turno_inicial == turno_orden_S[4] then
+      turno_inicial_NEW = turno_orden_S[1]
+    end
+
+    texto_primer_turno.setValue(turno_inicial_NEW)
+    activar_sistema_turnos(turno_inicial_NEW)
+
+    -- DESAPARECEMOS BOTÓN
+    pos0 = self.getPosition()
+    self.setPosition({pos0[1],-1,pos0[3]})
+    self.setScale({0.01,0.01,0.01})
+
   end
 
-  texto_primer_turno.setValue(turno_inicial_NEW)
 
-  activar_sistema_turnos(turno_inicial_NEW)
+
+
 
 
 

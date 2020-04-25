@@ -40,31 +40,48 @@ function contar_puntos()
     puntos_total_E2 = contador_puntos_total_E2.getValue()
 
     -- PUNTOS EN LAS MANOS
+
+    print('')
+    print('J1_E1')
     for k = 1,Ncartas_1_E1 do
       carta          = mano1_E1[k]
+      carta_name     = carta.getName()
       carta_valor    = carta.getDescription()
-      print(carta_valor)
+      --print(carta_name)
+      --print(carta_valor)
       puntosE1_mano1 = puntosE1_mano1 + carta_valor
     end
 
+    print('')
+    print('J2_E1')
     for k = 1,Ncartas_2_E1 do
       carta          = mano2_E1[k]
+      carta_name     = carta.getName()
       carta_valor    = carta.getDescription()
-      print(carta_valor)
+      --print(carta_name)
+      --print(carta_valor)
       puntosE1_mano2 = puntosE1_mano2 + carta_valor
     end
 
+    print('')
+    print('J1_E2')
     for k = 1,Ncartas_1_E2 do
       carta          = mano1_E2[k]
+      carta_name     = carta.getName()
       carta_valor    = carta.getDescription()
-      print(carta_valor)
+      --print(carta_name)
+      --print(carta_valor)
       puntosE2_mano1 = puntosE2_mano1 + carta_valor
     end
 
+    print('')
+    print('J2_E2')
     for k = 1,Ncartas_2_E2 do
       carta          = mano2_E2[k]
+      carta_name     = carta.getName()
       carta_valor    = carta.getDescription()
-      print(carta_valor)
+      --print(carta_name)
+      --print(carta_valor)
       puntosE2_mano2 = puntosE2_mano2 + carta_valor
     end
 
@@ -196,6 +213,11 @@ function contar_puntos()
     puntos_total_E1 = puntos_total_E1 + puntos_subtotal_E1
     puntos_total_E2 = puntos_total_E2 + puntos_subtotal_E2
 
+
+    -- ACTUALIZAMOS CONTADORES TOTALES
+    contador_puntos_total_E1.setValue(puntos_total_E1)
+    contador_puntos_total_E2.setValue(puntos_total_E2)
+
     -- PRESENTAMOS RESULTADOS
     print('')
     print('EQUIPO 1')
@@ -231,8 +253,6 @@ function contar_puntos()
     M_puntos_E2[2] = puntos_mano_E2
     M_puntos_E2[3] = puntos_subtotal_E2
     M_puntos_E2[4] = puntos_total_E2
-
-
 
     -- Llamamos a la función que genera los textos para bloc de notas
     texto_escribir = puntos_ronda_notas(ronda,M_puntos_E1,M_puntos_E2)
