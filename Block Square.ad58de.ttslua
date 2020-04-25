@@ -24,7 +24,7 @@ function onLoad()
     width=450,
     font_size=110,
     color={1,1,1},
-    tooltip = 'Echar a suerte turnos de la partida',
+    tooltip = 'Cortar mazo',
   }
 
   self.createButton(param)

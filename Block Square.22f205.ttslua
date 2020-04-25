@@ -9,6 +9,7 @@
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/textos_GUID
 
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/repartir_cartas
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/funciones_boton
 
 function onLoad()
 
@@ -46,19 +47,27 @@ function repartir_cartas(obj, color)
       pos2 = Z_mazo_robo_OBJ[2].getPosition()
 
       if pos1[2] > pos2[2] then
-        mazo_corte = Z_mazo_robo_OBJ[1]
+        mazo_corte   = Z_mazo_robo_OBJ[1]
+        mazo_reparto = Z_mazo_robo_OBJ[2]
       else
-        mazo_corte = Z_mazo_robo_OBJ[2]
+        mazo_corte   = Z_mazo_robo_OBJ[2]
+        mazo_reparto = Z_mazo_robo_OBJ[1]
       end
 
       rot_corte = mazo_corte.getRotation()
 
       if rot_corte[3] >= -0.1 and rot_corte[3] <= 0.1 then
 
+        -- Hacemos desaparecer botón
+        self.setPosition({0,0,0})
+        self.setScale({0.01,0.01,0.01})
+
         -- Cogemos inicio de turno en texto marcador
         texto_primer_turno = getObjectFromGUID(texto_primer_turno_GUID)
         turno_inicial = texto_primer_turno.TextTool.getValue()
-        reparto_de_cartas(turno_inicial)
+
+        -- Ejecutamos reparto de cartas
+        reparto_de_cartas(turno_inicial,mazo_corte,mazo_reparto)
 
       else
 

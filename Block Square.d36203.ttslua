@@ -91,6 +91,12 @@ function empezar_ronda(jugador_inicial)
   pos0 = zona_reparto_obj.getPosition()
   mazo_reparto_obj.setPosition(pos0)
 
+  -- Barajamos mazo
+  mazo_reparto_obj.shuffle()
+  mazo_reparto_obj.shuffle()
+  mazo_reparto_obj.shuffle()
+  mazo_reparto_obj.shuffle()
+
   -- Hacemos aparecer botón de corte aleatorio
   boton_corte_aleatorio = getObjectFromGUID(boton_corte_aleatorio_GUID)
   boton_corte_aleatorio.setPosition(boton_corte_aleatorio_pos0)

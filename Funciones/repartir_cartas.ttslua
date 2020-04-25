@@ -1,26 +1,25 @@
-function reparto_de_cartas(turno_inicial)
+function reparto_de_cartas(turno_inicial,mazo_corte,mazo_reparto)
+
+  -- MAZO DE ROBO
+  Z_mazo_robo     = getObjectFromGUID(Z_mazo_robo_GUID)
+  -- MONTÓN OCULTO
+  Z_monton_oculto = getObjectFromGUID(Z_monton_oculto_GUID)
+  Z_monton_oculto_pos = Z_monton_oculto.getPosition()
+  Z_monton_oculto_rot = Z_monton_oculto.getRotation()
+  Z_monton_oculto_rot = {Z_monton_oculto_rot[1],Z_monton_oculto_rot[2],180.00}
+
+  -- MAZO DE DESCARTE
+  Z_mazo_descarte = getObjectFromGUID(Z_mazo_descarte_GUID)
+  Z_mazo_descarte_pos = Z_mazo_descarte.getPosition()
+  Z_mazo_descarte_rot0 = Z_mazo_descarte.getRotation()
+  Z_mazo_descarte_rot = {Z_mazo_descarte_rot0[1],Z_mazo_descarte_rot0[2],180.00}
+
 
   -- Turnos
   turno_orden_1 = {'Red','Blue','Green','Yellow'}
   turno_orden_2 = {'Blue','Green','Yellow','Red'}
   turno_orden_3 = {'Green','Yellow','Red','Blue'}
   turno_orden_4 = {'Yellow','Red','Blue','Green'}
-
-  -- Manos de jugadores
-  mano_1_E1 = Jugador_1_E1.getHandObjects()
-  mano_2_E1 = Jugador_2_E1.getHandObjects()
-  mano_1_E2 = Jugador_1_E2.getHandObjects()
-  mano_2_E2 = Jugador_2_E2.getHandObjects()
-
-  N_mano_1_E1 = #mano_1_E1
-  N_mano_2_E1 = #mano_2_E1
-  N_mano_1_E2 = #mano_1_E2
-  N_mano_2_E2 = #mano_2_E2
-
-  print('N_mano_1_E1 = ',N_mano_1_E1)
-  print('N_mano_2_E1 = ',N_mano_2_E1)
-  print('N_mano_1_E2 = ',N_mano_1_E2)
-  print('N_mano_2_E2 = ',N_mano_2_E2)
 
   -- Detectar orden de reparto
   if     turno_inicial == turno_orden_1[1] then
@@ -32,5 +31,128 @@ function reparto_de_cartas(turno_inicial)
   elseif turno_inicial == turno_orden_4[1] then
     orden_reparto = turno_orden_2
   end
+
+  -- Manos de jugadores
+  mano_11 = Player[orden_reparto[1]].getHandObjects()
+  mano_22 = Player[orden_reparto[2]].getHandObjects()
+  mano_12 = Player[orden_reparto[3]].getHandObjects()
+  mano_22 = Player[orden_reparto[4]].getHandObjects()
+
+  N_mano_11 = #mano_11
+  N_mano_21 = #mano_22
+  N_mano_12 = #mano_12
+  N_mano_22 = #mano_22
+
+  N_Restantes_mano_11 = 13 - N_mano_11
+  N_Restantes_mano_21 = 13 - N_mano_21
+  N_Restantes_mano_12 = 13 - N_mano_12
+  N_Restantes_mano_22 = 13 - N_mano_22
+  N_Restantes = (13*4 + 7) - N_mano_11 - N_mano_21 - N_mano_12 - N_mano_22
+
+  print('N_Restantes = ',N_Restantes)
+
+  N_Restantes_T = {N_Restantes_mano_11,N_Restantes_mano_21,
+                   N_Restantes_mano_12,N_Restantes_mano_22}
+
+  N_cartas_reparto  = #mazo_reparto.getObjects()
+  N_cartas_corte    = #mazo_corte.getObjects()
+  print('N_cartas_reparto = ', N_cartas_reparto)
+  print('N_cartas_corte = '  , N_cartas_corte)
+
+  -- Corte perfecto
+  corte_perfecto = 0
+  if N_cartas_reparto == N_Restantes then
+    printToAll('¡CORTE PERFECTO!', {1,0,0})
+    broadcastToAll('¡CORTE PERFECTO!', {1,0,0})
+    corte_perfecto = 50
+  end
+
+  -- Ponemos mazo de corte provisionalmente aparte
+  mazo_corte.setPosition({1.47, 4.59, -2.09})
+  mazo_corte.setRotation({0.00, 180.00, 180.00})
+
+  -- Juntamos mazo de reparto encima del mazo de corte
+  mazo_reparto.putObject(mazo_corte)
+
+  -- Empezamos reparto a jugadores
+
+  restante   = 52 - N_mano_11 - N_mano_21 - N_mano_12 - N_mano_22
+
+  contadores = {N_mano_11,N_mano_21,N_mano_12,N_mano_22}
+  orden_i = 1
+
+  while restante > 0 do
+
+    -- Color jugador
+    color_j = orden_reparto[orden_i]
+
+    -- Chequeamos si jugador tiene las 13 cartas ya
+    contador_cartas = contadores[orden_i]
+
+    if contador_cartas < 13 then
+      deal_card(mazo_reparto,color_j)
+      restante = restante - 1
+      contadores[orden_i] = contadores[orden_i] + 1
+    end
+
+    if orden_i == 4 then
+      orden_i = 1
+    else
+      orden_i = orden_i + 1
+    end
+
+  end
+
+
+  param1 = {position = Z_monton_oculto_pos,
+            rotation = Z_monton_oculto_rot,
+            callback_function = function(obj) create_hidden_deck_v2(obj,mazo_reparto) end,
+            }
+
+  -- Ponemos primera carta del montón oculto
+  paramN = {position = Z_monton_oculto_pos,
+            rotation = Z_monton_oculto_rot,
+            }
+
+  for k = 1,6 do
+    mazo_reparto.takeObject(paramN)
+  end
+
+  -- Ponemos última carta bocarriba en descarte
+  paramNF = {position = Z_mazo_descarte_pos,
+             rotation = Z_mazo_descarte_rot0,
+            }
+
+  mazo_reparto.takeObject(paramNF)
+
+end
+
+function deal_card(mazo,color)
+  mazo.deal(1,color)
+end
+
+function create_hidden_deck_v2(obj_i,carta0)
+
+  carta0.putObject(obj_i)
+
+end
+
+function primera_carta_monton_ocult(obj0,mazo)
+
+  for k = 1,2 do
+  param = {position = Z_mazo_descarte_pos,
+          rotation = Z_mazo_descarte_rot,
+          callback_function = function(obj) create_hidden_deck(obj,obj0) end,
+          }
+
+  mazo.takeObject(param)
+  end
+
+end
+
+
+function create_hidden_deck(obj_i,carta0)
+
+  carta0.putObject(obj_i)
 
 end
