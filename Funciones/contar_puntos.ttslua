@@ -43,24 +43,28 @@ function contar_puntos()
     for k = 1,Ncartas_1_E1 do
       carta          = mano1_E1[k]
       carta_valor    = carta.getDescription()
+      print(carta_valor)
       puntosE1_mano1 = puntosE1_mano1 + carta_valor
     end
 
     for k = 1,Ncartas_2_E1 do
       carta          = mano2_E1[k]
       carta_valor    = carta.getDescription()
+      print(carta_valor)
       puntosE1_mano2 = puntosE1_mano2 + carta_valor
     end
 
     for k = 1,Ncartas_1_E2 do
       carta          = mano1_E2[k]
       carta_valor    = carta.getDescription()
+      print(carta_valor)
       puntosE2_mano1 = puntosE2_mano1 + carta_valor
     end
 
     for k = 1,Ncartas_2_E2 do
       carta          = mano2_E2[k]
       carta_valor    = carta.getDescription()
+      print(carta_valor)
       puntosE2_mano2 = puntosE2_mano2 + carta_valor
     end
 

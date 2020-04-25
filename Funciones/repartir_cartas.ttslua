@@ -2,6 +2,7 @@ function reparto_de_cartas(turno_inicial,mazo_corte,mazo_reparto)
 
   -- MAZO DE ROBO
   Z_mazo_robo     = getObjectFromGUID(Z_mazo_robo_GUID)
+
   -- MONTÓN OCULTO
   Z_monton_oculto = getObjectFromGUID(Z_monton_oculto_GUID)
   Z_monton_oculto_pos = Z_monton_oculto.getPosition()
@@ -13,7 +14,6 @@ function reparto_de_cartas(turno_inicial,mazo_corte,mazo_reparto)
   Z_mazo_descarte_pos = Z_mazo_descarte.getPosition()
   Z_mazo_descarte_rot0 = Z_mazo_descarte.getRotation()
   Z_mazo_descarte_rot = {Z_mazo_descarte_rot0[1],Z_mazo_descarte_rot0[2],180.00}
-
 
   -- Turnos
   turno_orden_1 = {'Red','Blue','Green','Yellow'}

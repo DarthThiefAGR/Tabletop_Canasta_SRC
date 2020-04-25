@@ -64,12 +64,12 @@ end
 function empezar_reparto()
 
   -- Hacemos desaparecer botón
-  self.setPosition({0,0,0})
+  self.setPosition({0,0,10})
   self.setScale({0.01,0.01,0.01})
 
   -- Hacemos aparecer botón de reparto
   boton_repartir_cartas = getObjectFromGUID(boton_repartir_cartas_GUID)
   boton_repartir_cartas.setPosition(boton_repartir_cartas_pos0)
-
+  boton_repartir_cartas.setScale(boton_bloque_scale0)
 
 end

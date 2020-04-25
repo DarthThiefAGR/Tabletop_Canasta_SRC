@@ -1,5 +1,8 @@
 function recoger_mesa()
 
+  -- Salida
+  mesa_recogida = false
+
   -- Objetos de la mesa
   objetos_mesa = getAllObjects()
   Nobjetos = #objetos_mesa
@@ -278,12 +281,15 @@ function recoger_mesa()
 
       end
 
+      mesa_recogida = true
+
   elseif N_CARD_mazo_robo == 108 and N_CARD_ocultas == 4 and N_CARD_ocultas_apoyo == 4 then
     printToAll('Mesa ordenada', {0,1,0})
   elseif Cond_Manos ~= 0 then
     printToAll('No se puede recoger la mesa', {1,0,0})
   end
 
+return mesa_recogida
 
 end
 

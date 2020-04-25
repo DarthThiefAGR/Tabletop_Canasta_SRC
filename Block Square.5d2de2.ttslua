@@ -30,5 +30,11 @@ function onLoad()
 end
 
 function pulsar_boton_finalizar()
+
+  -- CONTAMOS PUNTOS
   contar_puntos()
+
+  -- FINALIZAMOS SISTEMA DE TURNOS
+  Turns.enable = false
+
 end

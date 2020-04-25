@@ -6,10 +6,12 @@
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/zonas_GUID
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/contadores_GUID
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_pos_sca
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/textos_GUID
 
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/recoger_mesa
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/resetear_mesa
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/funciones_boton
 
 function onLoad()
 
@@ -31,6 +33,39 @@ function onLoad()
 end
 
 function pulsar_boton_recoger()
-  recoger_mesa()
-  reset_table()
+
+  -- Recogemos cartas
+  mesa_recogida = recoger_mesa()
+
+  -- Reseteamos mesa y pasamos de ronda
+  reset_table(mesa_recogida)
+
+  -- Volvemos a hacer aparecer el botón de corte
+  boton_corte_aleatorio = getObjectFromGUID(boton_corte_aleatorio_GUID)
+  boton_corte_aleatorio.setPosition(boton_corte_aleatorio_pos0)
+  boton_corte_aleatorio.setScale(boton_bloque_scale0)
+
+  -- Reactivamos el sistema de turnos pasando el turno del texto
+  texto_primer_turno = getObjectFromGUID(texto_primer_turno_GUID)
+  turno_inicial = texto_primer_turno.TextTool.getValue()
+
+  turno_orden_S = {'Red','Blue','Green','Yellow'}
+
+  if     turno_inicial == turno_orden_S[1] then
+    turno_inicial_NEW = turno_orden_S[2]
+  elseif turno_inicial == turno_orden_S[2] then
+    turno_inicial_NEW = turno_orden_S[3]
+  elseif turno_inicial == turno_orden_S[3] then
+    turno_inicial_NEW = turno_orden_S[4]
+  elseif turno_inicial == turno_orden_S[4] then
+    turno_inicial_NEW = turno_orden_S[1]
+  end
+
+  texto_primer_turno.setValue(turno_inicial_NEW)
+
+  activar_sistema_turnos(turno_inicial_NEW)
+
+
+
+
 end

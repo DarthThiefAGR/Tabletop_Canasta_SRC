@@ -59,7 +59,7 @@ function repartir_cartas(obj, color)
       if rot_corte[3] >= -0.1 and rot_corte[3] <= 0.1 then
 
         -- Hacemos desaparecer botón
-        self.setPosition({0,0,0})
+        self.setPosition({0,0,10})
         self.setScale({0.01,0.01,0.01})
 
         -- Cogemos inicio de turno en texto marcador

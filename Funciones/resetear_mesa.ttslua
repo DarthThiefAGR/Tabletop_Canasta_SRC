@@ -1,114 +1,117 @@
-function reset_table()
+function reset_table(mesa_recogida)
 
-  -- CONTADOR PUNTOS CANASTAS --
-  contador_puntos_canastas_E1 = getObjectFromGUID(contador_puntos_canastas_E1_GUID)
-  contador_puntos_canastas_E2 = getObjectFromGUID(contador_puntos_canastas_E2_GUID)
+  if mesa_recogida then
 
-  -- CONTADOR PUNTOS TOTALES --
-  contador_puntos_total_E1 = getObjectFromGUID(contador_puntos_total_E1_GUID)
-  contador_puntos_total_E2 = getObjectFromGUID(contador_puntos_total_E2_GUID)
+    -- CONTADOR PUNTOS CANASTAS --
+    contador_puntos_canastas_E1 = getObjectFromGUID(contador_puntos_canastas_E1_GUID)
+    contador_puntos_canastas_E2 = getObjectFromGUID(contador_puntos_canastas_E2_GUID)
 
-  -- CONTADOR RONDA
-  contador_ronda = getObjectFromGUID(contador_ronda_GUID)
+    -- CONTADOR PUNTOS TOTALES --
+    contador_puntos_total_E1 = getObjectFromGUID(contador_puntos_total_E1_GUID)
+    contador_puntos_total_E2 = getObjectFromGUID(contador_puntos_total_E2_GUID)
 
-  -- TEXTOS CANASTA EQUIPO 1
-  canasta_tipo_E1_C01 = getObjectFromGUID(canasta_tipo_E1_C01_GUID)
-  canasta_tipo_E1_C02 = getObjectFromGUID(canasta_tipo_E1_C02_GUID)
-  canasta_tipo_E1_C03 = getObjectFromGUID(canasta_tipo_E1_C03_GUID)
-  canasta_tipo_E1_C04 = getObjectFromGUID(canasta_tipo_E1_C04_GUID)
-  canasta_tipo_E1_C05 = getObjectFromGUID(canasta_tipo_E1_C05_GUID)
-  canasta_tipo_E1_C06 = getObjectFromGUID(canasta_tipo_E1_C06_GUID)
-  canasta_tipo_E1_C07 = getObjectFromGUID(canasta_tipo_E1_C07_GUID)
-  canasta_tipo_E1_C08 = getObjectFromGUID(canasta_tipo_E1_C08_GUID)
-  canasta_tipo_E1_C09 = getObjectFromGUID(canasta_tipo_E1_C09_GUID)
+    -- CONTADOR RONDA
+    contador_ronda = getObjectFromGUID(contador_ronda_GUID)
 
-  -- TEXTOS CANASTA EQUIPO 1
-  canasta_tipo_E2_C01 = getObjectFromGUID(canasta_tipo_E2_C01_GUID)
-  canasta_tipo_E2_C02 = getObjectFromGUID(canasta_tipo_E2_C02_GUID)
-  canasta_tipo_E2_C03 = getObjectFromGUID(canasta_tipo_E2_C03_GUID)
-  canasta_tipo_E2_C04 = getObjectFromGUID(canasta_tipo_E2_C04_GUID)
-  canasta_tipo_E2_C05 = getObjectFromGUID(canasta_tipo_E2_C05_GUID)
-  canasta_tipo_E2_C06 = getObjectFromGUID(canasta_tipo_E2_C06_GUID)
-  canasta_tipo_E2_C07 = getObjectFromGUID(canasta_tipo_E2_C07_GUID)
-  canasta_tipo_E2_C08 = getObjectFromGUID(canasta_tipo_E2_C08_GUID)
-  canasta_tipo_E2_C09 = getObjectFromGUID(canasta_tipo_E2_C09_GUID)
+    -- TEXTOS CANASTA EQUIPO 1
+    canasta_tipo_E1_C01 = getObjectFromGUID(canasta_tipo_E1_C01_GUID)
+    canasta_tipo_E1_C02 = getObjectFromGUID(canasta_tipo_E1_C02_GUID)
+    canasta_tipo_E1_C03 = getObjectFromGUID(canasta_tipo_E1_C03_GUID)
+    canasta_tipo_E1_C04 = getObjectFromGUID(canasta_tipo_E1_C04_GUID)
+    canasta_tipo_E1_C05 = getObjectFromGUID(canasta_tipo_E1_C05_GUID)
+    canasta_tipo_E1_C06 = getObjectFromGUID(canasta_tipo_E1_C06_GUID)
+    canasta_tipo_E1_C07 = getObjectFromGUID(canasta_tipo_E1_C07_GUID)
+    canasta_tipo_E1_C08 = getObjectFromGUID(canasta_tipo_E1_C08_GUID)
+    canasta_tipo_E1_C09 = getObjectFromGUID(canasta_tipo_E1_C09_GUID)
 
-  -- BASE CANASTA EQUIPO 1 --
-  bloque_canasta_E1_C01 = getObjectFromGUID(bloque_canasta_E1_C01_GUID)
-  bloque_canasta_E1_C02 = getObjectFromGUID(bloque_canasta_E1_C02_GUID)
-  bloque_canasta_E1_C03 = getObjectFromGUID(bloque_canasta_E1_C03_GUID)
-  bloque_canasta_E1_C04 = getObjectFromGUID(bloque_canasta_E1_C04_GUID)
-  bloque_canasta_E1_C05 = getObjectFromGUID(bloque_canasta_E1_C05_GUID)
-  bloque_canasta_E1_C06 = getObjectFromGUID(bloque_canasta_E1_C06_GUID)
-  bloque_canasta_E1_C07 = getObjectFromGUID(bloque_canasta_E1_C07_GUID)
-  bloque_canasta_E1_C08 = getObjectFromGUID(bloque_canasta_E1_C08_GUID)
+    -- TEXTOS CANASTA EQUIPO 1
+    canasta_tipo_E2_C01 = getObjectFromGUID(canasta_tipo_E2_C01_GUID)
+    canasta_tipo_E2_C02 = getObjectFromGUID(canasta_tipo_E2_C02_GUID)
+    canasta_tipo_E2_C03 = getObjectFromGUID(canasta_tipo_E2_C03_GUID)
+    canasta_tipo_E2_C04 = getObjectFromGUID(canasta_tipo_E2_C04_GUID)
+    canasta_tipo_E2_C05 = getObjectFromGUID(canasta_tipo_E2_C05_GUID)
+    canasta_tipo_E2_C06 = getObjectFromGUID(canasta_tipo_E2_C06_GUID)
+    canasta_tipo_E2_C07 = getObjectFromGUID(canasta_tipo_E2_C07_GUID)
+    canasta_tipo_E2_C08 = getObjectFromGUID(canasta_tipo_E2_C08_GUID)
+    canasta_tipo_E2_C09 = getObjectFromGUID(canasta_tipo_E2_C09_GUID)
 
-  -- BASE CANASTA EQUIPO 2 --
-  bloque_canasta_E2_C01 = getObjectFromGUID(bloque_canasta_E2_C01_GUID)
-  bloque_canasta_E2_C02 = getObjectFromGUID(bloque_canasta_E2_C02_GUID)
-  bloque_canasta_E2_C03 = getObjectFromGUID(bloque_canasta_E2_C03_GUID)
-  bloque_canasta_E2_C04 = getObjectFromGUID(bloque_canasta_E2_C04_GUID)
-  bloque_canasta_E2_C05 = getObjectFromGUID(bloque_canasta_E2_C05_GUID)
-  bloque_canasta_E2_C06 = getObjectFromGUID(bloque_canasta_E2_C06_GUID)
-  bloque_canasta_E2_C07 = getObjectFromGUID(bloque_canasta_E2_C07_GUID)
-  bloque_canasta_E2_C08 = getObjectFromGUID(bloque_canasta_E2_C08_GUID)
+    -- BASE CANASTA EQUIPO 1 --
+    bloque_canasta_E1_C01 = getObjectFromGUID(bloque_canasta_E1_C01_GUID)
+    bloque_canasta_E1_C02 = getObjectFromGUID(bloque_canasta_E1_C02_GUID)
+    bloque_canasta_E1_C03 = getObjectFromGUID(bloque_canasta_E1_C03_GUID)
+    bloque_canasta_E1_C04 = getObjectFromGUID(bloque_canasta_E1_C04_GUID)
+    bloque_canasta_E1_C05 = getObjectFromGUID(bloque_canasta_E1_C05_GUID)
+    bloque_canasta_E1_C06 = getObjectFromGUID(bloque_canasta_E1_C06_GUID)
+    bloque_canasta_E1_C07 = getObjectFromGUID(bloque_canasta_E1_C07_GUID)
+    bloque_canasta_E1_C08 = getObjectFromGUID(bloque_canasta_E1_C08_GUID)
 
-  -- BASE CANASTA TIPO - EQUIPO 1 -
-  bloque_canasta_tipo_E1_C01 = getObjectFromGUID(bloque_canasta_tipo_E1_C01_GUID)
-  bloque_canasta_tipo_E1_C02 = getObjectFromGUID(bloque_canasta_tipo_E1_C02_GUID)
-  bloque_canasta_tipo_E1_C03 = getObjectFromGUID(bloque_canasta_tipo_E1_C03_GUID)
-  bloque_canasta_tipo_E1_C04 = getObjectFromGUID(bloque_canasta_tipo_E1_C04_GUID)
-  bloque_canasta_tipo_E1_C05 = getObjectFromGUID(bloque_canasta_tipo_E1_C05_GUID)
-  bloque_canasta_tipo_E1_C06 = getObjectFromGUID(bloque_canasta_tipo_E1_C06_GUID)
-  bloque_canasta_tipo_E1_C07 = getObjectFromGUID(bloque_canasta_tipo_E1_C07_GUID)
-  bloque_canasta_tipo_E1_C08 = getObjectFromGUID(bloque_canasta_tipo_E1_C08_GUID)
+    -- BASE CANASTA EQUIPO 2 --
+    bloque_canasta_E2_C01 = getObjectFromGUID(bloque_canasta_E2_C01_GUID)
+    bloque_canasta_E2_C02 = getObjectFromGUID(bloque_canasta_E2_C02_GUID)
+    bloque_canasta_E2_C03 = getObjectFromGUID(bloque_canasta_E2_C03_GUID)
+    bloque_canasta_E2_C04 = getObjectFromGUID(bloque_canasta_E2_C04_GUID)
+    bloque_canasta_E2_C05 = getObjectFromGUID(bloque_canasta_E2_C05_GUID)
+    bloque_canasta_E2_C06 = getObjectFromGUID(bloque_canasta_E2_C06_GUID)
+    bloque_canasta_E2_C07 = getObjectFromGUID(bloque_canasta_E2_C07_GUID)
+    bloque_canasta_E2_C08 = getObjectFromGUID(bloque_canasta_E2_C08_GUID)
 
-  -- BASE CANASTA TIPO - EQUIPO 2 -
-  bloque_canasta_tipo_E2_C01 = getObjectFromGUID(bloque_canasta_tipo_E2_C01_GUID)
-  bloque_canasta_tipo_E2_C02 = getObjectFromGUID(bloque_canasta_tipo_E2_C02_GUID)
-  bloque_canasta_tipo_E2_C03 = getObjectFromGUID(bloque_canasta_tipo_E2_C03_GUID)
-  bloque_canasta_tipo_E2_C04 = getObjectFromGUID(bloque_canasta_tipo_E2_C04_GUID)
-  bloque_canasta_tipo_E2_C05 = getObjectFromGUID(bloque_canasta_tipo_E2_C05_GUID)
-  bloque_canasta_tipo_E2_C06 = getObjectFromGUID(bloque_canasta_tipo_E2_C06_GUID)
-  bloque_canasta_tipo_E2_C07 = getObjectFromGUID(bloque_canasta_tipo_E2_C07_GUID)
-  bloque_canasta_tipo_E2_C08 = getObjectFromGUID(bloque_canasta_tipo_E2_C08_GUID)
+    -- BASE CANASTA TIPO - EQUIPO 1 -
+    bloque_canasta_tipo_E1_C01 = getObjectFromGUID(bloque_canasta_tipo_E1_C01_GUID)
+    bloque_canasta_tipo_E1_C02 = getObjectFromGUID(bloque_canasta_tipo_E1_C02_GUID)
+    bloque_canasta_tipo_E1_C03 = getObjectFromGUID(bloque_canasta_tipo_E1_C03_GUID)
+    bloque_canasta_tipo_E1_C04 = getObjectFromGUID(bloque_canasta_tipo_E1_C04_GUID)
+    bloque_canasta_tipo_E1_C05 = getObjectFromGUID(bloque_canasta_tipo_E1_C05_GUID)
+    bloque_canasta_tipo_E1_C06 = getObjectFromGUID(bloque_canasta_tipo_E1_C06_GUID)
+    bloque_canasta_tipo_E1_C07 = getObjectFromGUID(bloque_canasta_tipo_E1_C07_GUID)
+    bloque_canasta_tipo_E1_C08 = getObjectFromGUID(bloque_canasta_tipo_E1_C08_GUID)
 
-  ronda = contador_ronda.getValue()
+    -- BASE CANASTA TIPO - EQUIPO 2 -
+    bloque_canasta_tipo_E2_C01 = getObjectFromGUID(bloque_canasta_tipo_E2_C01_GUID)
+    bloque_canasta_tipo_E2_C02 = getObjectFromGUID(bloque_canasta_tipo_E2_C02_GUID)
+    bloque_canasta_tipo_E2_C03 = getObjectFromGUID(bloque_canasta_tipo_E2_C03_GUID)
+    bloque_canasta_tipo_E2_C04 = getObjectFromGUID(bloque_canasta_tipo_E2_C04_GUID)
+    bloque_canasta_tipo_E2_C05 = getObjectFromGUID(bloque_canasta_tipo_E2_C05_GUID)
+    bloque_canasta_tipo_E2_C06 = getObjectFromGUID(bloque_canasta_tipo_E2_C06_GUID)
+    bloque_canasta_tipo_E2_C07 = getObjectFromGUID(bloque_canasta_tipo_E2_C07_GUID)
+    bloque_canasta_tipo_E2_C08 = getObjectFromGUID(bloque_canasta_tipo_E2_C08_GUID)
 
-  if ronda >= 1 then
+    if ronda >= 1 then
 
-  -- PONEMOS PUNTOS DE CONTADORES DE CANASTAS A CERO
-  contador_puntos_canastas_E1.setValue(0)
-  contador_puntos_canastas_E2.setValue(0)
-
-  elseif ronda == 0 then
-
-    -- PONEMOS PUNTOS DE TODOS LOS CONTADORES A CERO
+    -- PONEMOS PUNTOS DE CONTADORES DE CANASTAS A CERO
     contador_puntos_canastas_E1.setValue(0)
     contador_puntos_canastas_E2.setValue(0)
-    contador_puntos_total_E1.setValue(0)
-    contador_puntos_total_E2.setValue(0)
 
-  end
+    elseif ronda == 0 then
 
-  -- PASAMOS DE RONDA
-  contador_ronda.setValue(ronda+1)
+      -- PONEMOS PUNTOS DE TODOS LOS CONTADORES A CERO
+      contador_puntos_canastas_E1.setValue(0)
+      contador_puntos_canastas_E2.setValue(0)
+      contador_puntos_total_E1.setValue(0)
+      contador_puntos_total_E2.setValue(0)
 
-  -- RESETEAMOS COLORES DE BASES DE CANASTA Y TEXTOS
-  for i = 1,2 do
-    for j = 1,8 do
-      bloque = 'bloque_canasta_E' .. i .. '_C0' .. j
-      bloque_tipo = 'bloque_canasta_tipo_E' .. i .. '_C0' .. j
-      _G[bloque].setColorTint({0.7,0.7,0.7})
-      _G[bloque_tipo].setColorTint({0.7,0.7,0.7})
     end
+
+    -- PASAMOS DE RONDA
+    contador_ronda.setValue(ronda+1)
+
+    -- RESETEAMOS COLORES DE BASES DE CANASTA Y TEXTOS
+    for i = 1,2 do
+      for j = 1,8 do
+        bloque = 'bloque_canasta_E' .. i .. '_C0' .. j
+        bloque_tipo = 'bloque_canasta_tipo_E' .. i .. '_C0' .. j
+        _G[bloque].setColorTint({0.7,0.7,0.7})
+        _G[bloque_tipo].setColorTint({0.7,0.7,0.7})
+      end
+    end
+
+    for i = 1,2 do
+      for j = 1,9 do
+        txt_gui = 'canasta_tipo_E' .. i .. '_C0' .. j
+        _G[txt_gui].setValue(' ')
+      end
+    end
+
   end
 
-  for i = 1,2 do
-    for j = 1,9 do
-      txt_gui = 'canasta_tipo_E' .. i .. '_C0' .. j
-      _G[txt_gui].setValue(' ')
-    end
-  end
 
 end

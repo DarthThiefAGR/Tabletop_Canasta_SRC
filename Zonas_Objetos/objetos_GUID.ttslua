@@ -50,5 +50,14 @@ boton_corte_aleatorio_GUID = 'ad58de'
 -- BOTÓN REPARTIR CARTAS
 boton_repartir_cartas_GUID = '22f205'
 
+-- BOTÓN EMPEZAR RONDA
+boton_empezar_ronda_GUID = 'ce0a1f'
+
 -- BOTÓN FINALIZAR RONDA
 boton_finalizar_ronda_GUID = '5d2de2'
+
+-- BOTÓN RECOGER
+boton_recoger_GUID = '07ba83'
+
+-- BOTÓN PRUEBA
+boton_prueba_GUID = 'ad4516'

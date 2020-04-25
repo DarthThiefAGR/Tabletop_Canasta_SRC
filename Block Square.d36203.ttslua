@@ -50,35 +50,43 @@ function sortear_turnos()
   j3_seated = Player[turno_orden_1[3]].seated
   j4_seated = Player[turno_orden_1[4]].seated
 
-  if j1_seated and j2_seated and j2_seated and j2_seated then
+  condI = j1_seated and j2_seated and j2_seated and j2_seated
+  condI = true
+
+  if condI then
+
+    -- Echamos a suerte los turnos
+    sorteo_resultado = math.random(1,4)
+    sorteo_resultado = math.random(1,4)
+    sorteo_resultado = math.random(1,4)
+
+    -- Seleccionamos jugador resultado
+    turno_orden_sel  = 'turno_orden_' .. sorteo_resultado
+    turno_orden      = _G[turno_orden_sel]
+    jugador_inicial  = Player[turno_orden[1]].steam_name
+
+    txt_a_todos = jugador_inicial .. ' empieza cortando'
+    broadcastToAll(txt_a_todos, {1,0,0})
+
+    -- Guardamos inicio de turno en texto marcador
+    texto_primer_turno = getObjectFromGUID(texto_primer_turno_GUID)
+    texto_primer_turno.setValue(turno_orden[1])
+
+    -- Hacemos desaparecer botón
+    self.setPosition({0,0,10})
+    self.setScale({0.01,0.01,0.01})
+
+    -- Esperamos, ponemos mazo de reparto en su zona, y activamos turnos
+    Wait.time(function() empezar_ronda(turno_orden[1]) end, 1.5)
 
   else
+
     txt_a_todos = '¡Faltan jugadores!'
     --printToAll(txt_a_todos, {1,0,0})
     broadcastToAll(txt_a_todos, {1,0,0})
+
   end
 
-
-  -- Echamos a suerte los turnos
-  sorteo_resultado = math.random(1,4)
-  turno_orden_sel  = 'turno_orden_' .. sorteo_resultado
-  turno_orden      = _G[turno_orden_sel]
-  jugador_inicial  = Player[turno_orden[1]].steam_name
-
-  txt_a_todos = jugador_inicial .. ' empieza cortando'
-  --printToAll(txt_a_todos, {1,0,0})
-  broadcastToAll(txt_a_todos, {1,0,0})
-
-  -- Guardamos inicio de turno en texto marcador
-  texto_primer_turno = getObjectFromGUID(texto_primer_turno_GUID)
-  texto_primer_turno.setValue(turno_orden[1])
-
-  -- Hacemos desaparecer botón
-  self.setPosition({0,0,0})
-  self.setScale({0.01,0.01,0.01})
-
-  -- Esperamos, ponemos mazo de reparto en su zona, y activamos turnos
-  Wait.time(function() empezar_ronda(turno_orden[1]) end, 1.5)
 
 end
 
@@ -100,7 +108,14 @@ function empezar_ronda(jugador_inicial)
   -- Hacemos aparecer botón de corte aleatorio
   boton_corte_aleatorio = getObjectFromGUID(boton_corte_aleatorio_GUID)
   boton_corte_aleatorio.setPosition(boton_corte_aleatorio_pos0)
+  boton_corte_aleatorio.setScale(boton_bloque_scale0)
 
   activar_sistema_turnos(jugador_inicial)
+
+  -- CONTADOR RONDA
+  contador_ronda = getObjectFromGUID(contador_ronda_GUID)
+  ronda = contador_ronda.getValue()
+  contador_ronda.setValue(ronda+1)
+
 
 end
