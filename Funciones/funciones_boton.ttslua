@@ -1,5 +1,58 @@
-function recoger_mesa()
-  print('')
+function activar_sistema_turnos(color_primer_jugador)
+
+  -- Detectamos orden
+  turno_orden_1 = {'Red','Blue','Green','Yellow'}
+  turno_orden_2 = {'Blue','Green','Yellow','Red'}
+  turno_orden_3 = {'Green','Yellow','Red','Blue'}
+  turno_orden_4 = {'Yellow','Red','Blue','Green'}
+
+  if     color_primer_jugador == turno_orden_1[1] then
+    orden_turnos = turno_orden_1
+  elseif color_primer_jugador == turno_orden_1[2] then
+    orden_turnos = turno_orden_2
+  elseif color_primer_jugador == turno_orden_1[3] then
+    orden_turnos = turno_orden_3
+  elseif color_primer_jugador == turno_orden_1[4] then
+    orden_turnos = turno_orden_4
+  end
+
+  -- Activamos sistema de turnos
+  Turns.type = 2
+  Turns.disable_interactations = false
+  Turns.order  = orden_turnos
+  Turns.enable = true
+
+end
+
+function detectar_jugador_que_pulsa(obj, color)
+
+  turno_actual      = Turns.turn_color
+
+  if turno_actual == '' then
+
+    txt_error = 'Turnos desactivados'
+    jugador_que_pulsa = color
+    printToColor(txt_error, jugador_que_pulsa, {1,0,0})
+    condicion = false
+
+  else
+
+    nombre_ta         = Player[turno_actual].steam_name
+    jugador_que_pulsa = color
+    nombre_tb         = Player[jugador_que_pulsa].steam_name
+
+    if turno_actual == jugador_que_pulsa then
+      condicion = true
+    else
+      txt_error = '¡' .. nombre_tb .. ', no es tu turno!'
+      printToColor(txt_error, jugador_que_pulsa, {1,0,0})
+      condicion = false
+    end
+
+  end
+
+  return condicion
+
 end
 
 

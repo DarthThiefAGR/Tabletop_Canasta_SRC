@@ -8,13 +8,14 @@
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_GUID
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/textos_GUID
 
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/funciones_boton
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/repartir_cartas
 
 function onLoad()
 
   param = {
     label='PRUEBA',
-    click_function='pasar_turno',
+    click_function='prueba2',
     function_owner=self,
     position={0,0.5,0},
     height=400,
@@ -32,6 +33,17 @@ end
 function pulsar_boton()
   pasar_turno()
 end
+
+function prueba2(obj, color)
+
+  cond = detectar_jugador_que_pulsa(obj, color)
+
+  if cond then
+    print('CORR')
+  end
+
+end
+
 
 
 function pasar_turno()

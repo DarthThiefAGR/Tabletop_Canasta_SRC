@@ -11,6 +11,7 @@
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_pos_sca
 
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/repartir_cartas
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/funciones_boton
 
 function onLoad()
 
@@ -31,17 +32,31 @@ function onLoad()
 
 end
 
-function cortar_aleatorio()
 
-  -- Mazo de reparto
-  mazo_reparto_obj = getObjectFromGUID(mazo_reparto_GUID)
-  corte_rand = math.random(49-5,49+5)
+function cortar_aleatorio(obj, color)
 
-  -- Cortamos
-  mazo_reparto_obj.cut()
+  -- Detectamos turno
+  texto_primer_turno = getObjectFromGUID(texto_primer_turno_GUID)
+  color_primer_turno = texto_primer_turno.TextTool.getValue()
 
-  -- Esperamos, ponemos mazo de reparto en su zona, y activamos turnos
-  Wait.time(function() empezar_reparto(corte_rand) end, 1.0)
+  cond = detectar_jugador_que_pulsa(obj, color)
+
+  if cond  then
+
+    -- Activamos sistema de turnos
+    --activar_sistema_turnos(color_primer_jugador)
+
+    -- Mazo de reparto
+    mazo_reparto_obj = getObjectFromGUID(mazo_reparto_GUID)
+
+    -- Cortamos
+    corte_rand  = math.random(49-5,49+5)
+    mazo_reparto_obj.cut(corte_rand)
+
+    -- Esperamos, ponemos mazo de reparto en su zona, y activamos turnos
+    Wait.time(function() empezar_reparto() end, 1.0)
+
+  end
 
 end
 

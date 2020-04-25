@@ -26,6 +26,12 @@ function onLoad()
 
 end
 
-function pulsar_boton()
-  agrupar_canasta(zonaCanastaE2_C09_GUID,2)
+function pulsar_boton(obj, color)
+
+  cond = detectar_jugador_que_pulsa(obj, color)
+
+  if cond then
+    agrupar_canasta(zonaCanastaE2_C09_GUID,2)
+  end
+
 end

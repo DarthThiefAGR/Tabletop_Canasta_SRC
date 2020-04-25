@@ -11,11 +11,12 @@
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Zonas_Objetos/objetos_pos_sca
 
 #include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/repartir_cartas
+#include !/../../AppData/Local/Temp/TabletopSimulator/Tabletop Simulator Lua/Funciones/funciones_boton
 
 function onLoad()
 
   param = {
-    label='SORTEAR\nTURNOS',
+    label='SORTEAR\nPARTIDA',
     click_function='sortear_turnos',
     function_owner=self,
     position={0,0.5,0},
@@ -23,7 +24,7 @@ function onLoad()
     width=450,
     font_size=90,
     color={1,1,1},
-    tooltip = 'Echar a suerte turnos de la partida',
+    tooltip = 'Echar a suerte equipos y quién empieza',
   }
 
   self.createButton(param)
@@ -38,19 +39,34 @@ end
 
 function sortear_turnos()
 
+  -- Comprobamos si están los 4 jugadores
   turno_orden_1 = {'Red','Blue','Green','Yellow'}
   turno_orden_2 = {'Blue','Green','Yellow','Red'}
   turno_orden_3 = {'Green','Yellow','Red','Blue'}
   turno_orden_4 = {'Yellow','Red','Blue','Green'}
 
-  --math.randomseed( os.time() )
+  j1_seated = Player[turno_orden_1[1]].seated
+  j2_seated = Player[turno_orden_1[2]].seated
+  j3_seated = Player[turno_orden_1[3]].seated
+  j4_seated = Player[turno_orden_1[4]].seated
+
+  if j1_seated and j2_seated and j2_seated and j2_seated then
+
+  else
+    txt_a_todos = '¡Faltan jugadores!'
+    --printToAll(txt_a_todos, {1,0,0})
+    broadcastToAll(txt_a_todos, {1,0,0})
+  end
+
+
+  -- Echamos a suerte los turnos
   sorteo_resultado = math.random(1,4)
-  turno_orden_sel = 'turno_orden_' .. sorteo_resultado
-  turno_orden = _G[turno_orden_sel]
-  jugador_inicial = Player[turno_orden[1]].steam_name
+  turno_orden_sel  = 'turno_orden_' .. sorteo_resultado
+  turno_orden      = _G[turno_orden_sel]
+  jugador_inicial  = Player[turno_orden[1]].steam_name
 
   txt_a_todos = jugador_inicial .. ' empieza cortando'
-  printToAll(txt_a_todos, {1,0,0})
+  --printToAll(txt_a_todos, {1,0,0})
   broadcastToAll(txt_a_todos, {1,0,0})
 
   -- Guardamos inicio de turno en texto marcador
@@ -62,14 +78,12 @@ function sortear_turnos()
   self.setScale({0.01,0.01,0.01})
 
   -- Esperamos, ponemos mazo de reparto en su zona, y activamos turnos
-  Wait.time(function() empezar_ronda() end, 1.5)
+  Wait.time(function() empezar_ronda(turno_orden[1]) end, 1.5)
 
 end
 
 
-
-
-function empezar_ronda()
+function empezar_ronda(jugador_inicial)
 
   -- Colocamos mazo de robo en su zona
   zona_reparto_obj = getObjectFromGUID(Z_mazo_robo_GUID)
@@ -81,5 +95,6 @@ function empezar_ronda()
   boton_corte_aleatorio = getObjectFromGUID(boton_corte_aleatorio_GUID)
   boton_corte_aleatorio.setPosition(boton_corte_aleatorio_pos0)
 
+  activar_sistema_turnos(jugador_inicial)
 
 end
