@@ -70,6 +70,12 @@ function pulsar_boton_recoger()
     self.setPosition({pos0[1],-1,pos0[3]})
     self.setScale({0.01,0.01,0.01})
 
+    -- VOLVEMOS A PONER PUNTOS A CERO DE CANASTAS/FLORES POR SI ACASO
+    contador_puntos_canastas_E1 = getObjectFromGUID(contador_puntos_canastas_E1_GUID)
+    contador_puntos_canastas_E2 = getObjectFromGUID(contador_puntos_canastas_E2_GUID)
+    contador_puntos_canastas_E1.setValue(0)
+    contador_puntos_canastas_E2.setValue(0)
+
   end
 
 

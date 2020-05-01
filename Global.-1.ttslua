@@ -1,6 +1,3 @@
-function onPlayerTurn()
-end
-
 function onLoad()
 
     -- INCLUDES
@@ -119,5 +116,13 @@ function onUpdate()
 
   -- salidaDE = colocar_cartas_descarte(salidaDE,zonaDescarte)
 
+
+end
+
+function onPlayerTurn(jugador)
+
+    --print(jugador.color)
+    texto_turno_actual = getObjectFromGUID(texto_turno_actual_GUID)
+    texto_turno_actual.TextTool.setValue(jugador.color)
 
 end

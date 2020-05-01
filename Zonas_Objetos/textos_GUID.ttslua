@@ -22,3 +22,4 @@ canasta_tipo_E2_C09_GUID = '92a2d0'
 
 -- INDICADOR DE PRIMER TURNO (CORTE DE MAZO)
 texto_primer_turno_GUID = '8927f3'
+texto_turno_actual_GUID = '5f3d5c'

@@ -10,34 +10,53 @@ function colocarFloresEnZona(salidaF,zona,equipo)
   nObjetosActual     = salidaF[1]
   carta_actual       = salidaF[2]
 
-  -- Turno actual
-  --tabla_turnos = Turns.order
-  
+  -- GUID de la zona
+  zona_GUID = zona.getGUID()
+
+  -- Turno actual y condición de equipo
+  texto_turno_actual = getObjectFromGUID(texto_turno_actual_GUID)
+  turno_actual = texto_turno_actual.getValue()
+
+  cond_E1 = zona_GUID == 'ed889e' or zona_GUID == '9f2a5d' or zona_GUID == '0b88c3' or zona_GUID == '5883a5'
+  cond_E2 = zona_GUID == '4e6a03' or zona_GUID == 'e54478' or zona_GUID == 'f2eba4' or zona_GUID == '4889e2'
+
+  cond_jugadorE1 = cond_E1 and ( turno_actual == 'Blue' or turno_actual == 'Yellow' )
+  cond_jugadorE2 = cond_E2 and ( turno_actual == 'Red' or turno_actual == 'Green' )
+
   -- Colocamos carta en su sitio, si es una flor
-  if (nObjetos ~= nObjetosActual) and nObjetos == 1 then
+  if (nObjetos ~= nObjetosActual) and nObjetos == 1  then
 
-    posicionCarta.x = posicionZonai.x
-    posicionCarta.y = posicionZonai.y
-    posicionCarta.z = posicionZonai.z
+    if (cond_jugadorE1 or cond_jugadorE2) then
 
-    carta = objectsInZone[1]
-    carta_name = carta.getName()
+      posicionCarta.x = posicionZonai.x
+      posicionCarta.y = posicionZonai.y
+      posicionCarta.z = posicionZonai.z
 
-    print(carta_name)
-    if carta_name == '3r' or carta_name == '3c' then
-      -- Colocamos flor en su sitio
-      objectsInZone[1].setPosition(posicionCarta)
-      objectsInZone[1].setRotation(rotacionZonai)
-      objectsInZone[1].setLock(true)
-      -- Contabilizamos puntos
-      contar_puntos_flor(equipo,'in')
-      -- Guardamos carta
-      carta_actual = 'flor'
+      carta = objectsInZone[1]
+      carta_name = carta.getName()
+
+      print(carta_name)
+      if carta_name == '3r' or carta_name == '3c' then
+        -- Colocamos flor en su sitio
+        objectsInZone[1].setPosition(posicionCarta)
+        objectsInZone[1].setRotation(rotacionZonai)
+        objectsInZone[1].setLock(true)
+        -- Contabilizamos puntos
+        contar_puntos_flor(equipo,'in')
+        -- Guardamos carta
+        carta_actual = 'flor'
+      else
+        carta_actual = 'no_flor'
+      end
+
     else
-      carta_actual = 'no_flor'
+
+      printToAll('¡No es tu zona!', {1,0,0})
+
     end
 
   end
+
 
   -- Sacamos flor
   if (nObjetos ~= nObjetosActual) and nObjetos == 0 then
