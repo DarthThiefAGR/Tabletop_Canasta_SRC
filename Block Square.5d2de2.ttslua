@@ -29,17 +29,30 @@ function onLoad()
 
 end
 
-function pulsar_boton_finalizar()
+function pulsar_boton_finalizar(obj, color)
 
-  -- CONTAMOS PUNTOS
-  contar_puntos()
+  -- Detectamos jugador que pulsa
+  cond = detectar_jugador_que_pulsa(obj, color)
 
-  -- FINALIZAMOS SISTEMA DE TURNOS
-  Turns.enable = false
+  -- Detectamos si el jugador que pulsa no tiene cartas en mano
+  N_Cartas = Player[color].getHandCount()
 
-  -- DESAPARECEMOS BOTÓN
-  pos0 = self.getPosition()
-  self.setPosition({pos0[1],-1,pos0[3]})
-  self.setScale({0.01,0.01,0.01})
+  if cond and N_Cartas == 0 then
+
+    -- CONTAMOS PUNTOS
+    contar_puntos(color)
+
+    -- FINALIZAMOS SISTEMA DE TURNOS
+    Turns.enable = false
+
+    -- DESAPARECEMOS BOTÓN
+    pos0 = self.getPosition()
+    self.setPosition({pos0[1],-1,pos0[3]})
+    self.setScale({0.01,0.01,0.01})
+
+  end
+
+
+
 
 end

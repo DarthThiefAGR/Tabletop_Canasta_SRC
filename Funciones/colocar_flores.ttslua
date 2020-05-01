@@ -10,6 +10,9 @@ function colocarFloresEnZona(salidaF,zona,equipo)
   nObjetosActual     = salidaF[1]
   carta_actual       = salidaF[2]
 
+  -- Turno actual
+  --tabla_turnos = Turns.order
+  
   -- Colocamos carta en su sitio, si es una flor
   if (nObjetos ~= nObjetosActual) and nObjetos == 1 then
 

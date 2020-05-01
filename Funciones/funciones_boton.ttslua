@@ -27,7 +27,7 @@ end
 function detectar_jugador_que_pulsa(obj, color)
 
   turno_actual      = Turns.turn_color
-
+  print(turno_actual)
   if turno_actual == '' then
 
     txt_error = 'Turnos desactivados'
@@ -295,12 +295,14 @@ _G['agrupar_canasta'] = function(zonaCanasta,Equipo)
               carta_a_mover = k
             end
           end
+
         elseif canasta_tipo == 'limpia' then
           if ((carta_palo == 'c') or (carta_palo == 'r')) then
             if carta_numero ~= '2' then
               carta_a_mover = k
             end
           end
+
         elseif canasta_tipo == 'monos' then
           if carta_numero == '2' then
               carta_a_mover = k
@@ -315,7 +317,18 @@ _G['agrupar_canasta'] = function(zonaCanasta,Equipo)
 
       end
 
-      --Si encontramos carta adecuada, colocamos en objetivo
+      -- No se ha encontrado carta negra para canasta sucia, cogemos una roja
+      if canasta_tipo == 'sucia' and carta_abajo == 0 then
+        for k = 1,Ncartas do
+          if ((carta_palo == 'c') or (carta_palo == 'r')) then
+            if carta_numero ~= '2' then
+              carta_a_mover = k
+            end
+          end
+        end
+      end
+
+      -- Si encontramos carta adecuada, colocamos en objetivo
       if carta_a_mover > 0 then
 
         for k = 1,Ncartas do

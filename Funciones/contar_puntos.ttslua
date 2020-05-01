@@ -1,4 +1,4 @@
-function contar_puntos()
+function contar_puntos(jugador_color)
 
   -- CONTADOR RONDA
   contador_ronda = getObjectFromGUID(contador_ronda_GUID)
@@ -189,6 +189,16 @@ function contar_puntos()
 
     puntos_canastas_E1 = contador_puntos_canastas_E1.getValue()
     puntos_canastas_E2 = contador_puntos_canastas_E2.getValue()
+
+    -- CONTABILIZAR QUIÉN HA TERMINADO LA RONDA
+    if     jugador_color == 'Red' or 'Green' then
+      puntos_canastas_E2 = puntos_canastas_E2 + 100
+      contador_puntos_canastas_E2.setValue(puntos_canastas_E2)
+    elseif jugador_color == 'Blue' or 'Yellow' then
+      puntos_canastas_E1 = puntos_canastas_E1 + 100
+      contador_puntos_canastas_E1.setValue(puntos_canastas_E1 + 100)
+    end
+
 
     -- DETECTAR SI SE HA CERRADO O NO
     signoE1 = 1

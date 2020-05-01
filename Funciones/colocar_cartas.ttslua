@@ -249,14 +249,14 @@ function colocaCartasEnZona_v3(salidaE,zona)
               txt_out = 'Superado número máximo actual de monos'
               printToAll(txt_out, {r=1,g=0,b=0})
             else
-              txt_out = 'Canasta de tipo ' .. numCarta .. ' - ' .. (7-nObjetos) .. ' restantes'
+              txt_out = 'Canasta de tipo ' .. tipo_canasta .. ' - ' .. (7-nObjetos) .. ' restantes'
               printToAll(txt_out, {r=1,g=0,b=0})
               bloquear_carta = 'si'
             end
 
           -- Si la carta coincide con el tipo de canasta
           else
-            txt_out = 'Canasta de tipo ' .. numCarta .. ' - ' .. (7-nObjetos) .. ' restantes'
+            txt_out = 'Canasta de tipo ' .. tipo_canasta .. ' - ' .. (7-nObjetos) .. ' restantes'
             printToAll(txt_out, {r=1,g=0,b=0})
             bloquear_carta = 'si'
           end
