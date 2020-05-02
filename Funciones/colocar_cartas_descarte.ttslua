@@ -26,9 +26,7 @@ function colocar_cartas_descarte(salidaDE,zona)
       local posicionZonai = zona.getPosition()
       local rotacionZonai = zona.getRotation()
 
-
-      -- Si ha variado el número de objetos en el interior de la zona
-      -- y el número de cartas es 8 como máximo, ejecutamos el script
+      -- Si ha variado el número de objetos en el interior de la zona...
 
       if (nObjetos ~= nObjetosActual) then
 
@@ -47,17 +45,36 @@ function colocar_cartas_descarte(salidaDE,zona)
 
         error_tipo_obj = false
 
-        -- Si objeto entra, detectamos cual es (cual no está bloqueado), y si es una carta
+        -- Si objeto entra, detectamos cual es y si es una carta
         if obj_in_out == 'in' then
 
-          kk    = 1
-          k_new = 0
+          kk      = 1
+          k_new   = 0
+          kk_deck = 0
+
+          -- Primera carta del mazo de descartes
+          if     nObjetos == 1 then
+            obj      = objectsInZone[1]
+            obj_name = obj.name
+            if obj_name ~= nil then
+            else
+              error_tipo_obj = true
+            end
+
+          elseif nObjetos == 2 then
+
+          elseif nObjetos > 2 then
+
+          end
+
 
           if nObjetos > 0 then
 
             obj      = objectsInZone[kk]
             obj_name = obj.name
+
             if obj_name ~= nil then
+
               print(obj_name)
               if obj_name == 'Card' or obj_name == 'CardCustom' then
                 while k_new == 0 do
@@ -69,17 +86,19 @@ function colocar_cartas_descarte(salidaDE,zona)
                   end
                   kk = kk + 1
                 end
+              elseif obj_name == 'Deck' then
+                mazo_descartes = 'Mazo'
               else
-                error_tipo_obj = true
+                 error_tipo_obj = true
               end
+
             else
               error_tipo_obj = true
             end
 
           end
-          --print('k_new = ',k_new)
+
         end
-        --print('error_tipo_obj = ',error_tipo_obj)
 
 
         -- Una vez sabemos cual es el objeto que acaba de entrar, actuamos:
@@ -103,7 +122,7 @@ function colocar_cartas_descarte(salidaDE,zona)
             colocar_carta = 'carta'
 
           -- Siguientes cartas
-        elseif nObjetos > 1 then
+          elseif nObjetos > 1 then
 
             colocar_carta = 'mazo'
 
@@ -115,38 +134,33 @@ function colocar_cartas_descarte(salidaDE,zona)
 
       print('Colocamos? ',colocar_carta)
 
-      -- Bloqueamos carta si procede
-      if colocar_carta == 'si' then
-        -- Tenemos que colocar en su sitio
 
-        print('Colocar')
-        -- -- Detectamos lado de mesa
-        -- local signo     = 1
-        -- if posicionZonai.x < 0 then
-        --   signo = -1
-        -- end
-        --
-        -- posX = paramXA*signo - (nObjetos-1)*paramXB*signo
+      if colocar_carta == 'pene' then
+
+        print('Colocar carta')
+
         -- -- Posición de la zona
-        -- posicionCarta.x = posicionZonai.x - posX
-        -- posicionCarta.y = paramYA
-        -- posicionCarta.z = posicionZonai.z
-        --
-        -- --angX = signo * ( (8-nObjetos)*(angA/8) + angB )
-        -- angX = angB
-        -- rotacionCarta.x = angX
-        -- rotacionCarta.y = rotacionZonai.y
-        -- rotacionCarta.z = rotacionZonai.z
-        --
+        posicionCarta.x = posicionZonai.x
+        posicionCarta.y = posicionZonai.y
+        posicionCarta.z = posicionZonai.z
+
+        rotacionCarta.x = rotacionZonai.x
+        rotacionCarta.y = rotacionZonai.y
+        rotacionCarta.z = rotacionZonai.z
+
         -- -- Colocamos
-        -- objectsInZone[k_new].setPosition(posicionCarta)
-        -- objectsInZone[k_new].setRotation(rotacionCarta)
-        --
+        objectsInZone[k_new].setPosition(posicionCarta)
+        objectsInZone[k_new].setRotation(rotacionCarta)
+
         -- -- Bloqueamos
         -- objectsInZone[k_new].setLock(true)
 
       end
 
+      if colocar_carta == 'pene' then
+
+
+      end
 
     end
 

@@ -89,10 +89,10 @@ function onLoad()
       salidaF2[i][2] = carta_actualF2[i]
     end
 
-    -- -- SCRIPT DE ZONA DE DESCARTES
-    -- zonaDescarte = getObjectFromGUID(Z_mazo_descarte_GUID)
-    -- salidaDE = {}
-    -- salidaDE[1] = 0
+    -- SCRIPT DE ZONA DE DESCARTES
+    zonaDescarte = getObjectFromGUID(Z_mazo_descarte_GUID)
+    salidaDE = {}
+    salidaDE[1] = 0
 
 
 end
@@ -114,7 +114,7 @@ function onUpdate()
     salidaE2[i] = colocaCartasEnZona_v3(salidaE2[i],zona)
   end
 
-  -- salidaDE = colocar_cartas_descarte(salidaDE,zonaDescarte)
+  salidaDE = colocar_cartas_descarte(salidaDE,zonaDescarte)
 
 
 end

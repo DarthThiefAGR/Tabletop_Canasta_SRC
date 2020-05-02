@@ -191,10 +191,11 @@ function contar_puntos(jugador_color)
     puntos_canastas_E2 = contador_puntos_canastas_E2.getValue()
 
     -- CONTABILIZAR QUIÉN HA TERMINADO LA RONDA
-    if     jugador_color == 'Red' or 'Green' then
+    print(jugador_color)
+    if     jugador_color == 'Red' or jugador_color == 'Green' then
       puntos_canastas_E2 = puntos_canastas_E2 + 100
       contador_puntos_canastas_E2.setValue(puntos_canastas_E2)
-    elseif jugador_color == 'Blue' or 'Yellow' then
+    elseif jugador_color == 'Blue' or jugador_color == 'Yellow' then
       puntos_canastas_E1 = puntos_canastas_E1 + 100
       contador_puntos_canastas_E1.setValue(puntos_canastas_E1 + 100)
     end
